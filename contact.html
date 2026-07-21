@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact / Inquire | Rukmani Exports</title>
+<meta name="description" content="Reach Rukmani Exports directly — trade partner or private collector, no account required, no separate queue.">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .form-row { margin-bottom: 1.4rem; }
+  .form-row label { display:block; font-size:0.82rem; letter-spacing:0.04em; color:var(--espresso-soft); margin-bottom:0.5rem; }
+  .form-row input, .form-row select, .form-row textarea {
+    width:100%; padding:0.85rem 1rem; border:1px solid var(--taupe-line); background:var(--white);
+    font-family: var(--font-body); font-size:0.95rem; color:var(--espresso);
+  }
+  .form-row textarea { min-height: 130px; resize: vertical; }
+  .form-row input:focus, .form-row select:focus, .form-row textarea:focus { outline: 1px solid var(--brass); border-color: var(--brass); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo-mark">
+      <svg viewBox="0 0 60 70" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="30,3 52,20 42,28 30,20 18,28 8,20" fill="#B23A44"/>
+        <polygon points="52,20 52,50 42,45 42,28" fill="#8A1D28"/>
+        <polygon points="52,50 30,67 30,53 42,45" fill="#5E1119"/>
+        <polygon points="30,67 8,50 18,45 30,53" fill="#8A1D28"/>
+        <polygon points="8,50 8,20 18,28 18,45" fill="#A02C37"/>
+        <polygon points="30,20 42,28 42,45 30,53 18,45 18,28" fill="#C24550"/>
+      </svg>
+      <span class="logo-word">RUKMANI<span>EST. 1971 · JAIPUR</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.primary-nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="primary-nav">
+      <a href="loose-gemstones.html" class="emphasis">Loose Gemstones</a>
+      <a href="fine-jewellery.html" class="emphasis">Fine Jewellery</a>
+      <a href="heritage.html">Our Heritage</a>
+      <a href="trade.html">Trade</a>
+      <a href="certification.html">Certification</a>
+      <a href="journal.html">Journal</a>
+      <a href="contact.html" class="current">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding-bottom:1rem;">
+  <div class="wrap reveal" style="max-width:700px;">
+    <p class="eyebrow" style="margin-bottom:1rem;">Contact / Inquire</p>
+    <h1 style="font-size:clamp(2.2rem,4.2vw,3.4rem);">Get in Touch</h1>
+    <p class="lede">Whether you're a trade partner sourcing for a collection, or a collector with a question about a specific stone, we respond directly — no account required, no separate queue.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:1rem;">
+  <div class="wrap split reveal">
+    <form onsubmit="event.preventDefault(); this.querySelector('.form-success').style.display='block'; this.querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=true);">
+      <div class="form-row">
+        <label for="name">Name</label>
+        <input type="text" id="name" required>
+      </div>
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-row">
+        <label for="type">I'm reaching out as a</label>
+        <select id="type">
+          <option>Trade Buyer</option>
+          <option>Private Collector</option>
+          <option>General Inquiry</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="message">Message</label>
+        <textarea id="message" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-solid">Send Inquiry</button>
+      <p class="form-success" style="display:none; margin-top:1.2rem; color:var(--brass); font-size:0.9rem;">Thank you — we read every inquiry personally and will respond soon.</p>
+    </form>
+
+    <div>
+      <p class="tiny-caps" style="margin-bottom:0.9rem;">Prefer to Speak Directly?</p>
+      <p>We read every inquiry personally. If you'd prefer to speak directly, we're also reachable by phone or WhatsApp, or in person at our next exhibition.</p>
+      <hr class="hairline" style="margin:1.8rem 0;">
+      <p class="tiny-caps" style="margin-bottom:0.6rem;">Find Us</p>
+      <p style="font-size:0.94rem;">Jaipur, Rajasthan, India<br>Hong Kong International Jewellery Fair<br>JJS &amp; JAS, Jaipur</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>Rukmani Exports</h4>
+        <p style="max-width:32ch; font-size:0.88rem; color:#7A6C5D;">A third-generation Jaipur gemstone house, trading and crafting certified natural gemstones since 1971.</p>
+      </div>
+      <div>
+        <h4>Shop</h4>
+        <a href="loose-gemstones.html">Loose Gemstones</a>
+        <a href="fine-jewellery.html">Fine Jewellery</a>
+      </div>
+      <div>
+        <h4>The House</h4>
+        <a href="heritage.html">Our Heritage</a>
+        <a href="trade.html">Trade</a>
+        <a href="certification.html">Certification &amp; Transparency</a>
+        <a href="journal.html">Journal</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="contact.html">Contact / Inquire</a>
+      </div>
+    </div>
+    <hr class="hairline" style="border-color: rgba(255,255,255,0.1);">
+    <div class="footer-bottom">
+      <span>© 2026 Rukmani Exports, Jaipur. GIA &amp; GRS Certified.</span>
+      <span>Member, Jaipur Jewellers Association</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
