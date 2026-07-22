@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2.08 ct Natural Ruby — Mozambique, Unheated | Rukmani Exports</title>
-<meta name="description" content="A 2.08 carat natural unheated ruby from Mozambique, GRS certified — offered through personal consultation.">
+<title>1.20 ct Natural Ruby — Mozambique, Unheated | Rukmani Exports</title>
+<meta name="description" content="A 1.20 carat natural unheated ruby from Mozambique, GRS certified — available for direct purchase.">
 <link rel="stylesheet" href="styles.css">
 <style>
   .spec-table { width:100%; border-collapse: collapse; margin: 1.5rem 0 2rem; }
@@ -13,6 +13,16 @@
   .spec-table td:first-child { color: var(--espresso-faint); width: 40%; }
   .spec-table td:last-child { color: var(--espresso); font-weight: 500; }
   .product-figure { background: var(--ivory-deep); display:flex; align-items:center; justify-content:center; padding: 3rem; }
+  .price-tag { font-family: var(--font-display); font-size: 2.1rem; font-weight: 600; color: var(--espresso); margin: 0.4rem 0 1.5rem; }
+  .price-note { font-size: 0.76rem; color: var(--espresso-faint); margin-top: -1.2rem; margin-bottom: 1.8rem; }
+  .qty-row { display:flex; align-items:center; gap: 1rem; margin-bottom: 1.5rem; }
+  .qty-row select { padding: 0.6rem 0.9rem; border: 1px solid var(--taupe-line); background: var(--white); font-family: var(--font-body); }
+  .bag-toast {
+    display:none; align-items:center; gap:0.6rem; margin-top:1rem; padding: 0.9rem 1.1rem;
+    background: var(--ivory-deep); border-left: 3px solid var(--brass); font-size: 0.88rem;
+  }
+  .header-bag { display:flex; align-items:center; gap:0.3rem; font-size:0.86rem; }
+  .header-bag .count { background: var(--espresso); color: var(--ivory); border-radius: 50%; width:18px; height:18px; display:flex; align-items:center; justify-content:center; font-size:0.68rem; }
 </style>
 </head>
 <body>
@@ -32,14 +42,14 @@
       <a href="trade.html">Trade</a>
       <a href="certification.html">Certification</a>
       <a href="journal.html">Journal</a>
-      <a href="contact.html">Contact</a>
+      <a href="cart.html" class="header-bag">Bag <span class="count" id="bagCount">0</span></a>
     </nav>
   </div>
 </header>
 
 <section class="section" style="padding-top:2.5rem;">
   <div class="wrap">
-    <p class="eyebrow" style="margin-bottom:1.5rem;"><a href="loose-gemstones.html" style="color:inherit;">Loose Gemstones</a> / <a href="rubies.html" style="color:inherit;">Rubies</a> / 2.08 ct Natural Ruby</p>
+    <p class="eyebrow" style="margin-bottom:1.5rem;"><a href="loose-gemstones.html" style="color:inherit;">Loose Gemstones</a> / <a href="rubies.html" style="color:inherit;">Rubies</a> / 1.20 ct Natural Ruby</p>
 
     <div class="split reveal" style="align-items:flex-start;">
       <div class="product-figure">
@@ -54,25 +64,35 @@
       </div>
 
       <div>
-        <span class="tag" style="margin-bottom:1rem; display:inline-block;">Rare / Investment-Grade</span>
-        <h1 style="font-size:clamp(1.7rem,3vw,2.3rem); margin-bottom:1.5rem;">2.08 ct Natural Ruby — Mozambique, Unheated</h1>
+        <span class="tag" style="margin-bottom:1rem; display:inline-block;">Direct Purchase</span>
+        <h1 style="font-size:clamp(1.7rem,3vw,2.3rem); margin-bottom:0.6rem;">1.20 ct Natural Ruby — Mozambique, Unheated</h1>
+
+        <div class="price-tag">$2,450 <span style="font-size:1rem; font-weight:400; color:var(--espresso-faint);">USD</span></div>
+        <p class="price-note">Illustrative price — placeholder pending your final accessible-tier pricing decision.</p>
 
         <table class="spec-table">
           <tr><td>Origin</td><td>Mozambique (Montepuez)</td></tr>
-          <tr><td>Weight</td><td>2.08 carats</td></tr>
+          <tr><td>Weight</td><td>1.20 carats</td></tr>
           <tr><td>Cut</td><td>Oval Mixed Cut</td></tr>
           <tr><td>Treatment</td><td>None — natural, unheated</td></tr>
           <tr><td>Certification</td><td>GRS Certified — Certificate #[Placeholder] · <a href="certification.html" class="text-link" style="font-size:0.85rem;">Verify →</a></td></tr>
-          <tr><td>Color</td><td>Vivid red with a slight purplish undertone</td></tr>
+          <tr><td>Color</td><td>Vivid red, medium-dark tone</td></tr>
         </table>
 
-        <p style="margin-bottom:2rem;">Unheated rubies of this size and color are increasingly difficult to source — most fine rubies on the market today have undergone some form of heat treatment to enhance color and clarity. This stone has not. Its color is entirely natural, exactly as the earth produced it.</p>
+        <div class="qty-row">
+          <label for="qty" style="font-size:0.86rem;">Quantity</label>
+          <select id="qty"><option>1</option><option>2</option><option>3</option></select>
+        </div>
 
-        <a href="contact.html" class="btn btn-solid" style="margin-bottom:1rem;">Inquire About This Piece</a>
-        <p style="font-size:0.86rem; color:var(--espresso-faint); max-width:44ch;">Stones of this rarity are offered through a personal consultation, so you receive this stone's complete provenance and certification history directly from our team — not simply a listing.</p>
+        <button class="btn btn-solid" id="addToBagBtn" onclick="addToBag()" style="border:none;">Add to Bag — $2,450</button>
+
+        <div class="bag-toast" id="bagToast">
+          <span>✓ Added to your bag.</span>
+          <a href="cart.html" class="text-link" style="margin-left:auto;">View Bag →</a>
+        </div>
 
         <hr class="hairline" style="margin: 2rem 0 1.2rem;">
-        <p style="font-size:0.84rem; color:var(--espresso-faint);">Backed by three generations of trading expertise, since 1971. Member, Jaipur Jewellers Association.</p>
+        <p style="font-size:0.84rem; color:var(--espresso-faint);">Backed by three generations of trading expertise, since 1971. Member, Jaipur Jewellers Association. Ships fully insured, with certification included.</p>
       </div>
     </div>
   </div>
@@ -111,5 +131,14 @@
 </footer>
 
 <script src="script.js"></script>
+<script>
+  function addToBag() {
+    const qty = parseInt(document.getElementById('qty').value, 10);
+    const countEl = document.getElementById('bagCount');
+    countEl.textContent = qty;
+    document.getElementById('bagToast').style.display = 'flex';
+    document.getElementById('addToBagBtn').textContent = '✓ Added — $2,450';
+  }
+</script>
 </body>
 </html>

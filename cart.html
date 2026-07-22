@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Bag | Rukmani Exports</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .bag-line { display:grid; grid-template-columns: 90px 1fr auto; gap:1.5rem; align-items:center; padding: 1.6rem 0; border-bottom:1px solid var(--taupe-line); }
+  .bag-line:first-child { border-top: 1px solid var(--taupe-line); }
+  .bag-line .fig { width:90px; }
+  .bag-line h4 { font-size: 1.1rem; margin-bottom:0.3rem; }
+  .bag-line .meta { font-size:0.82rem; color:var(--espresso-faint); }
+  .bag-line .amount { font-family:var(--font-display); font-size:1.2rem; font-weight:600; }
+  .summary-row { display:flex; justify-content:space-between; padding: 0.6rem 0; font-size:0.92rem; }
+  .summary-row.total { font-family:var(--font-display); font-size:1.3rem; font-weight:600; border-top:1px solid var(--taupe-line); margin-top:0.6rem; padding-top:1.2rem; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo-mark">
+      <img src="assets/re-logo.png" alt="Rukmani Exports" class="logo-img">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.primary-nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="primary-nav">
+      <a href="loose-gemstones.html" class="emphasis">Loose Gemstones</a>
+      <a href="fine-jewellery.html" class="emphasis">Fine Jewellery</a>
+      <a href="heritage.html">Our Heritage</a>
+      <a href="trade.html">Trade</a>
+      <a href="certification.html">Certification</a>
+      <a href="journal.html">Journal</a>
+      <a href="cart.html" class="current">Bag</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding-bottom:1rem;">
+  <div class="wrap reveal" style="max-width:760px;">
+    <p class="eyebrow" style="margin-bottom:1rem;">Your Bag</p>
+    <h1 style="font-size:clamp(2rem,3.6vw,2.8rem);">One Stone, Ready When You Are</h1>
+  </div>
+</section>
+
+<section class="section" style="padding-top:1rem;">
+  <div class="wrap split reveal" style="align-items:flex-start;">
+    <div>
+      <div class="bag-line">
+        <svg class="fig" viewBox="0 0 90 104"><polygon points="45,4 78,26 78,80 45,100 12,80 12,26" fill="#8A1D28"/><polygon points="45,26 63,38 63,68 45,86 27,68 27,38" fill="#C24550"/></svg>
+        <div>
+          <h4>1.20 ct Natural Ruby</h4>
+          <div class="meta">Mozambique · Unheated · GRS Certified</div>
+        </div>
+        <div class="amount">$2,450</div>
+      </div>
+      <p style="margin-top:1.5rem; font-size:0.86rem; color:var(--espresso-faint);">Every stone ships fully insured, accompanied by its original certification and a note from our family.</p>
+    </div>
+
+    <div style="border:1px solid var(--taupe-line); padding:2rem;">
+      <p class="tiny-caps" style="margin-bottom:1rem;">Order Summary</p>
+      <div class="summary-row"><span>Subtotal</span><span>$2,450</span></div>
+      <div class="summary-row"><span>Insured Shipping</span><span>Complimentary</span></div>
+      <div class="summary-row total"><span>Total</span><span>$2,450</span></div>
+      <a href="next-steps.html" class="btn btn-solid" style="width:100%; justify-content:center; margin-top:1.6rem;">Proceed to Checkout →</a>
+      <p style="font-size:0.76rem; color:var(--espresso-faint); margin-top:1rem;">Checkout is illustrative at this stage — real payment processing (via Stripe) connects here once set up.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-bottom" style="border-top:none; padding-top:0;">
+      <span>© 2026 Rukmani Exports, Jaipur. GIA &amp; GRS Certified.</span>
+      <span>Member, Jaipur Jewellers Association</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
