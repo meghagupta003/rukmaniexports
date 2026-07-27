@@ -232,7 +232,7 @@ nav.primary-nav a.current::after { right: 0; }
 /* ============ HERO ============ */
 
 .hero {
-  padding: clamp(3rem, 9vw, 6.5rem) 0 clamp(2.5rem, 6vw, 4rem);
+  padding: clamp(3rem, 9vw, 4rem) 0 clamp(2.5rem, 6vw, 4rem);
 }
 
 .hero-grid {
