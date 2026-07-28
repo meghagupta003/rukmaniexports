@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stone Details | Rukmani Exports</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .spec-table { width:100%; border-collapse: collapse; margin: 1.5rem 0 2rem; }
+  .spec-table tr { border-bottom: 1px solid var(--taupe-line); }
+  .spec-table td { padding: 0.85rem 0; font-size: 0.94rem; }
+  .spec-table td:first-child { color: var(--espresso-faint); width: 40%; }
+  .spec-table td:last-child { color: var(--espresso); font-weight: 500; }
+  .product-figure { background: var(--ivory-deep); display:flex; align-items:center; justify-content:center; padding: 3rem; }
+  .price-tag { font-family: var(--font-display); font-size: 2.1rem; font-weight: 600; color: var(--espresso); margin: 0.4rem 0 1.5rem; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo-mark">
+      <img src="assets/logo.svg" alt="Rukmani Exports" class="logo-img">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.primary-nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="primary-nav">
+      <a href="loose-gemstones.html" class="emphasis current">Loose Gemstones</a>
+      <a href="fine-jewellery.html" class="emphasis">Fine Jewellery</a>
+      <a href="heritage.html">Our Heritage</a>
+      <a href="trade.html">Trade</a>
+      <a href="certification.html">Certification</a>
+      <a href="journal.html">Journal</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section" style="padding-top:2.5rem; min-height:50vh;">
+  <div class="wrap" id="product-container">
+    <p style="padding:3rem 0; color:var(--espresso-faint);">Loading…</p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>Rukmani Exports</h4>
+        <p style="max-width:32ch; font-size:0.88rem; color:#7A6C5D;">A third-generation Jaipur gemstone house, trading and crafting certified natural gemstones since 1971.</p>
+      </div>
+      <div>
+        <h4>Shop</h4>
+        <a href="loose-gemstones.html">Loose Gemstones</a>
+        <a href="fine-jewellery.html">Fine Jewellery</a>
+      </div>
+      <div>
+        <h4>The House</h4>
+        <a href="heritage.html">Our Heritage</a>
+        <a href="trade.html">Trade</a>
+        <a href="certification.html">Certification &amp; Transparency</a>
+        <a href="journal.html">Journal</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="contact.html">Contact / Inquire</a>
+      </div>
+    </div>
+    <hr class="hairline" style="border-color: rgba(255,255,255,0.1);">
+    <div class="footer-bottom">
+      <span>© 2026 Rukmani Exports, Jaipur. GIA &amp; GRS Certified.</span>
+      <span>Member, Jaipur Jewellers Association</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="inventory.js"></script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  if (id) {
+    loadProduct(id, '#product-container');
+  } else {
+    document.getElementById('product-container').innerHTML = '<p style="padding:3rem 0; color:var(--espresso-faint);">No stone was specified. Please return to <a href="loose-gemstones.html">Loose Gemstones</a>.</p>';
+  }
+</script>
+</body>
+</html>
