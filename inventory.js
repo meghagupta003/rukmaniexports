@@ -3,9 +3,9 @@
 // ============================================
 // Fill in these three values once you've created your Airtable base
 // (see the setup guide provided alongside this file).
-const AIRTABLE_BASE_ID   = 'app3xWJf4OEurwme5';       // e.g. 'appXXXXXXXXXXXXXX'
+const AIRTABLE_BASE_ID   = 'YOUR_BASE_ID_HERE';       // e.g. 'appXXXXXXXXXXXXXX'
 const AIRTABLE_TABLE     = 'Gemstones';
-const AIRTABLE_TOKEN     = 'patBonBRYBXmyLqok.69f4fba3df0f8433b5429d6d515b3a30f58d9a7f7d8cd95df62f0a887cb913a8'; // Personal Access Token — READ ONLY, scoped to this base only
+const AIRTABLE_TOKEN     = 'YOUR_READ_ONLY_TOKEN_HERE'; // Personal Access Token — READ ONLY, scoped to this base only
 
 const AIRTABLE_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE)}`;
 
@@ -20,28 +20,23 @@ function gemFacetSVG(colorMain, colorLight) {
 // Renders one inventory card. Falls back to a simple faceted illustration if no photo is set yet.
 function renderStoneCard(record) {
   const f = record.fields;
-  const isDirect = f['Listing Type'] === 'Direct Purchase';
-  const hasImage = f['Image'] && f['Image'].length > 0;
-  const figure = hasImage
-    ? `<div class="stone-figure" style="background-image:url('${f['Image'][0].url}'); background-size:cover; background-position:center;"></div>`
+  const media = f['Media'] || [];
+  const firstImage = media.find(m => (m.type || '').startsWith('image/'));
+  const figure = firstImage
+    ? `<div class="stone-figure" style="background-image:url('${firstImage.url}'); background-size:cover; background-position:center;"></div>`
     : `<div class="stone-figure">${gemFacetSVG('#8A1D28', '#C24550')}</div>`;
 
-  const priceLine = isDirect && f['Price']
+  const priceLine = f['Price']
     ? `<div class="price">${formatPrice(f['Price'])}</div>`
     : '';
-
-  const cta = isDirect
-    ? `<a href="product.html?id=${record.id}" class="text-link">View Details →</a>`
-    : `<a href="product.html?id=${record.id}" class="text-link">Inquire About This Piece →</a>`;
 
   return `
     <div class="stone-card">
       ${figure}
-      <span class="tag">${isDirect ? 'Direct Purchase' : 'Inquire'}</span>
       <h4>${f['Name'] || 'Untitled Stone'}</h4>
       <div class="meta">${[f['Origin'], f['Treatment'], f['Certification Lab'] ? f['Certification Lab'] + ' Certified' : ''].filter(Boolean).join(' · ')}</div>
       ${priceLine}
-      ${cta}
+      <a href="product.html?id=${record.id}" class="text-link">View &amp; Inquire →</a>
     </div>`;
 }
 
@@ -94,13 +89,53 @@ async function loadProduct(recordId, containerSelector) {
   }
 }
 
+function renderMediaGallery(media) {
+  if (!media || media.length === 0) {
+    return `<div class="gallery-main">${gemFacetSVG('#8A1D28', '#C24550')}</div>`;
+  }
+
+  const mainItemHTML = (item, i) => {
+    const isVideo = (item.type || '').startsWith('video/');
+    return isVideo
+      ? `<video src="${item.url}" controls playsinline id="mediaMain" data-index="${i}" style="width:100%; max-height:460px; background:#000;"></video>`
+      : `<img src="${item.url}" alt="" id="mediaMain" data-index="${i}" style="width:100%; max-height:460px; object-fit:contain;">`;
+  };
+
+  const thumbsHTML = media.map((item, i) => {
+    const isVideo = (item.type || '').startsWith('video/');
+    const thumbSrc = isVideo ? (item.thumbnails && item.thumbnails.large ? item.thumbnails.large.url : item.url) : item.url;
+    return `
+      <button class="gallery-thumb ${i === 0 ? 'active' : ''}" data-index="${i}" onclick="switchGalleryMedia(${i})" aria-label="View media ${i + 1}">
+        ${isVideo ? `<span class="thumb-play">▶</span>` : ''}
+        <img src="${thumbSrc}" alt="">
+      </button>`;
+  }).join('');
+
+  window.__galleryMedia = media; // stashed for switchGalleryMedia to read
+
+  return `
+    <div class="gallery-main-wrap">${mainItemHTML(media[0], 0)}</div>
+    ${media.length > 1 ? `<div class="gallery-thumbs">${thumbsHTML}</div>` : ''}
+  `;
+}
+
+function switchGalleryMedia(i) {
+  const media = window.__galleryMedia || [];
+  const item = media[i];
+  if (!item) return;
+  const wrap = document.querySelector('.gallery-main-wrap');
+  const isVideo = (item.type || '').startsWith('video/');
+  wrap.innerHTML = isVideo
+    ? `<video src="${item.url}" controls playsinline autoplay style="width:100%; max-height:460px; background:#000;"></video>`
+    : `<img src="${item.url}" alt="" style="width:100%; max-height:460px; object-fit:contain;">`;
+  document.querySelectorAll('.gallery-thumb').forEach((btn, idx) => {
+    btn.classList.toggle('active', idx === i);
+  });
+}
+
 function renderProductDetail(record, container) {
   const f = record.fields;
-  const isDirect = f['Listing Type'] === 'Direct Purchase';
-  const hasImage = f['Image'] && f['Image'].length > 0;
-  const figure = hasImage
-    ? `<img src="${f['Image'][0].url}" alt="${f['Name'] || ''}" style="width:100%; max-width:320px;">`
-    : gemFacetSVG('#8A1D28', '#C24550').replace('viewBox="0 0 200 180"', 'viewBox="0 0 200 180" style="width:100%; max-width:280px;"');
+  const galleryHTML = renderMediaGallery(f['Media']);
 
   const specRows = [
     ['Origin', f['Origin']],
@@ -112,23 +147,19 @@ function renderProductDetail(record, container) {
   ].filter(row => row[1]);
 
   const specHTML = specRows.map(([label, val]) => `<tr><td>${label}</td><td>${val}</td></tr>`).join('');
+  const stoneName = (f['Name'] || '').replace(/'/g, "\\'");
 
-  const actionHTML = isDirect
-    ? `
-      <div class="price-tag">${f['Price'] ? formatPrice(f['Price']) : ''} <span style="font-size:1rem; font-weight:400; color:var(--espresso-faint);">USD</span></div>
-      <button class="btn btn-solid" style="border:none;" onclick="this.textContent='✓ Added to Bag'">Add to Bag${f['Price'] ? ' — ' + formatPrice(f['Price']) : ''}</button>
-    `
-    : `
-      <a href="contact.html" class="btn btn-solid">Inquire About This Piece</a>
-      <p style="font-size:0.86rem; color:var(--espresso-faint); max-width:44ch; margin-top:1rem;">Stones of this rarity are offered through a personal consultation, so you receive this stone's complete provenance and certification history directly from our team — not simply a listing.</p>
-    `;
+  const actionHTML = `
+    ${f['Price'] ? `<div class="price-tag">${formatPrice(f['Price'])} <span style="font-size:1rem; font-weight:400; color:var(--espresso-faint);">USD (indicative)</span></div>` : ''}
+    <button class="btn btn-solid" style="border:none;" onclick="openInquireModal('${stoneName}')">Inquire About This Piece</button>
+    <p style="font-size:0.86rem; color:var(--espresso-faint); max-width:44ch; margin-top:1rem;">We respond to every inquiry personally — usually within one business day.</p>
+  `;
 
   container.innerHTML = `
     <p class="eyebrow" style="margin-bottom:1.5rem;"><a href="loose-gemstones.html" style="color:inherit;">Loose Gemstones</a> / ${f['Category'] || ''} / ${f['Name'] || ''}</p>
     <div class="split reveal in" style="align-items:flex-start;">
-      <div class="product-figure">${figure}</div>
+      <div class="product-figure" style="flex-direction:column; padding:1.5rem;">${galleryHTML}</div>
       <div>
-        <span class="tag" style="margin-bottom:1rem; display:inline-block;">${isDirect ? 'Direct Purchase' : 'Rare / Investment-Grade'}</span>
         <h1 style="font-size:clamp(1.7rem,3vw,2.3rem); margin-bottom:0.6rem;">${f['Name'] || ''}</h1>
         <table class="spec-table">${specHTML}</table>
         ${actionHTML}

@@ -34,8 +34,7 @@
       <a href="trade.html">Trade</a>
       <a href="certification.html">Certification</a>
       <a href="journal.html">Journal</a>
-      <a href="contact.html" class="current">Contact</a>
-    </nav>
+      <a href="contact.html" class="current">Contact</a>    </nav>
   </div>
 </header>
 
@@ -49,30 +48,35 @@
 
 <section class="section" style="padding-top:1rem;">
   <div class="wrap split reveal">
-    <form onsubmit="event.preventDefault(); this.querySelector('.form-success').style.display='block'; this.querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=true);">
-      <div class="form-row">
-        <label for="name">Name</label>
-        <input type="text" id="name" required>
+    <div>
+      <form id="contactForm">
+        <div class="form-row">
+          <label for="name">Name</label>
+          <input type="text" id="name" required>
+        </div>
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input type="email" id="email" required>
+        </div>
+        <div class="form-row">
+          <label for="type">I'm reaching out as a</label>
+          <select id="type">
+            <option>Trade Buyer</option>
+            <option>Private Collector</option>
+            <option>General Inquiry</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="message">Message</label>
+          <textarea id="message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-solid" style="border:none;">Send Inquiry</button>
+      </form>
+      <div id="contactSuccess" style="display:none; margin-top:1.5rem; padding:1.4rem; background:var(--ivory-deep); border-left:3px solid var(--brass);">
+        <p style="margin:0 0 1rem; font-size:0.95rem;">Thank you — we've received your message and read every inquiry personally.</p>
+        <a href="#" id="contactWhatsapp" target="_blank" class="btn btn-solid" style="border:none; display:inline-flex;">Message Us on WhatsApp →</a>
       </div>
-      <div class="form-row">
-        <label for="email">Email</label>
-        <input type="email" id="email" required>
-      </div>
-      <div class="form-row">
-        <label for="type">I'm reaching out as a</label>
-        <select id="type">
-          <option>Trade Buyer</option>
-          <option>Private Collector</option>
-          <option>General Inquiry</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <label for="message">Message</label>
-        <textarea id="message" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-solid">Send Inquiry</button>
-      <p class="form-success" style="display:none; margin-top:1.2rem; color:var(--brass); font-size:0.9rem;">Thank you — we read every inquiry personally and will respond soon.</p>
-    </form>
+    </div>
 
     <div>
       <p class="tiny-caps" style="margin-bottom:0.9rem;">Prefer to Speak Directly?</p>
@@ -107,6 +111,12 @@
         <h4>Connect</h4>
         <a href="contact.html">Contact / Inquire</a>
       </div>
+      <div>
+        <h4>Policies</h4>
+        <a href="returns.html">Returns &amp; Refunds</a>
+        <a href="shipping.html">Shipping &amp; Insurance</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
     </div>
     <hr class="hairline" style="border-color: rgba(255,255,255,0.1);">
     <div class="footer-bottom">
@@ -117,5 +127,43 @@
 </footer>
 
 <script src="script.js"></script>
+<script src="inquire.js"></script>
+<script>
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const data = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      phone: '',
+      type: document.getElementById('type').value,
+      item: 'General website inquiry',
+      message: document.getElementById('message').value,
+    };
+    const btn = e.target.querySelector('button[type="submit"]');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    try {
+      if (!SHEETS_WEBAPP_URL.includes('YOUR_GOOGLE_APPS_SCRIPT_URL')) {
+        await fetch(SHEETS_WEBAPP_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify(data)
+        });
+      }
+    } catch (err) {
+      console.error('Contact submission failed:', err);
+    }
+
+    const waText = encodeURIComponent(
+      `Hello Rukmani Exports,\n\nName: ${data.name}\nEmail: ${data.email}\nReaching out as: ${data.type}\n\nMessage: ${data.message}`
+    );
+    document.getElementById('contactWhatsapp').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`;
+
+    e.target.style.display = 'none';
+    document.getElementById('contactSuccess').style.display = 'block';
+  });
+</script>
 </body>
 </html>
