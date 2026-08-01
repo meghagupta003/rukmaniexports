@@ -144,7 +144,7 @@
     btn.disabled = true;
 
     try {
-      if (!SHEETS_WEBAPP_URL.includes('YOUR_GOOGLE_APPS_SCRIPT_URL')) {
+      if (!SHEETS_WEBAPP_URL.includes('https://script.google.com/macros/s/AKfycby2NLig0cDlw5ETbczb_MwRRFhUm82uA7aiNZ6ErBeEYcYWPD8IHKroyWaSQ4wZRbjp/exec')) {
         await fetch(SHEETS_WEBAPP_URL, {
           method: 'POST',
           mode: 'no-cors',
