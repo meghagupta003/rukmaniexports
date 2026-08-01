@@ -3,9 +3,10 @@
 // ============================================
 // Fill in these three values once you've created your Airtable base
 // (see the setup guide provided alongside this file).
-const AIRTABLE_BASE_ID   = 'YOUR_BASE_ID_HERE';       // e.g. 'appXXXXXXXXXXXXXX'
+const AIRTABLE_BASE_ID   = 'app3xWJf4OEurwme5';       // e.g. 'appXXXXXXXXXXXXXX'
 const AIRTABLE_TABLE     = 'Gemstones';
-const AIRTABLE_TOKEN     = 'YOUR_READ_ONLY_TOKEN_HERE'; // Personal Access Token — READ ONLY, scoped to this base only
+const AIRTABLE_TOKEN     = 'patBonBRYBXmyLqok.69f4fba3df0f8433b5429d6d515b3a30f58d9a7f7d8cd95df62f0a887cb913a8
+'; // Personal Access Token — READ ONLY, scoped to this base only
 
 const AIRTABLE_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE)}`;
 
