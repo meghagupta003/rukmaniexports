@@ -26,8 +26,8 @@
 
   --white: #FFFDF9;
 
-  --font-display: 'Abhaya Libre', Georgia, 'Times New Roman', serif;
-  --font-body: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-body: 'Manrope', sans-serif, 'Segoe UI', sans-serif;
 
   --max-width: 1240px;
   --gutter: clamp(1.5rem, 5vw, 4rem);
