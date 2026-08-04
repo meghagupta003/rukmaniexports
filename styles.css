@@ -3,7 +3,7 @@
    "Warm Editorial Restraint" (Visual Identity, Phase 4)
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
 
 :root {
   /* Warm neutral base — the brand's own palette stays quiet */
@@ -26,8 +26,8 @@
 
   --white: #FFFDF9;
 
-  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
-  --font-body: 'Manrope', sans-serif, 'Segoe UI', sans-serif;
+  --font-display: 'Libre Caslon Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   --max-width: 1240px;
   --gutter: clamp(1.5rem, 5vw, 4rem);
