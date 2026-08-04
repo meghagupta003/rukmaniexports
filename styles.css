@@ -254,7 +254,7 @@ nav.primary-nav a.current::after { right: 0; }
 }
 
 .hero h1 {
-  font-size: clamp(2.4rem, 4.6vw, 4.1rem);
+  font-size: clamp(2.4rem, 4.6vw, 3.6rem);
   margin-bottom: 1.4rem;
 }
 
