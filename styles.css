@@ -362,7 +362,7 @@ nav.primary-nav a.current::after { right: 0; }
   gap: 0.9rem;
 }
 
-.stone-card .stone-figure { height: 180px; margin-bottom: 0.4rem; }
+.stone-card .stone-figure { height: 180px; margin-bottom: 0.4rem; overflow: hidden; display: flex; align-items: center; justify-content: center; background: var(--ivory-deep); }
 
 .stone-card h4 { font-size: 1.2rem; }
 .stone-card .meta { font-size: 0.82rem; color: var(--espresso-faint); letter-spacing: 0.02em; }

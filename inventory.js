@@ -3,9 +3,9 @@
 // ============================================
 // Fill in these three values once you've created your Airtable base
 // (see the setup guide provided alongside this file).
-const AIRTABLE_BASE_ID   = 'app3xWJf4OEurwme5';       // e.g. 'appXXXXXXXXXXXXXX'
+const AIRTABLE_BASE_ID   = 'YOUR_BASE_ID_HERE';       // e.g. 'appXXXXXXXXXXXXXX'
 const AIRTABLE_TABLE     = 'Gemstones';
-const AIRTABLE_TOKEN     = 'patBonBRYBXmyLqok.69f4fba3df0f8433b5429d6d515b3a30f58d9a7f7d8cd95df62f0a887cb913a8'; // Personal Access Token — READ ONLY, scoped to this base only
+const AIRTABLE_TOKEN     = 'YOUR_READ_ONLY_TOKEN_HERE'; // Personal Access Token — READ ONLY, scoped to this base only
 
 const AIRTABLE_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE)}`;
 
@@ -14,13 +14,13 @@ function formatPrice(n) {
 }
 
 function gemFacetSVG(colorMain, colorLight) {
-  return `<svg viewBox="0 0 200 180"><polygon points="100,10 170,55 170,125 100,170 30,125 30,55" fill="${colorMain}"/><polygon points="100,45 140,68 140,112 100,135 60,112 60,68" fill="${colorLight}"/></svg>`;
+  return `<svg viewBox="0 0 200 180" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" style="display:block; max-width:140px; max-height:140px;"><polygon points="100,10 170,55 170,125 100,170 30,125 30,55" fill="${colorMain}"/><polygon points="100,45 140,68 140,112 100,135 60,112 60,68" fill="${colorLight}"/></svg>`;
 }
 
 // Renders one inventory card. Falls back to a simple faceted illustration if no photo is set yet.
 function renderStoneCard(record) {
   const f = record.fields;
-  const media = f['Media'] || [];
+  const media = f['Media'] || f['Image'] || [];
   const firstImage = media.find(m => (m.type || '').startsWith('image/'));
   const figure = firstImage
     ? `<div class="stone-figure" style="background-image:url('${firstImage.url}'); background-size:cover; background-position:center;"></div>`
@@ -91,7 +91,7 @@ async function loadProduct(recordId, containerSelector) {
 
 function renderMediaGallery(media) {
   if (!media || media.length === 0) {
-    return `<div class="gallery-main">${gemFacetSVG('#8A1D28', '#C24550')}</div>`;
+    return `<div class="gallery-main-wrap" style="height:280px;">${gemFacetSVG('#8A1D28', '#C24550')}</div>`;
   }
 
   const mainItemHTML = (item, i) => {
@@ -135,7 +135,7 @@ function switchGalleryMedia(i) {
 
 function renderProductDetail(record, container) {
   const f = record.fields;
-  const galleryHTML = renderMediaGallery(f['Media']);
+  const galleryHTML = renderMediaGallery(f['Media'] || f['Image']);
 
   const specRows = [
     ['Origin', f['Origin']],
