@@ -3,9 +3,9 @@
 // ============================================
 // Fill in these three values once you've created your Airtable base
 // (see the setup guide provided alongside this file).
-const AIRTABLE_BASE_ID   = 'app3xWJf4OEurwme5';       // e.g. 'appXXXXXXXXXXXXXX'
+const AIRTABLE_BASE_ID   = 'YOUR_BASE_ID_HERE';       // e.g. 'appXXXXXXXXXXXXXX'
 const AIRTABLE_TABLE     = 'Gemstones';
-const AIRTABLE_TOKEN     = 'patBonBRYBXmyLqok.69f4fba3df0f8433b5429d6d515b3a30f58d9a7f7d8cd95df62f0a887cb913a8'; // Personal Access Token — READ ONLY, scoped to this base only
+const AIRTABLE_TOKEN     = 'YOUR_READ_ONLY_TOKEN_HERE'; // Personal Access Token — READ ONLY, scoped to this base only
 
 const AIRTABLE_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE)}`;
 
@@ -17,11 +17,19 @@ function gemFacetSVG(colorMain, colorLight) {
   return `<svg viewBox="0 0 200 180" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" style="display:block; max-width:140px; max-height:140px;"><polygon points="100,10 170,55 170,125 100,170 30,125 30,55" fill="${colorMain}"/><polygon points="100,45 140,68 140,112 100,135 60,112 60,68" fill="${colorLight}"/></svg>`;
 }
 
+// Airtable doesn't always reliably tag a file's MIME type, especially for
+// videos recorded on phones — so we also check the filename extension as a backup.
+function isVideoFile(item) {
+  if ((item.type || '').startsWith('video/')) return true;
+  const name = (item.filename || item.url || '').toLowerCase();
+  return /\.(mp4|mov|webm|avi|mkv|m4v|3gp)(\?.*)?$/.test(name);
+}
+
 // Renders one inventory card. Falls back to a simple faceted illustration if no photo is set yet.
 function renderStoneCard(record) {
   const f = record.fields;
   const media = f['Media'] || f['Image'] || [];
-  const firstImage = media.find(m => (m.type || '').startsWith('image/'));
+  const firstImage = media.find(m => !isVideoFile(m));
   const figure = firstImage
     ? `<div class="stone-figure" style="background-image:url('${firstImage.url}'); background-size:cover; background-position:center;"></div>`
     : `<div class="stone-figure">${gemFacetSVG('#8A1D28', '#C24550')}</div>`;
@@ -95,14 +103,14 @@ function renderMediaGallery(media) {
   }
 
   const mainItemHTML = (item, i) => {
-    const isVideo = (item.type || '').startsWith('video/');
+    const isVideo = isVideoFile(item);
     return isVideo
       ? `<video src="${item.url}" controls playsinline id="mediaMain" data-index="${i}" style="width:100%; max-height:460px; background:#000;"></video>`
       : `<img src="${item.url}" alt="" id="mediaMain" data-index="${i}" style="width:100%; max-height:460px; object-fit:contain;">`;
   };
 
   const thumbsHTML = media.map((item, i) => {
-    const isVideo = (item.type || '').startsWith('video/');
+    const isVideo = isVideoFile(item);
     const thumbSrc = isVideo ? (item.thumbnails && item.thumbnails.large ? item.thumbnails.large.url : item.url) : item.url;
     return `
       <button class="gallery-thumb ${i === 0 ? 'active' : ''}" data-index="${i}" onclick="switchGalleryMedia(${i})" aria-label="View media ${i + 1}">
@@ -124,7 +132,7 @@ function switchGalleryMedia(i) {
   const item = media[i];
   if (!item) return;
   const wrap = document.querySelector('.gallery-main-wrap');
-  const isVideo = (item.type || '').startsWith('video/');
+  const isVideo = isVideoFile(item);
   wrap.innerHTML = isVideo
     ? `<video src="${item.url}" controls playsinline autoplay style="width:100%; max-height:460px; background:#000;"></video>`
     : `<img src="${item.url}" alt="" style="width:100%; max-height:460px; object-fit:contain;">`;

@@ -348,11 +348,13 @@ nav.primary-nav a.current::after { right: 0; }
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--taupe-line);
   border: 1px solid var(--taupe-line);
 }
+@media (max-width: 860px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .card-grid { grid-template-columns: 1fr; } }
 
 .stone-card {
   background: var(--ivory);
