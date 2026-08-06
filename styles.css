@@ -3,34 +3,39 @@
    "Warm Editorial Restraint" (Visual Identity, Phase 4)
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Warm neutral base — the brand's own palette stays quiet */
-  --ivory: #F7F2E7;
-  --ivory-deep: #EFE6D3;
-  --taupe: #CDBDA0;
-  --taupe-line: rgba(150, 112, 46, 0.22);
-  --espresso: #251D17;
-  --espresso-soft: #4E4136;
-  --espresso-faint: #7A6C5D;
+  /* Warm neutral base — deepened for stronger, more confident contrast */
+  --ivory: #F8F6F0;
+  --ivory-deep: #EEE7D8;
+  --taupe: #C9B896;
+  --taupe-line: rgba(139, 105, 41, 0.20);
+  --espresso: #17120D;
+  --espresso-soft: #3E332A;
+  --espresso-faint: #756654;
 
-  /* Aged brass accent — used sparingly, never a block */
-  --brass: #96702E;
-  --brass-light: #B08A4C;
+  /* Refined gold accent — polished, not mustard; used sparingly, never a block */
+  --brass: #9C7A34;
+  --brass-light: #C7A360;
+  --brass-deep: #7A5D26;
+  --gold-shine: linear-gradient(135deg, #D4B579 0%, #9C7A34 50%, #C7A360 100%);
 
   /* Gemstone color — reserved exclusively for gemstone representations */
   --ruby: #8A1D28;
   --ruby-deep: #5E1119;
   --ruby-light: #B23A44;
 
-  --white: #FFFDF9;
+  --white: #FFFEFC;
 
-  --font-display: 'Libre Caslon Display', Georgia, 'Times New Roman', serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, 'Segoe UI', sans-serif;
 
-  --max-width: 1240px;
-  --gutter: clamp(1.5rem, 5vw, 4rem);
+  --max-width: 1280px;
+  --gutter: clamp(1.25rem, 6vw, 64px);
+
+  --shadow-soft: 0 4px 24px rgba(23, 18, 13, 0.06);
+  --shadow-card: 0 8px 32px rgba(23, 18, 13, 0.10);
 }
 
 * { box-sizing: border-box; }
@@ -46,24 +51,40 @@ body {
   background: var(--ivory);
   color: var(--espresso-soft);
   font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 1.05rem;
+  line-height: 1.75;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   color: var(--espresso);
   font-weight: 600;
-  line-height: 1.12;
-  letter-spacing: 0;
+  line-height: 1.1;
+  letter-spacing: 0.001em;
   margin: 0;
 }
+
+h1 { letter-spacing: -0.01em; }
 
 a { color: inherit; text-decoration: none; }
 img, svg { max-width: 100%; display: block; }
 button { font-family: inherit; cursor: pointer; }
+
+/* Visible, accessible focus state site-wide — required for both keyboard users and accessibility scoring */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 2000;
+  background: var(--espresso); color: var(--ivory); padding: 0.9rem 1.4rem;
+  font-size: 0.9rem; font-weight: 600;
+}
+.skip-link:focus { left: 1rem; top: 1rem; }
 
 .wrap {
   max-width: var(--max-width);
@@ -75,10 +96,10 @@ button { font-family: inherit; cursor: pointer; }
 .eyebrow {
   font-family: var(--font-body);
   text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
   font-weight: 600;
-  color: var(--brass);
+  color: var(--brass-deep);
 }
 
 .hairline {
@@ -122,7 +143,7 @@ button { font-family: inherit; cursor: pointer; }
   line-height: 1.1;
 }
 
-.logo-word span { display: block; font-size: 0.62rem; letter-spacing: 0.22em; color: var(--brass); font-family: var(--font-body); font-weight: 600; margin-top: 2px; }
+.logo-word span { display: block; font-size: 0.62rem; letter-spacing: 0.22em; color: var(--brass-deep); font-family: var(--font-body); font-weight: 600; margin-top: 2px; }
 
 nav.primary-nav {
   display: flex;
@@ -190,36 +211,40 @@ nav.primary-nav a.current::after { right: 0; }
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.86rem;
+  gap: 0.55rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
-  padding: 0.85rem 1.6rem;
+  letter-spacing: 0.04em;
+  padding: 0.95rem 1.8rem;
   border: 1px solid var(--espresso);
   color: var(--espresso);
   background: transparent;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: background 0.28s ease, color 0.28s ease, transform 0.28s ease, box-shadow 0.28s ease;
 }
-.btn:hover { background: var(--espresso); color: var(--ivory); }
+.btn:hover { background: var(--espresso); color: var(--ivory); transform: translateY(-1px); box-shadow: var(--shadow-card); }
 
 .btn-solid {
   background: var(--espresso);
   color: var(--ivory);
+  box-shadow: var(--shadow-soft);
 }
-.btn-solid:hover { background: var(--brass); border-color: var(--brass); color: var(--white); }
+.btn-solid:hover { background: var(--brass-deep); border-color: var(--brass-deep); color: var(--white); }
 
 .btn-brass {
   border-color: var(--brass);
-  color: var(--brass);
+  color: var(--brass-deep);
 }
 .btn-brass:hover { background: var(--brass); color: var(--white); }
 
 .text-link {
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   font-weight: 600;
+  letter-spacing: 0.01em;
   border-bottom: 1px solid var(--brass);
   padding-bottom: 2px;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
 }
+.text-link:hover { border-color: var(--brass-deep); opacity: 0.75; }
 
 .header-bag { display:flex; align-items:center; gap:0.4rem; }
 .header-bag .count {
@@ -230,8 +255,8 @@ nav.primary-nav a.current::after { right: 0; }
 
 /* ============ SECTIONS ============ */
 
-.section { padding: clamp(3.5rem, 8vw, 7rem) 0; }
-.section-tight { padding: clamp(2.5rem, 5vw, 4rem) 0; }
+.section { padding: clamp(4rem, 9vw, 8.5rem) 0; }
+.section-tight { padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
 .section-alt { background: var(--ivory-deep); }
 .section-dark { background: var(--espresso); color: var(--taupe); }
 .section-dark h1, .section-dark h2, .section-dark h3 { color: var(--ivory); }
@@ -239,13 +264,13 @@ nav.primary-nav a.current::after { right: 0; }
 /* ============ HERO ============ */
 
 .hero {
-  padding: clamp(3rem, 9vw, 6.5rem) 0 clamp(2.5rem, 6vw, 4rem);
+  padding: clamp(3rem, 10vw, 7.5rem) 0 clamp(2.5rem, 6vw, 4.5rem);
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: clamp(2rem, 5vw, 4rem);
+  gap: clamp(2rem, 5vw, 4.5rem);
   align-items: center;
 }
 
@@ -254,15 +279,15 @@ nav.primary-nav a.current::after { right: 0; }
 }
 
 .hero h1 {
-  font-size: clamp(2.4rem, 4.6vw, 3.6rem);
-  margin-bottom: 1.4rem;
+  font-size: clamp(2.6rem, 5.2vw, 4.6rem);
+  margin-bottom: 1.5rem;
 }
 
 .hero .lede {
-  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
   color: var(--espresso-soft);
   max-width: 46ch;
-  margin-bottom: 2.1rem;
+  margin-bottom: 2.2rem;
 }
 
 .gem-hero-figure {
@@ -270,12 +295,13 @@ nav.primary-nav a.current::after { right: 0; }
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: var(--shadow-card);
 }
 
 .hero-photo {
   width: 100%;
   height: auto;
-  max-height: 480px;
+  max-height: 520px;
   object-fit: cover;
 }
 
@@ -362,12 +388,16 @@ nav.primary-nav a.current::after { right: 0; }
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  z-index: 1;
 }
+.stone-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-card); z-index: 2; }
 
-.stone-card .stone-figure { height: 180px; margin-bottom: 0.4rem; overflow: hidden; display: flex; align-items: center; justify-content: center; background: var(--ivory-deep); }
+.stone-card .stone-figure { height: 220px; margin-bottom: 0.4rem; overflow: hidden; display: flex; align-items: center; justify-content: center; background: var(--ivory-deep); }
 
-.stone-card h4 { font-size: 1.2rem; }
-.stone-card .meta { font-size: 0.82rem; color: var(--espresso-faint); letter-spacing: 0.02em; }
+.stone-card h4 { font-size: 1.3rem; }
+.stone-card .meta { font-size: 0.83rem; color: var(--espresso-faint); letter-spacing: 0.02em; }
 .stone-card .tag {
   display: inline-block;
   font-size: 0.68rem;
@@ -376,10 +406,37 @@ nav.primary-nav a.current::after { right: 0; }
   font-weight: 600;
   padding: 0.3rem 0.6rem;
   border: 1px solid var(--brass);
-  color: var(--brass);
+  color: var(--brass-deep);
   width: fit-content;
 }
-.stone-card .price { font-family: var(--font-display); font-size: 1.15rem; color: var(--espresso); margin-top: 0.2rem; }
+.stone-card .price { font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; color: var(--espresso); margin-top: 0.2rem; }
+
+/* ============ REVIEWS ============ */
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--taupe-line);
+  border: 1px solid var(--taupe-line);
+}
+@media (max-width: 860px) { .reviews-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .reviews-grid { grid-template-columns: 1fr; } }
+
+.review-card {
+  background: var(--ivory);
+  padding: 2.2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.review-photo {
+  width: 100%; height: 160px; background-size: cover; background-position: center;
+  margin-bottom: 0.3rem;
+}
+.review-stars { color: var(--brass-deep); font-size: 1rem; letter-spacing: 0.1em; }
+.review-quote { font-family: var(--font-display); font-style: italic; font-size: 1.15rem; color: var(--espresso); line-height: 1.5; }
+.review-author { font-size: 0.82rem; color: var(--espresso-faint); letter-spacing: 0.02em; text-transform: uppercase; }
 
 /* ============ QUOTE / STORY BLOCKS ============ */
 
@@ -452,7 +509,7 @@ nav.primary-nav a.current::after { right: 0; }
 .center { text-align: center; margin-left: auto; margin-right: auto; }
 .section-head { max-width: 640px; margin-bottom: clamp(2rem, 4vw, 3rem); }
 .section-head.center { text-align: center; }
-.tiny-caps { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--brass); font-weight: 600; }
+.tiny-caps { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--brass-deep); font-weight: 600; }
 
 .reveal {
   opacity: 0;

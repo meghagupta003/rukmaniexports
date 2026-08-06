@@ -3,9 +3,9 @@
 // ============================================
 // Fill in these three values once you've created your Airtable base
 // (see the setup guide provided alongside this file).
-const AIRTABLE_BASE_ID   = 'app3xWJf4OEurwme5';       // e.g. 'appXXXXXXXXXXXXXX'
+const AIRTABLE_BASE_ID   = 'YOUR_BASE_ID_HERE';       // e.g. 'appXXXXXXXXXXXXXX'
 const AIRTABLE_TABLE     = 'Gemstones';
-const AIRTABLE_TOKEN     = 'patBonBRYBXmyLqok.69f4fba3df0f8433b5429d6d515b3a30f58d9a7f7d8cd95df62f0a887cb913a8'; // Personal Access Token — READ ONLY, scoped to this base only
+const AIRTABLE_TOKEN     = 'YOUR_READ_ONLY_TOKEN_HERE'; // Personal Access Token — READ ONLY, scoped to this base only
 
 const AIRTABLE_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE)}`;
 
@@ -49,6 +49,36 @@ function renderStoneCard(record) {
 }
 
 // Fetches and renders all Active stones for a given category into a container element.
+// Homepage widget — shows a handful of Active stones across any category,
+// each card linking straight to its own product page.
+async function loadFeatured(containerSelector, limit = 3) {
+  const container = document.querySelector(containerSelector);
+  if (!container) return;
+
+  if (AIRTABLE_BASE_ID.includes('YOUR_BASE_ID')) {
+    container.innerHTML = `<p style="padding:2.5rem; font-size:0.9rem; color:var(--espresso-faint);">Inventory isn't connected yet — see the setup guide to go live.</p>`;
+    return;
+  }
+
+  try {
+    const formula = encodeURIComponent(`{Status}='Active'`);
+    const res = await fetch(`${AIRTABLE_URL}?filterByFormula=${formula}&maxRecords=${limit}`, {
+      headers: { Authorization: `Bearer ${AIRTABLE_TOKEN}` }
+    });
+    if (!res.ok) throw new Error('Airtable responded with ' + res.status);
+    const data = await res.json();
+
+    if (!data.records || data.records.length === 0) {
+      container.innerHTML = `<p style="padding:2.5rem; color:var(--espresso-faint);">New stones are being added soon — <a href="loose-gemstones.html">browse our full specialization</a> in the meantime.</p>`;
+      return;
+    }
+    container.innerHTML = data.records.map(renderStoneCard).join('');
+  } catch (err) {
+    console.error('Featured inventory load failed:', err);
+    container.innerHTML = `<p style="padding:2.5rem; color:var(--espresso-faint);"><a href="loose-gemstones.html">Browse our gemstones →</a></p>`;
+  }
+}
+
 async function loadCategory(category, containerSelector) {
   const container = document.querySelector(containerSelector);
   if (!container) return;
@@ -115,7 +145,7 @@ function renderMediaGallery(media) {
     const showImg = !isVideo || realThumb;
     return `
       <button class="gallery-thumb ${i === 0 ? 'active' : ''}" data-index="${i}" onclick="switchGalleryMedia(${i})" aria-label="View media ${i + 1}">
-        ${showImg ? `<img src="${realThumb || item.url}" alt="">` : `<div class="thumb-video-placeholder"></div>`}
+        ${showImg ? `<img src="${realThumb || item.url}" alt="" loading="lazy">` : `<div class="thumb-video-placeholder"></div>`}
         ${isVideo ? `<span class="thumb-play">▶</span>` : ''}
       </button>`;
   }).join('');
@@ -176,4 +206,30 @@ function renderProductDetail(record, container) {
         <p style="font-size:0.84rem; color:var(--espresso-faint);">Backed by three generations of trading expertise, since 1971. Member, Jaipur Jewellers Association.</p>
       </div>
     </div>`;
+
+  // Dynamic per-product SEO: real title/description instead of a generic one for every stone
+  const pageTitle = `${f['Name'] || 'Gemstone'} | Rukmani Exports`;
+  document.title = pageTitle;
+  const metaDesc = document.querySelector('meta[name="description"]');
+  const descText = `${f['Name'] || 'This gemstone'} — ${f['Origin'] || ''}, ${f['Treatment'] || ''}, ${f['Certification Lab'] || ''} certified. From Rukmani Exports, a third-generation Jaipur gemstone house.`;
+  if (metaDesc) metaDesc.setAttribute('content', descText);
+
+  // Dynamic Product structured data for search engines
+  const ld = document.createElement('script');
+  ld.type = 'application/ld+json';
+  ld.textContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": f['Name'] || '',
+    "description": descText,
+    "category": f['Category'] || '',
+    "brand": { "@type": "Brand", "name": "Rukmani Exports" },
+    "offers": f['Price'] ? {
+      "@type": "Offer",
+      "priceCurrency": "USD",
+      "price": f['Price'],
+      "availability": "https://schema.org/InStock"
+    } : undefined
+  });
+  document.head.appendChild(ld);
 }
