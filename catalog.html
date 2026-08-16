@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loose Gemstones — Full Catalog | Rukmani Exports</title>
+<meta name="description" content="Six specializations, three generations of knowing the difference. Browse our full catalog of certified natural gemstones — rubies, sapphires, emeralds, pearls, cat's eye, and alexandrite.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/png" href="assets/re-favicon.png">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@500;600&display=swap">
+<style>
+:root{
+  --f-ivory:#F8F6F0; --f-espresso:#3E332A; --f-brass-deep:#7A5D26; --f-gold:#C99349; --f-grey:#706F6F;
+  --f-card-radius:20px; --f-font-display:'Fraunces', Georgia, serif;
+  --f-shadow: 0 4px 20px rgba(62,51,42,0.06);
+  --f-shadow-hover: 0 10px 28px rgba(62,51,42,0.10);
+}
+body{ font-family: var(--font-body); }
+.f-wrap{ max-width:1312px; margin:0 auto; padding:0 20px; }
+@media (min-width:601px){ .f-wrap{ padding:0 clamp(20px,6vw,64px); } }
+a{ text-decoration:none; }
+
+/* header (shared pattern) */
+.f-header{ position:sticky; top:0; z-index:100; background:hsla(41,39%,89%,0.92); backdrop-filter:blur(8px); box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+.f-header-inner{ height:84px; display:flex; align-items:center; justify-content:space-between; }
+.f-logo img{ height:44px; width:auto; }
+.f-nav{ display:flex; gap:40px; }
+.f-nav a{ font-size:16px; color:var(--f-espresso); position:relative; padding:8px 0; text-decoration:none; }
+.f-nav a::after{ content:''; position:absolute; left:0; right:100%; bottom:0; height:1px; background:var(--f-brass-deep); transition:right .25s ease; }
+.f-nav a:hover::after, .f-nav a.current::after{ right:0; }
+.f-nav-toggle{ display:none; background:none; border:none; }
+.f-nav-toggle span{ display:block; width:22px; height:1px; background:var(--f-espresso); margin:5px 0; }
+@media (max-width:900px){
+  .f-nav{ position:fixed; inset:84px 0 0 0; background:#FFFFFF; z-index:200; flex-direction:column; align-items:flex-start; padding:2rem 20px; gap:1.4rem; transform:translateX(100%); transition:transform .3s ease; }
+  .f-nav.open{ transform:translateX(0); }
+  .f-nav a{ font-size:1.1rem; }
+  .f-nav-toggle{ display:block; }
+}
+
+/* page intro */
+.cat-intro{ padding: 48px 0 32px; }
+.cat-eyebrow{ font-size:14px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--f-brass-deep); margin-bottom:14px; }
+.cat-intro h1{ font-family:var(--f-font-display); font-weight:600; color:var(--f-espresso); font-size:clamp(1.6rem,3.4vw,2.1rem); line-height:1.25; margin-bottom:16px; max-width:34ch; }
+.cat-intro p{ font-size:16px; color:var(--f-espresso); max-width:70ch; line-height:1.6; }
+
+/* toolbar */
+.cat-toolbar{ display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; padding-bottom:32px; }
+.cat-filter-btn{ display:inline-flex; align-items:center; gap:10px; background:#fff; border:1px solid rgba(62,51,42,0.18); border-radius:10px; padding:12px 18px; font-size:15px; font-weight:500; color:var(--f-espresso); cursor:pointer; }
+.cat-filter-btn:hover{ border-color:var(--f-espresso); }
+.cat-filter-badge{ display:none; align-items:center; justify-content:center; min-width:18px; height:18px; padding:0 4px; border-radius:99px; background:var(--f-espresso); color:#fff; font-size:11px; }
+.cat-search-wrap{ position:relative; flex:1; max-width:340px; }
+.cat-search-wrap svg{ position:absolute; left:14px; top:50%; transform:translateY(-50%); opacity:0.5; }
+#cat-search{ width:100%; padding:12px 16px 12px 40px; border:1px solid rgba(62,51,42,0.18); border-radius:10px; font-size:15px; font-family:inherit; background:#fff; }
+#cat-search:focus{ outline:2px solid var(--f-gold); outline-offset:1px; }
+
+/* layout: sidebar + content */
+.cat-layout{ display:grid; grid-template-columns:250px 1fr; gap:48px; align-items:start; padding-bottom:96px; }
+@media (max-width:860px){ .cat-layout{ grid-template-columns:1fr; } }
+
+.cat-sidebar{ position:sticky; top:110px; }
+.cat-sidebar-list{ display:flex; flex-direction:column; }
+.cat-sidebar-item{
+  all:unset; cursor:pointer; display:flex; justify-content:space-between; align-items:center;
+  font-size:15px; color:var(--f-espresso); padding:11px 4px; border-left:2px solid transparent;
+  padding-left:14px; transition: border-color .2s ease, color .2s ease, font-weight .2s ease;
+}
+.cat-sidebar-item span{ color:var(--f-grey); font-size:13px; }
+.cat-sidebar-item:hover{ color:var(--f-brass-deep); }
+.cat-sidebar-item.active{ border-left-color:var(--f-brass-deep); font-weight:600; }
+.cat-mobile-filter-toggle{ display:none; }
+@media (max-width:860px){
+  .cat-sidebar{ display:none; }
+  .cat-mobile-filter-toggle{ display:inline-flex; }
+}
+
+/* mobile category overlay */
+.cat-mobile-sidebar{ position:fixed; inset:0; z-index:250; background:rgba(23,18,13,0.4); opacity:0; visibility:hidden; transition:opacity .25s ease; }
+.cat-mobile-sidebar.open{ opacity:1; visibility:visible; }
+.cat-mobile-sidebar-panel{ position:absolute; top:0; left:0; bottom:0; width:min(320px,84vw); background:#fff; padding:24px; overflow-y:auto; transform:translateX(-100%); transition:transform .3s ease; }
+.cat-mobile-sidebar.open .cat-mobile-sidebar-panel{ transform:translateX(0); }
+.cat-mobile-sidebar-panel h3{ font-family:var(--f-font-display); font-size:1.3rem; margin-bottom:1.2rem; }
+.cat-mobile-sidebar-close{ position:absolute; top:20px; right:20px; background:none; border:none; font-size:1.5rem; color:var(--f-espresso); }
+
+/* content head */
+.cat-content-head{ display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:28px; }
+.cat-content-head h2{ font-family:var(--f-font-display); font-weight:600; font-size:clamp(1.3rem,2.4vw,1.6rem); color:var(--f-espresso); }
+.cat-sort-wrap{ display:flex; align-items:center; gap:10px; font-size:14px; color:var(--f-espresso); }
+#cat-sort{ border:1px solid rgba(62,51,42,0.18); border-radius:8px; padding:8px 12px; font-family:inherit; font-size:14px; background:#fff; color:var(--f-espresso); }
+
+/* product grid */
+.cat-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+@media (max-width:1080px){ .cat-grid{ grid-template-columns:repeat(3,1fr); } }
+@media (max-width:700px){ .cat-grid{ grid-template-columns:repeat(2,1fr); gap:14px; } }
+.cat-card{ display:block; transition: transform .3s ease; }
+.cat-card:hover{ transform:translateY(-3px); }
+.cat-card-figure{ width:100%; aspect-ratio:1/1; border-radius:var(--f-card-radius); box-shadow:var(--f-shadow); overflow:hidden; margin-bottom:12px; transition:box-shadow .3s ease; }
+.cat-card:hover .cat-card-figure{ box-shadow:var(--f-shadow-hover); }
+.cat-card h4{ font-size:15px; font-weight:400; color:var(--f-espresso); margin:0 0 4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.cat-card-price{ font-size:15px; font-weight:600; color:var(--f-espresso); margin:0; }
+.cat-card-inquire{ color:var(--f-brass-deep); font-weight:500; }
+
+.cat-footer-row{ text-align:center; margin-top:48px; }
+#cat-viewed-count{ font-size:14px; color:var(--f-grey); margin-bottom:18px; }
+.cat-load-more-btn{ display:inline-flex; padding:13px 32px; border:1px solid var(--f-espresso); border-radius:10px; background:none; color:var(--f-espresso); font-size:15px; font-weight:500; cursor:pointer; transition: background .2s ease, color .2s ease; }
+.cat-load-more-btn:hover{ background:var(--f-espresso); color:#fff; }
+
+/* filter drawer */
+.filter-overlay-bg{ position:fixed; inset:0; background:rgba(23,18,13,0.4); z-index:300; opacity:0; visibility:hidden; transition:opacity .25s ease; }
+.filter-overlay-bg.open{ opacity:1; visibility:visible; }
+.filter-drawer{ position:fixed; top:0; right:0; bottom:0; width:min(400px,88vw); background:#fff; z-index:310; padding:28px; overflow-y:auto; transform:translateX(100%); transition:transform .3s ease; }
+.filter-drawer.open{ transform:translateX(0); }
+.filter-drawer-head{ display:flex; justify-content:space-between; align-items:center; margin-bottom:28px; }
+.filter-drawer-head h3{ font-family:var(--f-font-display); font-size:1.4rem; }
+.filter-drawer-close{ background:none; border:none; font-size:1.6rem; color:var(--f-espresso); cursor:pointer; }
+.filter-group{ margin-bottom:28px; }
+.filter-group h4{ font-size:13px; text-transform:uppercase; letter-spacing:0.06em; color:var(--f-brass-deep); font-weight:600; margin-bottom:14px; }
+.filter-check{ display:flex; align-items:center; gap:10px; font-size:15px; color:var(--f-espresso); padding:6px 0; cursor:pointer; }
+.filter-empty{ font-size:13px; color:var(--f-grey); }
+.filter-range-row{ display:flex; align-items:center; gap:10px; }
+.filter-range-row input{ width:100%; padding:9px 10px; border:1px solid rgba(62,51,42,0.18); border-radius:8px; font-family:inherit; font-size:14px; }
+.filter-drawer-actions{ display:flex; gap:12px; position:sticky; bottom:0; background:#fff; padding-top:16px; }
+.filter-btn-apply{ flex:1; padding:13px; background:var(--f-espresso); color:#fff; border:none; border-radius:10px; font-size:15px; font-weight:500; cursor:pointer; }
+.filter-btn-clear{ padding:13px 18px; background:none; border:1px solid rgba(62,51,42,0.18); border-radius:10px; font-size:15px; color:var(--f-espresso); cursor:pointer; }
+
+/* footer (shared pattern) */
+.f-footer{ background:var(--f-espresso); color:#C9B896; padding:72px 0 32px; }
+.f-footer h5{ color:var(--f-ivory); font-size:13px; text-transform:uppercase; letter-spacing:0.12em; font-weight:600; margin-bottom:18px; }
+.f-footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr 1fr; gap:40px; padding-bottom:40px; }
+@media (max-width:900px){ .f-footer-grid{ grid-template-columns:1fr 1fr 1fr; } }
+@media (max-width:600px){ .f-footer-grid{ grid-template-columns:1fr 1fr; } }
+.f-footer-grid a{ display:block; font-size:14px; color:#C9B896; margin-bottom:11px; text-decoration:none; }
+.f-footer-grid a:hover{ color:var(--f-ivory); }
+.f-footer-bottom{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; padding-top:28px; border-top:1px solid rgba(255,255,255,0.1); font-size:12px; color:#8f7f68; }
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="f-header">
+  <div class="f-wrap f-header-inner">
+    <a href="index.html" class="f-logo"><img src="assets/re-logo.png" alt="Rukmani Exports"></a>
+    <button class="f-nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.f-nav').classList.toggle('open')"><span></span><span></span><span></span></button>
+    <nav class="f-nav">
+      <a href="catalog.html" class="current">Loose Gemstones</a>
+      <a href="heritage.html">Our Heritage</a>
+      <a href="trade.html">Trade</a>
+      <a href="certification.html">Certification</a>
+      <a href="journal.html">Journal</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content">
+  <div class="f-wrap">
+    <section class="cat-intro">
+      <p class="cat-eyebrow">Loose Gemstones</p>
+      <h1>Six Specializations. Three Generations of Knowing the Difference.</h1>
+      <p>Every stone we offer is independently certified by GIA, GRS, or another recognized laboratory — presented in the order of our family's own ranked specialization.</p>
+    </section>
+
+    <div class="cat-toolbar" id="cat-toolbar">
+      <div style="display:flex; gap:12px; align-items:center;">
+        <button class="cat-filter-btn" id="cat-filter-btn">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M4.5 8h7M7 12h2" stroke="#3E332A" stroke-width="1.4" stroke-linecap="round"/></svg>
+          Filter
+          <span class="cat-filter-badge" id="filter-count-badge"></span>
+        </button>
+        <button class="cat-filter-btn cat-mobile-filter-toggle" id="cat-mobile-filter-toggle">Categories</button>
+      </div>
+      <div class="cat-search-wrap">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="#3E332A" stroke-width="1.3"/><path d="M11 11L14.5 14.5" stroke="#3E332A" stroke-width="1.3" stroke-linecap="round"/></svg>
+        <input type="text" id="cat-search" placeholder="Search products…">
+      </div>
+    </div>
+
+    <div class="cat-layout">
+      <aside class="cat-sidebar">
+        <div class="cat-sidebar-list" id="cat-sidebar-list"></div>
+      </aside>
+
+      <div class="cat-content">
+        <div class="cat-content-head">
+          <h2 id="cat-current-title">All Gemstones</h2>
+          <div class="cat-sort-wrap">
+            Sort:
+            <select id="cat-sort">
+              <option value="recent">Most Recent</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="carat-desc">Carat: High to Low</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="cat-grid" id="cat-grid"></div>
+
+        <div class="cat-footer-row">
+          <p id="cat-viewed-count"></p>
+          <button class="cat-load-more-btn" id="cat-load-more">Load More Products</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Mobile category overlay -->
+<div class="cat-mobile-sidebar" id="cat-mobile-sidebar">
+  <div class="cat-mobile-sidebar-panel">
+    <button class="cat-mobile-sidebar-close" id="cat-mobile-sidebar-close" aria-label="Close categories">×</button>
+    <h3>Categories</h3>
+    <div class="cat-sidebar-list" id="cat-sidebar-list-mobile"></div>
+  </div>
+</div>
+
+<!-- Filter drawer -->
+<div class="filter-overlay-bg" id="filter-overlay-bg"></div>
+<div class="filter-drawer" id="filter-drawer" role="dialog" aria-modal="true" aria-labelledby="filterDrawerTitle">
+  <div class="filter-drawer-head">
+    <h3 id="filterDrawerTitle">Filter</h3>
+    <button class="filter-drawer-close" id="filter-drawer-close" aria-label="Close filters">×</button>
+  </div>
+
+  <div class="filter-group">
+    <h4>Carat Size</h4>
+    <div class="filter-range-row">
+      <input type="number" id="filter-carat-min" step="0.1" aria-label="Minimum carat">
+      <span>to</span>
+      <input type="number" id="filter-carat-max" step="0.1" aria-label="Maximum carat">
+    </div>
+  </div>
+
+  <div class="filter-group">
+    <h4>Origin</h4>
+    <div id="filter-origin-list"></div>
+  </div>
+
+  <div class="filter-group">
+    <h4>Color</h4>
+    <div id="filter-color-list"></div>
+  </div>
+
+  <div class="filter-drawer-actions">
+    <button class="filter-btn-apply" id="filter-apply-btn">Apply Filters</button>
+    <button class="filter-btn-clear" id="filter-clear-btn">Clear</button>
+  </div>
+</div>
+
+<footer class="f-footer">
+  <div class="f-wrap">
+    <div class="f-footer-grid">
+      <div>
+        <h5>Rukmani Exports</h5>
+        <p style="max-width:30ch; font-size:0.85rem; color:#a99a7f;">A third-generation Jaipur gemstone house, trading and crafting certified natural gemstones since 1971.</p>
+      </div>
+      <div><h5>Shop</h5><a href="catalog.html">Loose Gemstones</a></div>
+      <div><h5>The House</h5><a href="heritage.html">Our Heritage</a><a href="trade.html">Trade</a><a href="certification.html">Certification</a><a href="journal.html">Journal</a></div>
+      <div><h5>Connect</h5><a href="contact.html">Contact / Inquire</a></div>
+      <div><h5>Policies</h5><a href="returns.html">Returns &amp; Refunds</a><a href="shipping.html">Shipping &amp; Insurance</a><a href="privacy.html">Privacy Policy</a></div>
+    </div>
+    <div class="f-footer-bottom">
+      <span>© 2026 Rukmani Exports, Jaipur. GIA &amp; GRS Certified.</span>
+      <span>Member, Jaipur Jewellers Association</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="inventory.js"></script>
+<script src="catalog.js"></script>
+</body>
+</html>
