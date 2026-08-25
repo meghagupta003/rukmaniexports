@@ -58,8 +58,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3 {
   font-family: var(--font-display);
+  color: var(--espresso);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0.001em;
+  margin: 0;
+}
+
+h4 {
+  font-family: var(--font-body);
   color: var(--espresso);
   font-weight: 600;
   line-height: 1.1;
