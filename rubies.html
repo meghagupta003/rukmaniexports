@@ -12,7 +12,7 @@
 <header class="site-header">
   <div class="wrap">
     <a href="index.html" class="logo-mark">
-      <img src="assets/re-logo.png" alt="Rukmani Exports" class="logo-img">
+      <img src="assets/logo.svg" alt="Rukmani Exports" class="logo-img">
     </a>
     <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.primary-nav').classList.toggle('open')">
       <span></span><span></span><span></span>
@@ -59,8 +59,32 @@
       <h2 style="font-size:clamp(1.6rem,2.6vw,2.1rem);">Browse Our Rubies</h2>
     </div>
 
-    <div class="card-grid reveal" id="inventory-grid">
-      <p style="padding:2.5rem; color:var(--espresso-faint);">Loading inventory…</p>
+    <div class="card-grid reveal">
+      <div class="stone-card">
+        <svg class="stone-figure" viewBox="0 0 200 180"><polygon points="100,10 170,55 170,125 100,170 30,125 30,55" fill="#8A1D28"/><polygon points="100,45 140,68 140,112 100,135 60,112 60,68" fill="#C24550"/></svg>
+        <span class="tag">Direct Purchase</span>
+        <h4>1.20 ct Natural Ruby</h4>
+        <div class="meta">Mozambique · Unheated · GRS Certified</div>
+        <div class="price">$2,450</div>
+        <a href="product-accessible.html" class="text-link">View Details →</a>
+      </div>
+
+      <div class="stone-card">
+        <svg class="stone-figure" viewBox="0 0 200 180"><polygon points="100,10 170,55 170,125 100,170 30,125 30,55" fill="#5E1119"/><polygon points="100,45 140,68 140,112 100,135 60,112 60,68" fill="#8A1D28"/></svg>
+        <span class="tag">Inquire</span>
+        <h4>2.08 ct Natural Ruby</h4>
+        <div class="meta">Mozambique · Unheated · GRS Certified</div>
+        <a href="product-ruby.html" class="text-link">Inquire About This Piece →</a>
+      </div>
+
+      <div class="stone-card">
+        <svg class="stone-figure" viewBox="0 0 200 180"><polygon points="100,10 170,55 170,125 100,170 30,125 30,55" fill="#A02C37"/><polygon points="100,45 140,68 140,112 100,135 60,112 60,68" fill="#D9636D"/></svg>
+        <span class="tag">Direct Purchase</span>
+        <h4>3.45 ct Natural Ruby</h4>
+        <div class="meta">Burma (Mogok) · Heat-Treated · GIA Certified</div>
+        <div class="price">$[Price]</div>
+        <a href="product-accessible.html" class="text-link">View Details →</a>
+      </div>
     </div>
     <p style="margin-top:1.5rem; font-size:0.85rem; color:var(--espresso-faint);">Rare and investment-grade pieces are offered through personal consultation. Accessible pieces can be purchased directly.</p>
   </div>
@@ -106,7 +130,5 @@
 </footer>
 
 <script src="script.js"></script>
-<script src="inventory.js"></script>
-<script>loadCategory('Rubies', '#inventory-grid');</script>
 </body>
 </html>
