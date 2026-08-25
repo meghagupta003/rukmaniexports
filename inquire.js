@@ -3,7 +3,7 @@
 // ============================================
 // Fill in this one value once you've deployed the Google Apps Script
 // Web App (see GOOGLE-SHEETS-SETUP-GUIDE.md).
-const SHEETS_WEBAPP_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+const SHEETS_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycby2NLig0cDlw5ETbczb_MwRRFhUm82uA7aiNZ6ErBeEYcYWPD8IHKroyWaSQ4wZRbjp/exec';
 
 // Your WhatsApp Business number, digits only, with country code, no + or spaces.
 const WHATSAPP_NUMBER = '918947846084';
