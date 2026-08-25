@@ -56,8 +56,12 @@ body{ font-family: var(--font-body); }
   position:relative;
   min-height: 464px;
   display:flex; align-items:center;
-  background: linear-gradient(120deg, #EFE6D3 0%, #E4D5B8 55%, #D9C6A0 100%);
-  overflow:hidden;
+  background-image: url('./assets/re-hero-image.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  overflow: hidden;
 }
 .f-hero-gems{ position:absolute; right:6%; top:50%; transform:translateY(-50%); display:flex; gap:14px; opacity:0.95; }
 .f-hero-gems svg{ width:70px; height:80px; filter: drop-shadow(0 10px 18px rgba(62,51,42,0.18)); }
