@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept C: Quiet Boutique — Rukmani Exports</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Work+Sans:wght@300;400;500&display=swap');
+:root{
+  --ivory:#FAF8F3; --line:rgba(37,29,23,0.14); --espresso:#251D17; --soft:#6B5F53; --brass:#8C6A2E;
+  --ruby:#8A1D28; --ruby-l:#C24550; --font-d:'Fraunces',serif; --font-b:'Work Sans',sans-serif;
+}
+*{box-sizing:border-box;}
+body{margin:0; background:var(--ivory); color:var(--soft); font-family:var(--font-b); font-weight:300; line-height:1.8; letter-spacing:0.01em;}
+.wrap{max-width:1100px; margin:0 auto; padding:0 clamp(1.5rem,6vw,5rem);}
+.concept-tag{position:fixed; bottom:1.2rem; right:1.2rem; background:var(--espresso); color:var(--ivory); font-size:0.7rem; padding:0.5rem 0.9rem; letter-spacing:0.08em; z-index:50;}
+
+header{padding:2.4rem 0;}
+header .wrap{display:flex; justify-content:space-between; align-items:center;}
+.mark{font-family:var(--font-d); font-weight:400; font-size:1rem; letter-spacing:0.08em; color:var(--espresso);}
+nav{display:flex; gap:2.2rem; font-size:0.78rem; letter-spacing:0.04em;}
+
+.hero{padding:clamp(4rem,14vw,9rem) 0 clamp(3rem,8vw,6rem); text-align:center;}
+.hero .eyebrow{font-size:0.72rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--brass); margin-bottom:2rem; font-weight:500;}
+h1{font-family:var(--font-d); font-weight:300; font-size:clamp(2.2rem,5.5vw,4rem); line-height:1.2; color:var(--espresso); max-width:16ch; margin:0 auto 2.2rem;}
+.hero p{max-width:42ch; margin:0 auto 2.5rem; font-size:1.02rem;}
+
+.single-gem{display:flex; justify-content:center; padding: 1rem 0 clamp(3rem,8vw,6rem);}
+.single-gem svg{width:120px; height:140px;}
+
+.line-cta{text-align:center; font-size:0.82rem; letter-spacing:0.04em; border-bottom:1px solid var(--espresso); padding-bottom:4px; color:var(--espresso);}
+
+.triad{display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); margin-top:clamp(3rem,8vw,6rem);}
+.triad > div{padding:clamp(2.5rem,5vw,3.5rem) clamp(1rem,3vw,2rem); text-align:center; border-right:1px solid var(--line);}
+.triad > div:last-child{border-right:none;}
+.triad h3{font-family:var(--font-d); font-weight:400; font-size:1.15rem; color:var(--espresso); margin-bottom:0.8rem;}
+.triad p{font-size:0.88rem; max-width:28ch; margin:0 auto;}
+@media (max-width:700px){ .triad{grid-template-columns:1fr;} .triad > div{border-right:none; border-bottom:1px solid var(--line);} }
+
+footer{text-align:center; padding:clamp(3rem,6vw,5rem) 0 3rem; font-size:0.76rem; letter-spacing:0.06em; color:var(--brass);}
+</style>
+</head>
+<body>
+<div class="concept-tag">CONCEPT C — Quiet Boutique</div>
+
+<header>
+  <div class="wrap">
+    <div class="mark">RUKMANI EXPORTS</div>
+    <nav><span>Gemstones</span><span>Jewellery</span><span>Heritage</span><span>Journal</span></nav>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <p class="eyebrow">Jaipur · Est. 1971</p>
+  <h1>A family's eye for rare gemstones.</h1>
+  <p>Three generations of trading, evaluating, and now crafting natural rubies, Basra Pearls, and sapphires — for collectors and jewellers, worldwide.</p>
+  <a href="#" class="line-cta">Enter the House →</a>
+</section>
+
+<div class="single-gem">
+  <svg viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="150,14 258,96 210,132 150,96 90,132 42,96" fill="#B23A44"/>
+    <polygon points="258,96 258,242 210,214 210,132" fill="#8A1D28"/>
+    <polygon points="258,242 150,326 150,254 210,214" fill="#5E1119"/>
+    <polygon points="150,326 42,242 90,214 150,254" fill="#8A1D28"/>
+    <polygon points="42,242 42,96 90,132 90,214" fill="#A02C37"/>
+    <polygon points="150,96 210,132 210,214 150,254 90,214 90,132" fill="#C24550"/>
+  </svg>
+</div>
+
+<div class="triad wrap">
+  <div>
+    <h3>Loose Gemstones</h3>
+    <p>Six specializations, certified by GIA and GRS.</p>
+  </div>
+  <div>
+    <h3>Fine Jewellery</h3>
+    <p>Shaped in-house, by our own karigars.</p>
+  </div>
+  <div>
+    <h3>Our Heritage</h3>
+    <p>Three generations. One trust. Since 1971.</p>
+  </div>
+</div>
+
+<footer>GIA &amp; GRS CERTIFIED &nbsp;·&nbsp; JAIPUR JEWELLERS ASSOCIATION &nbsp;·&nbsp; NINE COUNTRIES</footer>
+</body>
+</html>

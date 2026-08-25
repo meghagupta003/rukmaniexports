@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept A: Museum Catalog — Rukmani Exports</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap');
+:root{
+  --ivory:#F5F3EE; --line:#1A1512; --brass:#8C6A2E; --ruby:#8A1D28; --ruby-d:#5E1119; --ruby-l:#C24550;
+  --font-d:'Fraunces',serif; --font-b:'Work Sans',sans-serif;
+}
+*{box-sizing:border-box;}
+body{margin:0; background:var(--ivory); color:var(--line); font-family:var(--font-b); line-height:1.6;}
+.wrap{max-width:1320px; margin:0 auto; padding:0 clamp(1.5rem,5vw,4rem);}
+.label{font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--brass); font-weight:600;}
+header{border-bottom:1px solid var(--line); padding:1.6rem 0;}
+header .wrap{display:flex; justify-content:space-between; align-items:baseline;}
+.mark{font-family:var(--font-d); font-size:1.05rem; letter-spacing:0.02em;}
+nav{display:flex; gap:1.8rem; font-size:0.82rem;}
+.concept-tag{position:fixed; bottom:1.2rem; right:1.2rem; background:var(--line); color:var(--ivory); font-size:0.72rem; padding:0.5rem 0.9rem; letter-spacing:0.06em; z-index:50;}
+
+.masthead{padding:clamp(3rem,8vw,6rem) 0 clamp(2rem,4vw,3rem); border-bottom:1px solid var(--line);}
+.masthead-grid{display:grid; grid-template-columns:2fr 1fr; gap:3rem; align-items:end;}
+.cat-no{font-family:var(--font-d); font-size:0.85rem; color:var(--brass); margin-bottom:1.2rem;}
+h1.big{font-family:var(--font-d); font-weight:500; font-size:clamp(2.6rem,7vw,6rem); line-height:0.98; letter-spacing:-0.01em; margin:0;}
+.masthead .sub{max-width:32ch; font-size:1.02rem; text-align:right; border-left:1px solid var(--line); padding-left:1.5rem;}
+@media (max-width:800px){ .masthead-grid{grid-template-columns:1fr;} .masthead .sub{text-align:left; border-left:none; padding-left:0;} }
+
+.entry-index{padding:clamp(2rem,5vw,3.5rem) 0;}
+.index-row{display:grid; grid-template-columns:60px 1fr 200px; gap:1.5rem; align-items:center; padding:1.6rem 0; border-bottom:1px solid var(--line);}
+.index-row:first-child{border-top:1px solid var(--line);}
+.index-row .n{font-family:var(--font-d); font-size:1rem; color:var(--brass);}
+.index-row h2{font-family:var(--font-d); font-weight:500; font-size:clamp(1.4rem,2.6vw,2rem); margin:0;}
+.index-row p{margin:0.3rem 0 0; font-size:0.88rem; max-width:52ch; color:#4A4038;}
+.index-row .go{font-size:0.8rem; letter-spacing:0.04em; text-align:right; font-weight:600;}
+@media (max-width:700px){ .index-row{grid-template-columns:40px 1fr; } .index-row .go{grid-column:2; text-align:left;} }
+
+.gem-strip{padding:2.5rem 0; border-bottom:1px solid var(--line); display:flex; gap:2.5rem; overflow-x:auto;}
+.gem-strip svg{flex:none; width:90px; height:104px;}
+
+footer{padding:2rem 0; display:flex; justify-content:space-between; font-size:0.78rem; color:#4A4038;}
+</style>
+</head>
+<body>
+<div class="concept-tag">CONCEPT A — Museum Catalog</div>
+
+<header>
+  <div class="wrap">
+    <div class="mark">RUKMANI EXPORTS</div>
+    <nav><span>Gemstones</span><span>Jewellery</span><span>Heritage</span><span>Trade</span><span>Journal</span></nav>
+  </div>
+</header>
+
+<section class="masthead">
+  <div class="wrap masthead-grid">
+    <div>
+      <div class="cat-no">No. 001 — Est. 1971, Jaipur</div>
+      <h1 class="big">A Family's Eye for Rare Gemstones.</h1>
+    </div>
+    <p class="sub">Trading, evaluating, and crafting natural rubies, Basra Pearls, and sapphires for three generations — catalogued and certified, stone by stone.</p>
+  </div>
+</section>
+
+<section class="gem-strip wrap">
+  <svg viewBox="0 0 90 104"><polygon points="45,4 78,26 78,80 45,100 12,80 12,26" fill="#8A1D28"/><polygon points="45,26 63,38 63,68 45,86 27,68 27,38" fill="#C24550"/></svg>
+  <svg viewBox="0 0 90 104"><circle cx="45" cy="52" r="32" fill="#EFE6D3" stroke="#8C6A2E" stroke-width="1.5"/></svg>
+  <svg viewBox="0 0 90 104"><polygon points="45,4 78,26 78,80 45,100 12,80 12,26" fill="#3B5B7A"/><polygon points="45,26 63,38 63,68 45,86 27,68 27,38" fill="#5B85A8"/></svg>
+  <svg viewBox="0 0 90 104"><polygon points="45,4 78,26 78,80 45,100 12,80 12,26" fill="#2E5C43"/><polygon points="45,26 63,38 63,68 45,86 27,68 27,38" fill="#468062"/></svg>
+  <svg viewBox="0 0 90 104"><polygon points="45,4 78,26 78,80 45,100 12,80 12,26" fill="#5C4A24"/><ellipse cx="45" cy="52" rx="6" ry="28" fill="#EFE6D3"/></svg>
+  <svg viewBox="0 0 90 104"><polygon points="45,4 78,26 78,80 45,100 12,80 12,26" fill="#3F6B4A"/><polygon points="45,26 63,38 63,68 45,86 27,68 27,38" fill="#7A3F52"/></svg>
+</section>
+
+<section class="entry-index wrap">
+  <div class="index-row">
+    <div class="n">01</div>
+    <div><h2>Loose Gemstones</h2><p>Six specializations, ranked by three generations of trading discipline — rubies to alexandrite.</p></div>
+    <div class="go">Browse the Catalog →</div>
+  </div>
+  <div class="index-row">
+    <div class="n">02</div>
+    <div><h2>Fine Jewellery</h2><p>Rings, necklaces, earrings, bridal — shaped in-house by our karigars.</p></div>
+    <div class="go">View the Collection →</div>
+  </div>
+  <div class="index-row">
+    <div class="n">03</div>
+    <div><h2>Our Heritage</h2><p>Three generations, one trust — since 1971, told honestly, generation by generation.</p></div>
+    <div class="go">Read the Story →</div>
+  </div>
+  <div class="index-row">
+    <div class="n">04</div>
+    <div><h2>The Journal</h2><p>The Basra Pearl story, and five more essays on rarity, craft, and trust.</p></div>
+    <div class="go">Start Reading →</div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>GIA &amp; GRS Certified · Jaipur Jewellers Association</span>
+  <span>Est. 1971 — Jaipur, India</span>
+</footer>
+</body>
+</html>

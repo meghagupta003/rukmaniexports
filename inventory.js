@@ -3,9 +3,9 @@
 // ============================================
 // Fill in these three values once you've created your Airtable base
 // (see the setup guide provided alongside this file).
-const AIRTABLE_BASE_ID   = 'app3xWJf4OEurwme5';       // e.g. 'appXXXXXXXXXXXXXX'
+const AIRTABLE_BASE_ID   = 'YOUR_BASE_ID_HERE';       // e.g. 'appXXXXXXXXXXXXXX'
 const AIRTABLE_TABLE     = 'Gemstones';
-const AIRTABLE_TOKEN     = 'patBonBRYBXmyLqok.69f4fba3df0f8433b5429d6d515b3a30f58d9a7f7d8cd95df62f0a887cb913a8'; // Personal Access Token — READ ONLY, scoped to this base only
+const AIRTABLE_TOKEN     = 'YOUR_READ_ONLY_TOKEN_HERE'; // Personal Access Token — READ ONLY, scoped to this base only
 
 const AIRTABLE_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE)}`;
 
@@ -31,21 +31,21 @@ function renderStoneCard(record) {
   const media = f['Media'] || f['Image'] || [];
   const firstImage = media.find(m => !isVideoFile(m));
   const figure = firstImage
-    ? `<div class="stone-figure" style="background-image:url('${firstImage.url}'); background-size:cover; background-position:center;"></div>`
-    : `<div class="stone-figure">${gemFacetSVG('#8A1D28', '#C24550')}</div>`;
+    ? `<div class="f-gem-figure" style="background-image:url('${firstImage.url}'); background-size:cover; background-position:center;"></div>`
+    : `<div class="f-gem-figure">${gemFacetSVG('#8A1D28', '#C24550')}</div>`;
 
   const priceLine = f['Price']
-    ? `<div class="price">${formatPrice(f['Price'])}</div>`
+    ? `<div class="f-price">${formatPrice(f['Price'])}</div>`
     : '';
 
   return `
-    <div class="stone-card">
+    <a href="product.html?id=${record.id}" class="f-gem-card" style="text-align:left; align-items:flex-start;">
       ${figure}
-      <h4>${f['Name'] || 'Untitled Stone'}</h4>
-      <div class="meta">${[f['Origin'], f['Treatment'], f['Certification Lab'] ? f['Certification Lab'] + ' Certified' : ''].filter(Boolean).join(' · ')}</div>
+      <h4 style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; width:100%;">${f['Name'] || 'Untitled Stone'}</h4>
+      <div class="f-meta">${[f['Origin'], f['Treatment'], f['Certification Lab'] ? f['Certification Lab'] + ' Certified' : ''].filter(Boolean).join(' · ')}</div>
       ${priceLine}
-      <a href="product.html?id=${record.id}" class="text-link">View &amp; Inquire →</a>
-    </div>`;
+      <span class="f-line-link">View &amp; Inquire →</span>
+    </a>`;
 }
 
 // Fetches and renders all Active stones for a given category into a container element.
@@ -189,23 +189,24 @@ function renderProductDetail(record, container) {
   const stoneName = (f['Name'] || '').replace(/'/g, "\\'");
 
   const actionHTML = `
-    ${f['Price'] ? `<div class="price-tag">${formatPrice(f['Price'])} <span style="font-size:1rem; font-weight:400; color:var(--espresso-faint);">USD (indicative)</span></div>` : ''}
-    <button class="btn btn-solid" style="border:none;" onclick="openInquireModal('${stoneName}')">Inquire About This Piece</button>
-    <p style="font-size:0.86rem; color:var(--espresso-faint); max-width:44ch; margin-top:1rem;">We respond to every inquiry personally — usually within one business day.</p>
+    ${f['Price'] ? `<div style="font-family:var(--f-font-display); font-size:2rem; font-weight:600; color:var(--f-espresso); margin:0.4rem 0 1.5rem;">${formatPrice(f['Price'])} <span style="font-size:1rem; font-weight:400; color:var(--f-grey);">USD (indicative)</span></div>` : ''}
+    <button class="f-btn" onclick="openInquireModal('${stoneName}')">Inquire About This Piece</button>
+    <p style="font-size:0.9rem; color:var(--f-grey); max-width:44ch; margin-top:1rem;">We respond to every inquiry personally — usually within one business day.</p>
   `;
 
   container.innerHTML = `
-    <p class="eyebrow" style="margin-bottom:1.5rem;"><a href="loose-gemstones.html" style="color:inherit;">Loose Gemstones</a> / ${f['Category'] || ''} / ${f['Name'] || ''}</p>
-    <div class="split reveal in" style="align-items:flex-start;">
-      <div class="product-figure" style="flex-direction:column; padding:1.5rem;">${galleryHTML}</div>
+    <p class="f-breadcrumb"><a href="catalog.html">Loose Gemstones</a> / ${f['Category'] || ''} / ${f['Name'] || ''}</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:flex-start;" class="f-product-split">
+      <div class="f-card" style="display:flex; flex-direction:column; padding:1.5rem;">${galleryHTML}</div>
       <div>
-        <h1 style="font-size:clamp(1.7rem,3vw,2.3rem); margin-bottom:0.6rem;">${f['Name'] || ''}</h1>
-        <table class="spec-table">${specHTML}</table>
+        <h1 style="font-family:var(--f-font-display); font-weight:600; font-size:clamp(1.7rem,3vw,2.3rem); color:var(--f-espresso); margin-bottom:0.6rem;">${f['Name'] || ''}</h1>
+        <table class="f-spec-table">${specHTML}</table>
         ${actionHTML}
-        <hr class="hairline" style="margin: 2rem 0 1.2rem;">
-        <p style="font-size:0.84rem; color:var(--espresso-faint);">Backed by three generations of trading expertise, since 1971. Member, Jaipur Jewellers Association.</p>
+        <hr class="f-hairline">
+        <p style="font-size:0.86rem; color:var(--f-grey);">Backed by three generations of trading expertise, since 1971. Member, Jaipur Jewellers Association.</p>
       </div>
-    </div>`;
+    </div>
+    <style>@media (max-width:760px){ .f-product-split{ grid-template-columns:1fr !important; } }</style>`;
 
   // Dynamic per-product SEO: real title/description instead of a generic one for every stone
   const pageTitle = `${f['Name'] || 'Gemstone'} | Rukmani Exports`;

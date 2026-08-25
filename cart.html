@@ -4,44 +4,64 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Your Bag | Rukmani Exports</title>
+<link rel="icon" type="image/png" href="assets/re-favicon.png">
+<link rel="apple-touch-icon" href="assets/re-favicon.png">
+<link rel="canonical" href="https://meghagupta003.github.io/rukmaniexports/cart.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Your Bag | Rukmani Exports">
+<meta property="og:description" content="">
+<meta property="og:url" content="https://meghagupta003.github.io/rukmaniexports/cart.html">
+<meta property="og:image" content="https://meghagupta003.github.io/rukmaniexports/assets/hero-image.png">
+<meta property="og:site_name" content="Rukmani Exports">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Your Bag | Rukmani Exports">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://meghagupta003.github.io/rukmaniexports/assets/hero-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="styles.css">
 <style>
-  .bag-line { display:grid; grid-template-columns: 90px 1fr auto; gap:1.5rem; align-items:center; padding: 1.6rem 0; border-bottom:1px solid var(--taupe-line); }
+  .bag-line { display:grid; grid-template-columns: 90px 1fr auto auto; gap:1.2rem; align-items:center; padding: 1.6rem 0; border-bottom:1px solid var(--taupe-line); }
   .bag-line:first-child { border-top: 1px solid var(--taupe-line); }
-  .bag-line .fig { width:90px; }
-  .bag-line h4 { font-size: 1.1rem; margin-bottom:0.3rem; }
-  .bag-line .meta { font-size:0.82rem; color:var(--espresso-faint); }
-  .bag-line .amount { font-family:var(--font-display); font-size:1.2rem; font-weight:600; }
+  .bag-line .fig { width:90px; height:90px; background-size:cover; background-position:center; }
+  .bag-line .fig svg { width:100%; height:100%; }
+  .bag-line h4 { font-size: 1.05rem; margin-bottom:0.3rem; }
+  .bag-line .meta { font-size:0.8rem; color:var(--espresso-faint); }
+  .bag-line .amount { font-family:var(--font-display); font-size:1.15rem; font-weight:600; white-space:nowrap; }
+  .bag-line .qty-remove { display:flex; flex-direction:column; align-items:flex-end; gap:0.5rem; }
+  .bag-line select { padding: 0.4rem 0.6rem; border: 1px solid var(--taupe-line); background: var(--white); font-family: var(--font-body); font-size:0.85rem; }
+  .bag-line .remove-btn { font-size:0.76rem; color:var(--espresso-faint); background:none; border:none; text-decoration:underline; cursor:pointer; padding:0; }
   .summary-row { display:flex; justify-content:space-between; padding: 0.6rem 0; font-size:0.92rem; }
   .summary-row.total { font-family:var(--font-display); font-size:1.3rem; font-weight:600; border-top:1px solid var(--taupe-line); margin-top:0.6rem; padding-top:1.2rem; }
+  @media (max-width:600px) { .bag-line { grid-template-columns: 60px 1fr; } .bag-line .amount, .bag-line .qty-remove { grid-column: 2; justify-self:flex-start; } }
 </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <header class="site-header">
   <div class="wrap">
     <a href="index.html" class="logo-mark">
-      <img src="assets/logo.svg" alt="Rukmani Exports" class="logo-img">
+      <img src="assets/re-logo.png" alt="Rukmani Exports" class="logo-img">
     </a>
     <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.primary-nav').classList.toggle('open')">
       <span></span><span></span><span></span>
     </button>
     <nav class="primary-nav">
       <a href="loose-gemstones.html" class="emphasis">Loose Gemstones</a>
-      <a href="fine-jewellery.html" class="emphasis">Fine Jewellery</a>
       <a href="heritage.html">Our Heritage</a>
       <a href="trade.html">Trade</a>
       <a href="certification.html">Certification</a>
       <a href="journal.html">Journal</a>
-      <a href="cart.html" class="current">Bag</a>
+      <a href="cart.html" class="current header-bag">Bag <span class="count" id="bagCount">0</span></a>
     </nav>
   </div>
 </header>
 
-<section class="hero" style="padding-bottom:1rem;">
+<section id="main-content" class="hero" style="padding-bottom:1rem;">
   <div class="wrap reveal" style="max-width:760px;">
     <p class="eyebrow" style="margin-bottom:1rem;">Your Bag</p>
-    <h1 style="font-size:clamp(2rem,3.6vw,2.8rem);">One Stone, Ready When You Are</h1>
+    <h1 id="bag-heading" style="font-size:clamp(2rem,3.6vw,2.8rem);">Your Bag</h1>
   </div>
 </section>
 
@@ -52,13 +72,13 @@
       <p style="margin-top:1.5rem; font-size:0.86rem; color:var(--espresso-faint);">Every stone ships fully insured, accompanied by its original certification and a note from our family.</p>
     </div>
 
-    <div style="border:1px solid var(--taupe-line); padding:2rem;">
+    <div id="summary-box" style="border:1px solid var(--taupe-line); padding:2rem;">
       <p class="tiny-caps" style="margin-bottom:1rem;">Order Summary</p>
       <div class="summary-row"><span>Subtotal</span><span id="sum-subtotal">$0</span></div>
       <div class="summary-row"><span>Insured Shipping</span><span>Complimentary</span></div>
       <div class="summary-row total"><span>Total</span><span id="sum-total">$0</span></div>
-      <a href="next-steps.html" class="btn btn-solid" style="width:100%; justify-content:center; margin-top:1.6rem;">Proceed to Checkout →</a>
-      <p style="font-size:0.76rem; color:var(--espresso-faint); margin-top:1rem;">Checkout is illustrative at this stage — real payment processing (via Stripe) connects here once set up.</p>
+      <button id="checkout-btn" class="btn btn-solid" style="width:100%; justify-content:center; margin-top:1.6rem; border:none;">Proceed to Checkout →</button>
+      <p id="checkout-note" style="font-size:0.76rem; color:var(--espresso-faint); margin-top:1rem;">Secure checkout via Stripe.</p>
     </div>
   </div>
 </section>
@@ -73,38 +93,57 @@
 </footer>
 
 <script src="script.js"></script>
+<script src="inquire.js"></script>
+<script src="cart.js"></script>
+<script src="checkout.js"></script>
 <script>
-  function formatPrice(n) {
-    return '$' + Number(n).toLocaleString('en-US');
+  function fallbackFigure() {
+    return `<svg viewBox="0 0 90 90"><polygon points="45,4 78,26 78,80 45,100 12,80 12,26" fill="#8A1D28"/><polygon points="45,26 63,38 63,68 45,86 27,68 27,38" fill="#C24550"/></svg>`;
   }
 
-  const params = new URLSearchParams(window.location.search);
-  const name = params.get('name');
-  const price = parseFloat(params.get('price')) || 0;
-  const origin = params.get('origin');
-  const treatment = params.get('treatment');
-  const lab = params.get('lab');
+  function renderCartPage() {
+    const cart = getCart();
+    const container = document.getElementById('bag-line-container');
+    const heading = document.getElementById('bag-heading');
 
-  const container = document.getElementById('bag-line-container');
+    if (cart.length === 0) {
+      heading.textContent = 'Your Bag Is Empty';
+      container.innerHTML = `<p style="padding:1rem 0; color:var(--espresso-faint);">Nothing here yet. <a href="loose-gemstones.html" class="text-link">Browse gemstones →</a></p>`;
+      document.getElementById('summary-box').style.display = 'none';
+      return;
+    }
 
-  if (name) {
-    const meta = [origin, treatment, lab ? lab + ' Certified' : ''].filter(Boolean).join(' · ');
-    container.innerHTML = `
-      <div class="bag-line">
-        <svg class="fig" viewBox="0 0 90 104"><polygon points="45,4 78,26 78,80 45,100 12,80 12,26" fill="#8A1D28"/><polygon points="45,26 63,38 63,68 45,86 27,68 27,38" fill="#C24550"/></svg>
-        <div>
-          <h4>${name}</h4>
-          <div class="meta">${meta}</div>
-        </div>
-        <div class="amount">${price ? formatPrice(price) : ''}</div>
-      </div>`;
-    document.getElementById('sum-subtotal').textContent = formatPrice(price);
-    document.getElementById('sum-total').textContent = formatPrice(price);
-  } else {
-    container.innerHTML = `<p style="padding:2rem 0; color:var(--espresso-faint);">Your bag is empty. <a href="loose-gemstones.html" class="text-link">Browse gemstones →</a></p>`;
-    document.querySelector('.wrap.split').style.gridTemplateColumns = '1fr';
-    document.querySelector('#cart-wrap > div:last-child').style.display = 'none';
+    document.getElementById('summary-box').style.display = 'block';
+    heading.textContent = cart.length === 1 ? 'One Stone, Ready When You Are' : `${cart.length} Stones, Ready When You Are`;
+
+    container.innerHTML = cart.map(item => {
+      const figHTML = item.image
+        ? `<div class="fig" style="background-image:url('${item.image}');"></div>`
+        : `<div class="fig">${fallbackFigure()}</div>`;
+      const meta = [item.origin, item.treatment, item.lab ? item.lab + ' Certified' : ''].filter(Boolean).join(' · ');
+      const qtyOptions = [1,2,3,4,5].map(n => `<option value="${n}" ${n===item.qty?'selected':''}>${n}</option>`).join('');
+      return `
+        <div class="bag-line">
+          ${figHTML}
+          <div>
+            <h4>${item.name}</h4>
+            <div class="meta">${meta}</div>
+          </div>
+          <div class="amount">${formatUSD(item.price * item.qty)}</div>
+          <div class="qty-remove">
+            <select onchange="updateQty('${item.id}', this.value)">${qtyOptions}</select>
+            <button class="remove-btn" onclick="removeFromCart('${item.id}')">Remove</button>
+          </div>
+        </div>`;
+    }).join('');
+
+    document.getElementById('sum-subtotal').textContent = formatUSD(cartTotal());
+    document.getElementById('sum-total').textContent = formatUSD(cartTotal());
   }
+
+  document.getElementById('checkout-btn').addEventListener('click', startCheckout);
+
+  renderCartPage();
 </script>
 </body>
 </html>

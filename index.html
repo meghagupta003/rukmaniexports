@@ -5,227 +5,356 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rukmani Exports — A Family's Eye for Rare Gemstones, Since 1971</title>
 <meta name="description" content="Third-generation Jaipur gemstone house trading, evaluating, and crafting certified natural rubies, Basra Pearls, sapphires, and rare gemstones since 1971.">
-<link rel="icon" type="image/png" href="assets/re-favicon.png">
-<link rel="apple-touch-icon" href="assets/re-favicon.png">
-<link rel="canonical" href="https://meghagupta003.github.io/rukmaniexports/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Rukmani Exports — A Family's Eye for Rare Gemstones, Since 1971">
-<meta property="og:description" content="Third-generation Jaipur gemstone house trading, evaluating, and crafting certified natural rubies, Basra Pearls, sapphires, and rare gemstones since 1971.">
-<meta property="og:url" content="https://meghagupta003.github.io/rukmaniexports/">
-<meta property="og:image" content="https://meghagupta003.github.io/rukmaniexports/assets/hero-image.png">
-<meta property="og:site_name" content="Rukmani Exports">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Rukmani Exports — A Family's Eye for Rare Gemstones, Since 1971">
-<meta name="twitter:description" content="Third-generation Jaipur gemstone house trading, evaluating, and crafting certified natural rubies, Basra Pearls, sapphires, and rare gemstones since 1971.">
-<meta name="twitter:image" content="https://meghagupta003.github.io/rukmaniexports/assets/hero-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/png" href="assets/re-favicon.png">
 <link rel="stylesheet" href="styles.css">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "JewelryStore",
-  "name": "Rukmani Exports",
-  "description": "Third-generation Jaipur gemstone house trading, evaluating, and crafting certified natural rubies, Basra Pearls, sapphires, and rare gemstones since 1971.",
-  "url": "https://meghagupta003.github.io/rukmaniexports/",
-  "logo": "https://meghagupta003.github.io/rukmaniexports/assets/re-logo.png",
-  "foundingDate": "1971",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Jaipur",
-    "addressRegion": "Rajasthan",
-    "addressCountry": "IN"
-  },
-  "sameAs": [],
-  "memberOf": {
-    "@type": "Organization",
-    "name": "Jaipur Jewellers Association"
-  }
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@500;600&display=swap">
+<style>
+/* ===================================================================
+   HOMEPAGE (FIGMA) — page-scoped tokens & overrides
+   These extend, rather than replace, the shared styles.css tokens.
+   Colors below are pulled directly from the supplied Figma spec —
+   note --f-espresso, --f-brass-deep and --f-ivory match the existing
+   sitewide tokens exactly, so this design is already well-aligned.
+=================================================================== */
+:root{
+  --f-ivory:#F8F6F0;
+  --f-espresso:#3E332A;
+  --f-brass-deep:#7A5D26;
+  --f-gold:#C99349;
+  --f-grey:#706F6F;
+  --f-card-radius:24px;
+  --f-shadow: 0 4px 20px rgba(62,51,42,0.06);
+  --f-shadow-hover: 0 14px 34px rgba(62,51,42,0.10);
+  --f-font-display:'Fraunces', Georgia, serif;   /* substitute for Chronicle Display (licensed) */
+  --f-font-accent:'Manrope', sans-serif;
 }
-</script>
+body{ font-family: var(--font-body); }
+.f-wrap{ max-width:1312px; margin:0 auto; padding:0 var(--gutter); }
+@media (max-width:600px){ .f-wrap{ padding-left:16px; padding-right:16px; } }
+
+/* ---------- header ---------- */
+.f-header{
+  position: sticky; top:0; z-index:100;
+  background: hsla(41,39%,89%,0.92);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.f-header-inner{ height:84px; display:flex; align-items:center; justify-content:space-between; }
+.f-logo{ text-decoration:none; }
+.f-logo img{ height:44px; width:auto; }
+.f-nav{ display:flex; gap:48px; }
+.f-nav a{ font-size:16px; color:var(--f-espresso); position:relative; padding:8px 0; text-decoration:none; }
+.f-nav a::after{ content:''; position:absolute; left:0; right:100%; bottom:0; height:1px; background:var(--f-brass-deep); transition:right .25s ease; }
+.f-nav a:hover::after, .f-nav a.current::after{ right:0; }
+.f-nav-toggle{ display:none; background:none; border:none; }
+.f-nav-toggle span{ display:block; width:22px; height:1px; background:var(--f-espresso); margin:5px 0; }
+
+/* ---------- hero ---------- */
+.f-hero{
+  position:relative;
+  min-height: 464px;
+  display:flex; align-items:center;
+  background: linear-gradient(120deg, #EFE6D3 0%, #E4D5B8 55%, #D9C6A0 100%);
+  overflow:hidden;
+}
+.f-hero-gems{ position:absolute; right:6%; top:50%; transform:translateY(-50%); display:flex; gap:14px; opacity:0.95; }
+.f-hero-gems svg{ width:70px; height:80px; filter: drop-shadow(0 10px 18px rgba(62,51,42,0.18)); }
+.f-hero-content{ position:relative; z-index:2; max-width:650px; padding: 108px 0 108px 64px; }
+.f-eyebrow-f{ font-size:14px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--f-brass-deep); margin-bottom:24px; }
+.f-hero h1{ font-family:var(--f-font-display); font-weight:600; color:var(--f-espresso); font-size:clamp(2.1rem,4.6vw,48px); line-height:1.2; margin-bottom:40px; max-width:14ch; }
+.f-btn{ display:inline-flex; align-items:center; gap:8px; background:var(--f-espresso); color:#fff; font-size:18px; font-weight:500; padding:12px 24px; border:none; text-decoration:none; transition: background .25s ease, transform .25s ease; }
+.f-btn:hover{ background:var(--f-brass-deep); transform:translateY(-1px); }
+
+/* ---------- trust bar ---------- */
+.f-trust{ background:var(--f-ivory); padding:24px 0; }
+.f-trust-inner{ display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap; }
+.f-trust-item{ font-size:14px; font-weight:500; letter-spacing:0.04em; text-transform:uppercase; color:var(--f-grey); text-align:center; }
+.f-trust-sep{ color:var(--f-gold); font-size:20px; font-family:var(--f-font-accent); padding:0 4px; }
+@media (max-width:760px){ .f-trust-sep{ display:none; } .f-trust-inner{ flex-direction:column; gap:14px; } }
+
+/* ---------- section heads ---------- */
+.f-section{ padding: clamp(56px, 9vw, 96px) 0; }
+.f-section-head{ text-align:center; display:flex; flex-direction:column; align-items:center; gap:10px; margin-bottom: clamp(32px, 5vw, 48px); }
+.f-section-head h2{ font-family:var(--f-font-display); font-weight:600; font-size:clamp(1.7rem,3.4vw,32px); color:var(--f-espresso); }
+.f-section-sub{ font-size:16px; color:var(--f-espresso); max-width:60ch; }
+.f-shop-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:1.25rem; flex-wrap:wrap; text-align:left; margin-bottom: clamp(28px, 4vw, 40px); }
+.f-shop-head .f-section-head{ align-items:flex-start; text-align:left; margin-bottom:0; }
+.f-line-link{ font-size:18px; font-weight:500; color:var(--f-espresso); border-bottom:1px solid var(--f-espresso); padding-bottom:8px; white-space:nowrap; text-decoration:none; display:inline-block; }
+
+/* ---------- gemstone grid ---------- */
+.f-gem-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+@media (max-width:980px){ .f-gem-grid{ grid-template-columns:repeat(3,1fr); gap:20px; } }
+@media (max-width:700px){ .f-gem-grid{ grid-template-columns:repeat(2,1fr); gap:14px; } }
+.f-gem-card{
+  border-radius: var(--f-card-radius);
+  box-shadow: var(--f-shadow);
+  padding:20px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:14px;
+  background:#fff;
+  text-decoration:none;
+  transition: transform .3s ease, box-shadow .3s ease;
+  text-align:center;
+}
+.f-gem-card:hover{ transform:translateY(-4px); box-shadow:var(--f-shadow-hover); }
+.f-gem-figure{ width:100%; height:184px; border-radius:16px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.f-gem-card h3{ font-size:18px; font-weight:500; color:var(--f-espresso); font-family:var(--font-body); }
+
+/* ---------- heritage ---------- */
+.f-heritage{ background:var(--f-ivory); padding:120px 0; text-align:center; }
+.f-heritage p.body{ font-size:20px; line-height:1.5; color:var(--f-espresso); max-width:74ch; margin:24px auto 32px; }
+
+/* ---------- featured carousel ---------- */
+.f-carousel-wrap{ position:relative; padding:0 8px; }
+.f-carousel{ display:flex; gap:20px; overflow-x:auto; scroll-behavior:smooth; scrollbar-width:none; padding:4px 4px 8px; }
+.f-carousel::-webkit-scrollbar{ display:none; }
+.f-product-card{ flex:0 0 auto; width:280px; }
+.f-product-figure{ width:280px; height:260px; border-radius:16px; overflow:hidden; margin-bottom:14px; display:flex; align-items:center; justify-content:center; }
+.f-product-card h4{
+  font-size:16px; font-weight:400; color:#000; margin:0 0 4px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.f-product-card .f-price{ font-size:18px; font-weight:600; color:#000; }
+.f-carousel-btn{
+  position:absolute; top:112px;
+  width:48px; height:48px; border-radius:99px; background:#161618; color:#fff;
+  border:none; display:flex; align-items:center; justify-content:center;
+  box-shadow: 0 6px 16px rgba(22,22,24,0.20); cursor:pointer; z-index:3;
+  transition: transform .2s ease;
+}
+.f-carousel-btn:hover{ transform:scale(1.06); }
+.f-carousel-btn.prev{ left:-8px; } .f-carousel-btn.next{ right:-8px; }
+@media (max-width:760px){ .f-carousel-btn{ display:none; } .f-carousel-wrap{ padding:0; } }
+
+/* ---------- trade ---------- */
+.f-trade{
+  position:relative; padding:120px 0; text-align:center;
+  background: linear-gradient(120deg, #EFE6D3 0%, #DCC9A6 100%);
+}
+.f-trade p.body{ font-size:20px; line-height:1.5; color:var(--f-espresso); max-width:70ch; margin:24px auto 24px; }
+
+/* ---------- reviews (Claude-authored, matching system) ---------- */
+.f-reviews-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+@media (max-width:900px){ .f-reviews-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:600px){ .f-reviews-grid{ grid-template-columns:1fr; } }
+.f-review-card{ border-radius:var(--f-card-radius); box-shadow:var(--f-shadow); background:#fff; padding:28px; display:flex; flex-direction:column; gap:14px; }
+.f-review-stars{ color:var(--f-gold); letter-spacing:0.1em; }
+.f-review-quote{ font-family:var(--f-font-display); font-style:italic; font-size:18px; color:var(--f-espresso); line-height:1.5; }
+.f-review-author{ font-size:13px; letter-spacing:0.03em; text-transform:uppercase; color:var(--f-grey); }
+
+/* ---------- journal (Claude-authored) ---------- */
+.f-journal-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+@media (max-width:900px){ .f-journal-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:600px){ .f-journal-grid{ grid-template-columns:1fr; } }
+.f-journal-card{ border-radius:var(--f-card-radius); overflow:hidden; box-shadow:var(--f-shadow); background:#fff; text-decoration:none; display:flex; flex-direction:column; transition:transform .3s ease, box-shadow .3s ease; }
+.f-journal-card:hover{ transform:translateY(-4px); box-shadow:var(--f-shadow-hover); }
+.f-journal-img{ height:180px; }
+.f-journal-body{ padding:24px; }
+.f-journal-body h4{ font-family:var(--f-font-display); font-size:20px; font-weight:600; color:var(--f-espresso); margin:8px 0 10px; }
+
+/* ---------- footer (Claude-authored) ---------- */
+.f-footer{ background:var(--f-espresso); color:#C9B896; padding:72px 0 32px; }
+.f-footer h5{ color:var(--f-ivory); font-size:13px; text-transform:uppercase; letter-spacing:0.12em; font-weight:600; margin-bottom:18px; }
+.f-footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr 1fr; gap:40px; padding-bottom:40px; }
+@media (max-width:900px){ .f-footer-grid{ grid-template-columns:1fr 1fr 1fr; } }
+@media (max-width:600px){ .f-footer-grid{ grid-template-columns:1fr 1fr; } }
+.f-footer-grid a{ display:block; font-size:14px; color:#C9B896; margin-bottom:11px; }
+.f-footer-grid a:hover{ color:var(--f-ivory); }
+.f-footer-bottom{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; padding-top:28px; border-top:1px solid rgba(255,255,255,0.1); font-size:12px; color:#8f7f68; }
+
+/* ---------- responsive: hero & mobile nav ---------- */
+@media (max-width:900px){
+  .f-nav{ position:fixed; inset:84px 0 0 0; background:#FFFFFF; z-index:200; flex-direction:column; align-items:flex-start; padding:2rem 24px; gap:1.4rem; transform:translateX(100%); transition:transform .3s ease; overflow-y:auto; }
+  .f-nav.open{ transform:translateX(0); }
+  .f-nav a{ font-size:1.15rem; width:100%; }
+  .f-nav-toggle{ display:block; }
+  .f-hero-content{ padding:56px 16px; max-width:100%; }
+  .f-hero-gems{ display:none; }
+  .f-hero{ min-height:auto; padding-bottom:32px; }
+}
+</style>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- ============ HEADER ============ -->
-<header class="site-header">
-  <div class="wrap">
-    <a href="index.html" class="logo-mark">
-      <img src="assets/re-logo.png" alt="Rukmani Exports" class="logo-img">
-    </a>
-    <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.primary-nav').classList.toggle('open')">
-      <span></span><span></span><span></span>
-    </button>
-    <nav class="primary-nav">
-      <a href="loose-gemstones.html" class="emphasis current">Loose Gemstones</a>
+<header class="f-header">
+  <div class="f-wrap f-header-inner">
+    <a href="index.html" class="f-logo"><img src="assets/re-logo.png" alt="Rukmani Exports"></a>
+    <button class="f-nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.f-nav').classList.toggle('open')"><span></span><span></span><span></span></button>
+    <nav class="f-nav">
+      <a href="catalog.html" class="current">Loose Gemstones</a>
       <a href="heritage.html">Our Heritage</a>
       <a href="trade.html">Trade</a>
       <a href="certification.html">Certification</a>
       <a href="journal.html">Journal</a>
-      <a href="contact.html">Contact</a>    </nav>
+      <a href="contact.html">Contact</a>
+    </nav>
   </div>
 </header>
 
+<main id="main-content">
+
 <!-- ============ HERO ============ -->
-<section id="main-content" class="hero">
-  <div class="wrap hero-grid">
-    <div class="reveal">
-      <p class="eyebrow" style="margin-bottom:1rem;">Third-Generation Jaipur Gemstone House</p>
-      <h1>A Family's Eye for Rare Gemstones, Since 1971.</h1>
-      <p class="lede">Rukmani Exports trades, evaluates, and crafts natural rubies, Basra Pearls, sapphires, and other rare stones — for collectors and jewellers worldwide.</p>
-      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
-        <a href="loose-gemstones.html" class="btn btn-solid">Explore Our Gemstones →</a>
-        <a href="heritage.html" class="btn">Read Our Story</a>
-      </div>
-    </div>
-    <div class="gem-hero-figure reveal">
-      <img src="assets/hero-image.png" alt="A natural ruby held by tweezers, with sapphire, emerald, pearls, and other loose gemstones arranged nearby" class="hero-photo" fetchpriority="high" width="640" height="520">
-    </div>
+<section class="f-hero">
+  <div class="f-hero-gems" aria-hidden="true">
+    <svg viewBox="0 0 70 80"><polygon points="35,4 62,24 62,58 35,76 8,58 8,24" fill="#8A1D28"/><polygon points="35,20 50,30 50,52 35,64 20,52 20,30" fill="#C24550"/></svg>
+    <svg viewBox="0 0 70 80"><polygon points="35,4 62,24 62,58 35,76 8,58 8,24" fill="#2E4C7A"/><polygon points="35,20 50,30 50,52 35,64 20,52 20,30" fill="#5B85C7"/></svg>
+    <svg viewBox="0 0 70 80"><polygon points="35,4 62,24 62,58 35,76 8,58 8,24" fill="#1F5C3F"/><polygon points="35,20 50,30 50,52 35,64 20,52 20,30" fill="#3E8862"/></svg>
+    <svg viewBox="0 0 70 80"><polygon points="35,4 62,24 62,58 35,76 8,58 8,24" fill="#8C7A2E"/><polygon points="35,20 50,30 50,52 35,64 20,52 20,30" fill="#C7A94A"/></svg>
+    <svg viewBox="0 0 70 80"><circle cx="35" cy="42" r="26" fill="#F2ECE0" stroke="#C99349" stroke-width="1.5"/></svg>
+  </div>
+  <div class="f-hero-content">
+    <p class="f-eyebrow-f">Third Generation Jaipur Gemstone House</p>
+    <h1>A Family's Eye For Rare Gemstones, Since 1971</h1>
+    <a href="catalog.html" class="f-btn">Explore Gemstones →</a>
   </div>
 </section>
 
 <!-- ============ TRUST BAR ============ -->
-<div class="trust-bar">
-  <div class="wrap">
-    <div class="trust-item"><span class="dot"></span>GIA &amp; GRS Certified</div>
-    <div class="trust-item"><span class="dot"></span>Member, Jaipur Jewellers Association</div>
-    <div class="trust-item"><span class="dot"></span>Three Generations, Since 1971</div>
-    <div class="trust-item"><span class="dot"></span>Trusted Across Nine Countries</div>
-  </div>
-</div>
-
-<!-- ============ HERITAGE TEASER ============ -->
-<section class="section">
-  <div class="wrap split reveal">
-    <div>
-      <p class="tiny-caps" style="margin-bottom:0.9rem;">Our Heritage</p>
-      <h2>Every Gemstone Has a Story. So Does Ours.</h2>
-      <p>In 1971, our family's journey with gemstones began in Jaipur's local markets — trading, evaluating, earning trust one relationship at a time. Three generations later, that same eye for quality guides Rukmani Exports today, alongside something new our third generation brought into the family tradition: hands-on artisanal jewellery-making, practiced by our in-house karigars.</p>
-      <a href="heritage.html" class="text-link">Read Our Full Story →</a>
-    </div>
-    <div class="split-media">
-      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-        <rect width="400" height="300" fill="#EFE6D3"/>
-        <g stroke="#96702E" stroke-width="1" opacity="0.55" fill="none">
-          <path d="M40 260 L40 150 L200 40 L360 150 L360 260" />
-          <path d="M40 260 L360 260" />
-          <path d="M90 260 L90 175 L200 100 L310 175 L310 260" />
-          <path d="M140 260 L140 200 L200 160 L260 200 L260 260" />
-          <circle cx="200" cy="150" r="4" fill="#96702E" stroke="none"/>
-        </g>
-        <text x="200" y="285" text-anchor="middle" font-family="Fraunces, serif" font-size="13" fill="#7A6C5D">Jaipur, since 1971</text>
-      </svg>
-    </div>
+<section class="f-trust">
+  <div class="f-wrap f-trust-inner">
+    <span class="f-trust-item">Ethically Sourced Gemstones</span><span class="f-trust-sep" aria-hidden="true">✦</span>
+    <span class="f-trust-item">Rich Colors</span><span class="f-trust-sep" aria-hidden="true">✦</span>
+    <span class="f-trust-item">Certified Quality</span><span class="f-trust-sep" aria-hidden="true">✦</span>
+    <span class="f-trust-item">True Value</span><span class="f-trust-sep" aria-hidden="true">✦</span>
+    <span class="f-trust-item">Trusted Worldwide</span>
   </div>
 </section>
 
-<!-- ============ FEATURED GEMSTONES (direct-to-product widget) ============ -->
-<section class="section section-alt">
-  <div class="wrap">
-    <div class="section-head reveal" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1rem;">
-      <div>
-        <p class="tiny-caps" style="margin-bottom:0.9rem;">Available Now</p>
-        <h2>Featured Gemstones</h2>
+<!-- ============ SHOP BY GEMSTONE ============ -->
+<section class="f-section">
+  <div class="f-wrap">
+    <div class="f-shop-head">
+      <div class="f-section-head">
+        <h2>Shop By Gemstone</h2>
+        <p class="f-section-sub">Ethically sourced. Expertly curated. Treasured for generations.</p>
       </div>
-      <a href="loose-gemstones.html" class="text-link">View All Gemstones →</a>
+      <a href="catalog.html" class="f-line-link">Shop All Gemstones</a>
     </div>
-    <div class="card-grid reveal" id="featured-grid">
-      <p style="padding:2.5rem; color:var(--espresso-faint);">Loading featured stones…</p>
+
+    <div class="f-gem-grid">
+      <a href="rubies.html" class="f-gem-card"><div class="f-gem-figure" style="background:linear-gradient(135deg,#F3E4D0,#E6D2B4);"><svg viewBox="0 0 90 90" width="72" height="72"><polygon points="45,6 80,26 80,64 45,84 10,64 10,26" fill="#8A1D28"/><polygon points="45,26 62,36 62,54 45,66 28,54 28,36" fill="#C24550"/></svg></div><h3>Rubies</h3></a>
+      <a href="basra-pearls.html" class="f-gem-card"><div class="f-gem-figure" style="background:linear-gradient(135deg,#F3E4D0,#E6D2B4);"><svg viewBox="0 0 90 90" width="72" height="72"><circle cx="34" cy="50" r="18" fill="#F6F1E7" stroke="#C99349" stroke-width="1.2"/><circle cx="58" cy="38" r="14" fill="#FBF8F2" stroke="#C99349" stroke-width="1.2"/></svg></div><h3>Pearls</h3></a>
+      <a href="rubies.html" class="f-gem-card"><div class="f-gem-figure" style="background:linear-gradient(135deg,#F3E4D0,#E6D2B4);"><svg viewBox="0 0 90 90" width="72" height="72"><polygon points="45,6 80,26 80,64 45,84 10,64 10,26" fill="#A02C6B"/><polygon points="45,26 62,36 62,54 45,66 28,54 28,36" fill="#D65FA0"/></svg></div><h3>Pink Sapphires</h3></a>
+      <a href="emeralds.html" class="f-gem-card"><div class="f-gem-figure" style="background:linear-gradient(135deg,#F3E4D0,#E6D2B4);"><svg viewBox="0 0 90 90" width="72" height="72"><polygon points="45,6 80,26 80,64 45,84 10,64 10,26" fill="#1F5C3F"/><polygon points="45,26 62,36 62,54 45,66 28,54 28,36" fill="#3E8862"/></svg></div><h3>Emeralds</h3></a>
+
+      <a href="sapphires.html" class="f-gem-card"><div class="f-gem-figure" style="background:linear-gradient(135deg,#F3E4D0,#E6D2B4);"><svg viewBox="0 0 90 90" width="72" height="72"><polygon points="45,6 80,26 80,64 45,84 10,64 10,26" fill="#2E4C7A"/><polygon points="45,26 62,36 62,54 45,66 28,54 28,36" fill="#5B85C7"/></svg></div><h3>Blue Sapphires</h3></a>
+      <a href="sapphires.html" class="f-gem-card"><div class="f-gem-figure" style="background:linear-gradient(135deg,#F3E4D0,#E6D2B4);"><svg viewBox="0 0 90 90" width="72" height="72"><polygon points="45,6 80,26 80,64 45,84 10,64 10,26" fill="#B9B4A8"/><polygon points="45,26 62,36 62,54 45,66 28,54 28,36" fill="#EDEAE3"/></svg></div><h3>White Sapphires</h3></a>
+      <a href="sapphires.html" class="f-gem-card"><div class="f-gem-figure" style="background:linear-gradient(135deg,#F3E4D0,#E6D2B4);"><svg viewBox="0 0 90 90" width="72" height="72"><polygon points="45,6 80,26 80,64 45,84 10,64 10,26" fill="#B5860B"/><polygon points="45,26 62,36 62,54 45,66 28,54 28,36" fill="#E2B23C"/></svg></div><h3>Yellow Sapphires</h3></a>
+      <a href="cats-eye.html" class="f-gem-card"><div class="f-gem-figure" style="background:linear-gradient(135deg,#F3E4D0,#E6D2B4);"><svg viewBox="0 0 90 90" width="72" height="72"><polygon points="45,6 80,26 80,64 45,84 10,64 10,26" fill="#5C4A24"/><ellipse cx="45" cy="45" rx="6" ry="24" fill="#EFE6D3"/></svg></div><h3>Cat's Eye</h3></a>
+
+      <a href="alexandrite.html" class="f-gem-card"><div class="f-gem-figure" style="background:linear-gradient(135deg,#F3E4D0,#E6D2B4);"><svg viewBox="0 0 90 90" width="72" height="72"><polygon points="45,6 80,26 80,64 45,84 10,64 10,26" fill="#3F6B4A"/><polygon points="45,26 62,36 62,54 45,66 28,54 28,36" fill="#7A3F52"/></svg></div><h3>Alexandrite</h3></a>
+      <a href="sapphires.html" class="f-gem-card"><div class="f-gem-figure" style="background:linear-gradient(135deg,#F3E4D0,#E6D2B4);"><svg viewBox="0 0 90 90" width="72" height="72"><polygon points="45,6 80,26 80,64 45,84 10,64 10,26" fill="#C9622E"/><polygon points="45,26 62,36 62,54 45,66 28,54 28,36" fill="#E89563"/></svg></div><h3>Padparadscha Sapphires</h3></a>
+      <a href="catalog.html" class="f-gem-card"><div class="f-gem-figure" style="background:linear-gradient(135deg,#F3E4D0,#E6D2B4);"><svg viewBox="0 0 90 90" width="72" height="72"><polygon points="45,6 80,26 80,64 45,84 10,64 10,26" fill="#D8D2C4" opacity="0.9"/><polygon points="45,26 62,36 62,54 45,66 28,54 28,36" fill="#F5F2EA"/></svg></div><h3>Diamonds</h3></a>
+      <a href="catalog.html" class="f-gem-card"><div class="f-gem-figure" style="background:linear-gradient(135deg,#F3E4D0,#E6D2B4);"><svg viewBox="0 0 90 90" width="72" height="72"><circle cx="45" cy="45" r="26" fill="#E7E2D4" stroke="#C99349" stroke-width="1.2"/></svg></div><h3>Opals</h3></a>
     </div>
   </div>
 </section>
 
-<!-- ============ TRADE SIGNAL ============ -->
-<section class="section-tight">
-  <div class="wrap split reverse reveal">
-    <div class="split-media">
-      <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
-        <rect width="400" height="260" fill="none"/>
-        <g stroke="#96702E" stroke-width="1" opacity="0.5">
-          <line x1="20" y1="230" x2="380" y2="230"/>
-          <line x1="60" y1="230" x2="60" y2="60"/>
-          <line x1="150" y1="230" x2="150" y2="30"/>
-          <line x1="240" y1="230" x2="240" y2="90"/>
-          <line x1="330" y1="230" x2="330" y2="50"/>
-        </g>
-        <text x="60" y="255" font-family="Work Sans" font-size="11" fill="#7A6C5D" text-anchor="middle">HK</text>
-        <text x="150" y="255" font-family="Work Sans" font-size="11" fill="#7A6C5D" text-anchor="middle">JJS</text>
-        <text x="240" y="255" font-family="Work Sans" font-size="11" fill="#7A6C5D" text-anchor="middle">JAS</text>
-        <text x="330" y="255" font-family="Work Sans" font-size="11" fill="#7A6C5D" text-anchor="middle">9 Nations</text>
-      </svg>
-    </div>
-    <div>
-      <p class="tiny-caps" style="margin-bottom:0.9rem;">For Trade Partners</p>
-      <h2>Trusted by Trade Partners Worldwide</h2>
-      <p>From Hong Kong's international fairs to our own exhibitions in Jaipur — JJS and JAS — Rukmani Exports has built lasting relationships with manufacturers, designers, and retailers across nine countries.</p>
-      <a href="trade.html" class="text-link">Learn More for Trade Partners →</a>
-    </div>
+<!-- ============ HERITAGE ============ -->
+<section class="f-heritage">
+  <div class="f-wrap" style="max-width:900px;">
+    <p class="f-eyebrow-bold">Our Heritage</p>
+    <h2 style="font-family:var(--f-font-display); font-weight:600; font-size:clamp(1.7rem,3.4vw,32px); color:var(--f-espresso); margin-top:12px;">Every Gemstone Has A Story, So Does Ours.</h2>
+    <p class="body">In 1971, our family's journey with gemstones began in Jaipur's local markets — trading, evaluating, earning trust one relationship at a time. Three generations later, that same eye for quality guides Rukmani Exports today, alongside something new our third generation brought into the family tradition: hands-on artisanal jewellery-making, practiced by our in-house karigars.</p>
+    <a href="heritage.html" class="f-line-link">Read Our Story</a>
   </div>
 </section>
 
-<!-- ============ CUSTOMER REVIEWS ============ -->
-<section class="section">
-  <div class="wrap">
-    <div class="section-head center reveal">
-      <p class="tiny-caps" style="margin-bottom:0.9rem;">In Their Words</p>
+<!-- ============ FEATURED GEMSTONES ============ -->
+<section class="f-section">
+  <div class="f-wrap">
+    <div class="f-section-head">
+      <p class="f-eyebrow-bold">Available Now</p>
+      <h2>Featured Gemstones</h2>
+    </div>
+
+    <div class="f-carousel-wrap">
+      <button class="f-carousel-btn prev" onclick="document.getElementById('fCarousel').scrollBy({left:-330,behavior:'smooth'})" aria-label="Previous gemstones">←</button>
+      <div class="f-carousel" id="fCarousel">
+        <div class="f-product-card"><div class="f-product-figure" style="background:linear-gradient(160deg,#EFE6D3,#DCC9A6);"><svg viewBox="0 0 200 200" width="140" height="140"><polygon points="100,10 175,55 175,145 100,190 25,145 25,55" fill="#8A1D28"/><polygon points="100,45 145,68 145,132 100,155 55,132 55,68" fill="#C24550"/></svg></div><h4>Burma Ruby | 6.42 Carats Rich Pinkish Red</h4><p class="f-price">$4000</p></div>
+        <div class="f-product-card"><div class="f-product-figure" style="background:linear-gradient(160deg,#EFE6D3,#DCC9A6);"><svg viewBox="0 0 200 200" width="140" height="140"><polygon points="100,10 175,55 175,145 100,190 25,145 25,55" fill="#5E1119"/><polygon points="100,45 145,68 145,132 100,155 55,132 55,68" fill="#8A1D28"/></svg></div><h4>Burma Ruby | 6.42 Carats Rich Pinkish Red</h4><p class="f-price">$4000</p></div>
+        <div class="f-product-card"><div class="f-product-figure" style="background:linear-gradient(160deg,#EFE6D3,#DCC9A6);"><svg viewBox="0 0 200 200" width="140" height="140"><polygon points="100,10 175,55 175,145 100,190 25,145 25,55" fill="#A02C37"/><polygon points="100,45 145,68 145,132 100,155 55,132 55,68" fill="#D9636D"/></svg></div><h4>Burma Ruby | 6.42 Carats Rich Pinkish Red</h4><p class="f-price">$4000</p></div>
+        <div class="f-product-card"><div class="f-product-figure" style="background:linear-gradient(160deg,#EFE6D3,#DCC9A6);"><svg viewBox="0 0 200 200" width="140" height="140"><polygon points="100,10 175,55 175,145 100,190 25,145 25,55" fill="#8A1D28"/><polygon points="100,45 145,68 145,132 100,155 55,132 55,68" fill="#C24550"/></svg></div><h4>Burma Ruby | 6.42 Carats Rich Pinkish Red</h4><p class="f-price">$4000</p></div>
+      </div>
+      <button class="f-carousel-btn next" onclick="document.getElementById('fCarousel').scrollBy({left:330,behavior:'smooth'})" aria-label="Next gemstones">→</button>
+    </div>
+    <p style="text-align:center; font-size:0.8rem; color:var(--f-grey); margin-top:2rem;">Placeholder listings shown — connect live inventory per <code>AIRTABLE-SETUP-GUIDE.md</code> to replace with real stones.</p>
+  </div>
+</section>
+
+<!-- ============ TRADE ============ -->
+<section class="f-trade">
+  <div class="f-wrap" style="max-width:820px;">
+    <p class="f-eyebrow-bold">For Trade Partners</p>
+    <h2 style="font-family:var(--f-font-display); font-weight:600; font-size:clamp(1.7rem,3.4vw,32px); color:var(--f-espresso); margin-top:12px;">Trusted By Trade Partners Worldwide</h2>
+    <p class="body">From Hong Kong's international fairs to our own exhibitions in Jaipur — JJS and JAS — Rukmani Exports has built lasting relationships with manufacturers, designers, and retailers worldwide.</p>
+    <a href="trade.html" class="f-line-link">Learn More</a>
+  </div>
+</section>
+
+<!-- ============ REVIEWS (Claude-authored, matching system) ============ -->
+<section class="f-section" style="background:#fff;">
+  <div class="f-wrap">
+    <div class="f-section-head">
+      <p class="f-eyebrow-bold">In Their Words</p>
       <h2>What Collectors Say</h2>
     </div>
-    <div class="reviews-grid reveal" id="reviews-grid"></div>
+    <div class="f-reviews-grid" id="f-reviews-grid">
+      <div class="f-review-card"><div class="f-review-stars">★★★★★</div><p class="f-review-quote">"The certification and the story behind the stone made all the difference. Exactly as described, beautifully packaged."</p><p class="f-review-author">S. Whitfield · United Kingdom</p></div>
+      <div class="f-review-card"><div class="f-review-stars">★★★★★</div><p class="f-review-quote">"Three generations of trust, and you can feel it in how they communicate. My go-to source for natural sapphires."</p><p class="f-review-author">M. Tanaka · Japan</p></div>
+      <div class="f-review-card"><div class="f-review-stars">★★★★★</div><p class="f-review-quote">"A rare Basra Pearl I'd been searching years for. Transparent, honest, and genuinely knowledgeable."</p><p class="f-review-author">A. Al-Farsi · Dubai</p></div>
+    </div>
+    <p style="text-align:center; font-size:0.8rem; color:var(--f-grey); margin-top:2rem;">Placeholder reviews shown — connect your Reviews table per <code>AIRTABLE-SETUP-GUIDE.md</code> to replace with real ones.</p>
   </div>
 </section>
 
-<!-- ============ JOURNAL TEASER ============ -->
-<section class="section section-dark">
-  <div class="wrap reveal">
-    <p class="eyebrow" style="margin-bottom:0.9rem;">From the Journal</p>
-    <div class="split">
-      <div>
-        <h2 style="font-size:clamp(1.7rem,3vw,2.3rem);">Why the World's Rarest Pearls Are Almost Gone</h2>
-        <p style="color:#CDBDA0; max-width:52ch;">Natural Gulf pearls were once the most prized in the world. Today, the beds that produced them are largely depleted, making a genuine Basra Pearl one of the rarest things a collector can hold.</p>
-        <a href="journal.html" class="text-link" style="color:#F7F2E7; border-color:#B08A4C;">Read The Basra Pearl Story →</a>
+<!-- ============ JOURNAL (Claude-authored, matching system) ============ -->
+<section class="f-section" style="background:var(--f-ivory);">
+  <div class="f-wrap">
+    <div class="f-shop-head">
+      <div class="f-section-head">
+        <p class="f-eyebrow-bold">From the Journal</p>
+        <h2>Stories From Three Generations</h2>
       </div>
-      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="70" cy="90" r="34" fill="#EFE6D3" opacity="0.92"/>
-        <circle cx="120" cy="130" r="24" fill="#EFE6D3" opacity="0.75"/>
-        <circle cx="135" cy="70" r="16" fill="#EFE6D3" opacity="0.6"/>
-      </svg>
+      <a href="journal.html" class="f-line-link">Visit the Journal</a>
+    </div>
+    <div class="f-journal-grid">
+      <a href="journal.html" class="f-journal-card">
+        <div class="f-journal-img" style="background:linear-gradient(135deg,#EFE6D3,#D9C6A0);"></div>
+        <div class="f-journal-body"><p class="f-eyebrow-f" style="margin-bottom:0;">Rarity</p><h4>Why the World's Rarest Pearls Are Almost Gone</h4><p style="font-size:0.9rem; color:var(--f-grey);">The story of natural Basra Pearls, and why so few remain.</p></div>
+      </a>
+      <a href="heritage.html" class="f-journal-card">
+        <div class="f-journal-img" style="background:linear-gradient(135deg,#EFE6D3,#D9C6A0);"></div>
+        <div class="f-journal-body"><p class="f-eyebrow-f" style="margin-bottom:0;">Heritage</p><h4>Three Generations, One Trust</h4><p style="font-size:0.9rem; color:var(--f-grey);">How a family's eye for gemstones became Rukmani Exports.</p></div>
+      </a>
+      <a href="certification.html" class="f-journal-card">
+        <div class="f-journal-img" style="background:linear-gradient(135deg,#EFE6D3,#D9C6A0);"></div>
+        <div class="f-journal-body"><p class="f-eyebrow-f" style="margin-bottom:0;">Trust</p><h4>Beyond the Certificate</h4><p style="font-size:0.9rem; color:var(--f-grey);">What GIA and GRS certification really tells you.</p></div>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
+</main>
+
+<!-- ============ FOOTER (Claude-authored, matching system) ============ -->
+<footer class="f-footer">
+  <div class="f-wrap">
+    <div class="f-footer-grid">
       <div>
-        <h4>Rukmani Exports</h4>
-        <p style="max-width:32ch; font-size:0.88rem; color:#7A6C5D;">A third-generation Jaipur gemstone house, trading and crafting certified natural gemstones since 1971.</p>
+        <h5>Rukmani Exports</h5>
+        <p style="max-width:30ch; font-size:0.85rem; color:#a99a7f;">A third-generation Jaipur gemstone house, trading and crafting certified natural gemstones since 1971.</p>
       </div>
-      <div>
-        <h4>Shop</h4>
-        <a href="loose-gemstones.html">Loose Gemstones</a>
-        
-      </div>
-      <div>
-        <h4>The House</h4>
-        <a href="heritage.html">Our Heritage</a>
-        <a href="trade.html">Trade</a>
-        <a href="certification.html">Certification &amp; Transparency</a>
-        <a href="journal.html">Journal</a>
-      </div>
-      <div>
-        <h4>Connect</h4>
-        <a href="contact.html">Contact / Inquire</a>
-      </div>
-      <div>
-        <h4>Policies</h4>
-        <a href="returns.html">Returns &amp; Refunds</a>
-        <a href="shipping.html">Shipping &amp; Insurance</a>
-        <a href="privacy.html">Privacy Policy</a>
-      </div>
+      <div><h5>Shop</h5><a href="catalog.html">Loose Gemstones</a></div>
+      <div><h5>The House</h5><a href="heritage.html">Our Heritage</a><a href="trade.html">Trade</a><a href="certification.html">Certification</a><a href="journal.html">Journal</a></div>
+      <div><h5>Connect</h5><a href="contact.html">Contact / Inquire</a></div>
+      <div><h5>Policies</h5><a href="returns.html">Returns &amp; Refunds</a><a href="shipping.html">Shipping &amp; Insurance</a><a href="privacy.html">Privacy Policy</a></div>
     </div>
-    <hr class="hairline" style="border-color: rgba(255,255,255,0.1);">
-    <div class="footer-bottom">
+    <div class="f-footer-bottom">
       <span>© 2026 Rukmani Exports, Jaipur. GIA &amp; GRS Certified.</span>
       <span>Member, Jaipur Jewellers Association</span>
     </div>
@@ -233,13 +362,5 @@
 </footer>
 
 <script src="script.js"></script>
-<script src="inventory.js"></script>
-<script src="reviews.js"></script>
-<script src="inquire.js"></script>
-<script src="cart.js"></script>
-<script>
-  loadFeatured('#featured-grid', 3);
-  loadReviews('#reviews-grid', 6);
-</script>
 </body>
 </html>

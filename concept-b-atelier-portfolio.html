@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept B: Atelier Portfolio — Rukmani Exports</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap');
+:root{
+  --ivory:#F8F1E4; --taupe:#E4D2B4; --espresso:#2B2019; --soft:#5C4A3A; --brass:#A87B34; --brass-l:#D3A659;
+  --ruby:#8A1D28; --ruby-d:#5E1119; --ruby-l:#C24550;
+  --font-d:'Fraunces',serif; --font-b:'Work Sans',sans-serif;
+}
+*{box-sizing:border-box;}
+body{margin:0; background:var(--ivory); color:var(--soft); font-family:var(--font-b); line-height:1.7; overflow-x:hidden;}
+.wrap{max-width:1280px; margin:0 auto; padding:0 clamp(1.5rem,5vw,4rem); position:relative;}
+.concept-tag{position:fixed; bottom:1.2rem; right:1.2rem; background:var(--espresso); color:var(--ivory); font-size:0.72rem; padding:0.5rem 0.9rem; letter-spacing:0.06em; z-index:50; border-radius:2px;}
+
+header{padding:1.8rem 0;}
+header .wrap{display:flex; justify-content:space-between; align-items:center;}
+.mark{font-family:var(--font-d); font-size:1.15rem; color:var(--espresso); display:flex; align-items:center; gap:0.6rem;}
+nav{display:flex; gap:1.6rem; font-size:0.84rem;}
+.pill{border:1px solid var(--brass); color:var(--brass); border-radius:20px; padding:0.5rem 1.1rem; font-size:0.8rem; font-weight:600;}
+
+.hero{position:relative; padding:clamp(2rem,6vw,4rem) 0 clamp(4rem,8vw,6rem); overflow:hidden;}
+.hero-inner{position:relative; z-index:2; max-width:640px;}
+.eyebrow{font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--brass); font-weight:600; margin-bottom:1rem;}
+h1{font-family:var(--font-d); font-weight:500; font-size:clamp(2.4rem,5.5vw,4.4rem); line-height:1.05; color:var(--espresso); margin:0 0 1.3rem;}
+.hero p.lede{font-size:1.1rem; max-width:46ch; margin-bottom:2rem;}
+.btn{display:inline-flex; align-items:center; gap:0.5rem; background:var(--espresso); color:var(--ivory); padding:0.9rem 1.7rem; border-radius:30px; font-size:0.88rem; font-weight:600; text-decoration:none;}
+
+.floating-gems{position:absolute; top:-40px; right:-60px; width:560px; height:560px; z-index:1;}
+@media (max-width:900px){ .floating-gems{opacity:0.35; right:-140px;} }
+
+.rotated-strip{background:var(--espresso); padding:3.5rem 0; margin:2rem 0; transform:rotate(-1.2deg); position:relative;}
+.rotated-strip .wrap{transform:rotate(1.2deg);}
+.rotated-strip h2{font-family:var(--font-d); color:var(--ivory); font-size:clamp(1.6rem,3vw,2.3rem); max-width:600px; font-weight:500;}
+.rotated-strip p{color:var(--taupe); max-width:52ch;}
+
+.stack{display:flex; flex-direction:column; gap:0; }
+.stack-item{display:grid; grid-template-columns:120px 1fr; gap:2rem; align-items:center; padding:2.2rem 0; border-bottom:1px solid rgba(168,123,52,0.25);}
+.stack-item:first-child{border-top:1px solid rgba(168,123,52,0.25);}
+.stack-item .icon{width:100px; height:116px;}
+.stack-item h3{font-family:var(--font-d); font-size:1.5rem; color:var(--espresso); margin:0 0 0.4rem; font-weight:500;}
+.stack-item p{margin:0; font-size:0.95rem; max-width:48ch;}
+@media (max-width:640px){ .stack-item{grid-template-columns:70px 1fr;} .stack-item .icon{width:60px;height:70px;} }
+
+footer{padding:2.5rem 0; display:flex; gap:1.5rem; flex-wrap:wrap; justify-content:space-between; font-size:0.82rem; color:var(--brass); border-top:1px solid rgba(168,123,52,0.3); margin-top:2rem;}
+</style>
+</head>
+<body>
+<div class="concept-tag">CONCEPT B — Atelier Portfolio</div>
+
+<header>
+  <div class="wrap">
+    <div class="mark">
+      <svg width="30" height="35" viewBox="0 0 60 70"><polygon points="30,3 52,20 42,28 30,20 18,28 8,20" fill="#B23A44"/><polygon points="52,20 52,50 42,45 42,28" fill="#8A1D28"/><polygon points="52,50 30,67 30,53 42,45" fill="#5E1119"/><polygon points="30,67 8,50 18,45 30,53" fill="#8A1D28"/><polygon points="8,50 8,20 18,28 18,45" fill="#A02C37"/><polygon points="30,20 42,28 42,45 30,53 18,45 18,28" fill="#C24550"/></svg>
+      Rukmani Exports
+    </div>
+    <nav><span>Gemstones</span><span>Jewellery</span><span>Heritage</span><span>Journal</span></nav>
+    <span class="pill">Inquire →</span>
+  </div>
+</header>
+
+<section class="hero">
+  <svg class="floating-gems" viewBox="0 0 500 500">
+    <g transform="rotate(12 250 250)"><polygon points="250,60 380,150 380,320 250,410 120,320 120,150" fill="#8A1D28" opacity="0.9"/><polygon points="250,150 320,190 320,280 250,320 180,280 180,190" fill="#C24550"/></g>
+    <g transform="rotate(-18 380 150) translate(60,-40)"><polygon points="250,60 320,105 320,195 250,240 180,195 180,105" fill="#A87B34" opacity="0.55"/></g>
+  </svg>
+  <div class="wrap hero-inner">
+    <p class="eyebrow">The House of Rukmani, Est. 1971</p>
+    <h1>Where Trading Becomes Craft.</h1>
+    <p class="lede">Three generations of Jaipur gemstone expertise — now shaped, by hand, into fine jewellery, by our in-house karigars.</p>
+    <a href="#" class="btn">Explore the Atelier →</a>
+  </div>
+</section>
+
+<div class="rotated-strip">
+  <div class="wrap">
+    <h2>"Our third generation brought something new into a decades-old tradition."</h2>
+    <p>Hands-on craftsmanship, alongside an eye for gemstones passed down since 1971.</p>
+  </div>
+</div>
+
+<section class="wrap" style="padding: 2rem 0 4rem;">
+  <div class="stack">
+    <div class="stack-item">
+      <svg class="icon" viewBox="0 0 90 104"><polygon points="45,4 78,26 78,80 45,100 12,80 12,26" fill="#8A1D28"/><polygon points="45,26 63,38 63,68 45,86 27,68 27,38" fill="#C24550"/></svg>
+      <div><h3>Loose Gemstones</h3><p>Rubies, Basra Pearls, sapphires, emeralds, cat's eye, alexandrite — certified natural, ranked by specialization.</p></div>
+    </div>
+    <div class="stack-item">
+      <svg class="icon" viewBox="0 0 90 104"><circle cx="45" cy="30" r="18" fill="#EFE6D3" stroke="#A87B34" stroke-width="1.5"/><circle cx="45" cy="70" r="14" fill="#EFE6D3" stroke="#A87B34" stroke-width="1.5"/></svg>
+      <div><h3>Fine Jewellery</h3><p>Rings, necklaces, earrings, bridal — designed and set in-house, one piece at a time.</p></div>
+    </div>
+    <div class="stack-item">
+      <svg class="icon" viewBox="0 0 90 104"><rect x="15" y="10" width="60" height="84" fill="none" stroke="#A87B34" stroke-width="1.5"/><circle cx="45" cy="52" r="4" fill="#8A1D28"/></svg>
+      <div><h3>Beyond the Certificate</h3><p>GIA and GRS certification, paired with an expert eye earned over five decades.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>Est. 1971, Jaipur</span>
+  <span>GIA &amp; GRS Certified</span>
+  <span>Jaipur Jewellers Association</span>
+</footer>
+</body>
+</html>
