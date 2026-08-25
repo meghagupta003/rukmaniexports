@@ -9,10 +9,6 @@ const AIRTABLE_TOKEN     = 'YOUR_READ_ONLY_TOKEN_HERE'; // Personal Access Token
 
 const AIRTABLE_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE)}`;
 
-function formatPrice(n) {
-  return '$' + Number(n).toLocaleString('en-US');
-}
-
 function gemFacetSVG(colorMain, colorLight) {
   return `<svg viewBox="0 0 200 180" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" style="display:block; max-width:140px; max-height:140px;"><polygon points="100,10 170,55 170,125 100,170 30,125 30,55" fill="${colorMain}"/><polygon points="100,45 140,68 140,112 100,135 60,112 60,68" fill="${colorLight}"/></svg>`;
 }
@@ -34,16 +30,11 @@ function renderStoneCard(record) {
     ? `<div class="f-gem-figure" style="background-image:url('${firstImage.url}'); background-size:cover; background-position:center;"></div>`
     : `<div class="f-gem-figure">${gemFacetSVG('#8A1D28', '#C24550')}</div>`;
 
-  const priceLine = f['Price']
-    ? `<div class="f-price">${formatPrice(f['Price'])}</div>`
-    : '';
-
   return `
     <a href="product.html?id=${record.id}" class="f-gem-card" style="text-align:left; align-items:flex-start;">
       ${figure}
       <h4 style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; width:100%;">${f['Name'] || 'Untitled Stone'}</h4>
       <div class="f-meta">${[f['Origin'], f['Treatment'], f['Certification Lab'] ? f['Certification Lab'] + ' Certified' : ''].filter(Boolean).join(' · ')}</div>
-      ${priceLine}
       <span class="f-line-link">View &amp; Inquire →</span>
     </a>`;
 }
@@ -57,9 +48,7 @@ function renderFeaturedStoneCard(record) {
   const figure = firstImage
     ? `<div class="f-product-figure" style="background-image:url('${firstImage.url}'); background-size:cover; background-position:center;"></div>`
     : `<div class="f-product-figure" style="background:linear-gradient(160deg,#EFE6D3,#DCC9A6);">${gemFacetSVG('#8A1D28', '#C24550')}</div>`;
-  const price = f['Price'] ? `<p class="f-price">${formatPrice(f['Price'])}</p>` : `<p class="f-price">Inquire</p>`;
-
-  return `<a href="product.html?id=${record.id}" class="f-product-card" style="text-decoration:none;">${figure}<h4>${f['Name'] || 'Untitled Stone'}</h4>${price}</a>`;
+  return `<a href="product.html?id=${record.id}" class="f-product-card" style="text-decoration:none;">${figure}<h4>${f['Name'] || 'Untitled Stone'}</h4></a>`;
 }
 
 // Fetches and renders all Active stones for a given category into a container element.
@@ -212,8 +201,7 @@ function renderProductDetail(record, container) {
   const stoneName = (f['Name'] || '').replace(/'/g, "\\'");
 
   const actionHTML = `
-    ${f['Price'] ? `<div style="font-family:var(--f-font-display); font-size:2rem; font-weight:600; color:var(--f-espresso); margin:0.4rem 0 1.5rem;">${formatPrice(f['Price'])} <span style="font-size:1rem; font-weight:400; color:var(--f-grey);">USD (indicative)</span></div>` : ''}
-    <button class="f-btn" onclick="openInquireModal('${stoneName}')">Inquire About This Piece</button>
+    <button class="f-btn" onclick="openInquireModal('${stoneName}')">Inquire About the Price</button>
     <p style="font-size:0.9rem; color:var(--f-grey); max-width:44ch; margin-top:1rem;">We respond to every inquiry personally — usually within one business day.</p>
   `;
 

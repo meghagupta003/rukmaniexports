@@ -229,11 +229,7 @@ function applyCatalogState() {
     items = items.filter(r => Number(r.fields['Carat']) <= CATALOG_STATE.caratMax);
   }
 
-  if (CATALOG_STATE.sort === 'price-asc') {
-    items = [...items].sort((a, b) => (Number(a.fields['Price']) || 0) - (Number(b.fields['Price']) || 0));
-  } else if (CATALOG_STATE.sort === 'price-desc') {
-    items = [...items].sort((a, b) => (Number(b.fields['Price']) || 0) - (Number(a.fields['Price']) || 0));
-  } else if (CATALOG_STATE.sort === 'carat-desc') {
+  if (CATALOG_STATE.sort === 'carat-desc') {
     items = [...items].sort((a, b) => (Number(b.fields['Carat']) || 0) - (Number(a.fields['Carat']) || 0));
   }
   // 'recent' = leave in natural (Airtable) order
@@ -257,7 +253,6 @@ function renderCatalogCard(record) {
     <a href="product.html?id=${record.id}" class="cat-card">
       ${figure}
       <h4>${f['Name'] || 'Untitled Stone'}</h4>
-      ${f['Price'] ? `<p class="cat-card-price">${formatPrice(f['Price'])}</p>` : `<p class="cat-card-price cat-card-inquire">Inquire</p>`}
     </a>`;
 }
 

@@ -98,9 +98,7 @@ a{ text-decoration:none; }
 .cat-card:hover{ transform:translateY(-3px); }
 .cat-card-figure{ width:100%; aspect-ratio:1/1; border-radius:var(--f-card-radius); box-shadow:var(--f-shadow); overflow:hidden; margin-bottom:12px; transition:box-shadow .3s ease; }
 .cat-card:hover .cat-card-figure{ box-shadow:var(--f-shadow-hover); }
-.cat-card h4{ font-size:15px; font-weight:400; color:var(--f-espresso); margin:0 0 4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.cat-card-price{ font-size:15px; font-weight:600; color:var(--f-espresso); margin:0; }
-.cat-card-inquire{ color:var(--f-brass-deep); font-weight:500; }
+.cat-card h4{ font-size:15px; font-weight:400; color:var(--f-espresso); margin:0; line-height:1.45; min-height:2.9em; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden; }
 
 .cat-footer-row{ text-align:center; margin-top:48px; }
 #cat-viewed-count{ font-size:14px; color:var(--f-grey); margin-bottom:18px; }
@@ -189,8 +187,6 @@ a{ text-decoration:none; }
             Sort:
             <select id="cat-sort">
               <option value="recent">Most Recent</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
               <option value="carat-desc">Carat: High to Low</option>
             </select>
           </div>
