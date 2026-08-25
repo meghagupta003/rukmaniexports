@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Journal | Rukmani Exports</title>
+<meta name="description" content="Stories from three generations of trading, evaluating, and now crafting rare natural gemstones.">
+<link rel="icon" type="image/png" href="assets/re-favicon.png">
+<link rel="apple-touch-icon" href="assets/re-favicon.png">
+<link rel="canonical" href="https://meghagupta003.github.io/rukmaniexports/article.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Journal | Rukmani Exports">
+<meta property="og:description" content="Stories from three generations of trading, evaluating, and now crafting rare natural gemstones.">
+<meta property="og:url" content="https://meghagupta003.github.io/rukmaniexports/article.html">
+<meta property="og:image" content="https://meghagupta003.github.io/rukmaniexports/assets/hero-image.png">
+<meta property="og:site_name" content="Rukmani Exports">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Journal | Rukmani Exports">
+<meta name="twitter:description" content="Stories from three generations of trading, evaluating, and now crafting rare natural gemstones.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@500;600&display=swap">
+<link rel="stylesheet" href="theme.css"></head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="f-header">
+  <div class="f-wrap f-header-inner">
+    <a href="index.html" class="f-logo"><img src="assets/re-logo.png" alt="Rukmani Exports"></a>
+    <button class="f-nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.f-nav').classList.toggle('open')"><span></span><span></span><span></span></button>
+    <nav class="f-nav">
+      <a href="catalog.html">Loose Gemstones</a>
+      <a href="heritage.html">Our Heritage</a>
+      <a href="trade.html">Trade</a>
+      <a href="certification.html">Certification</a>
+      <a href="journal.html" class="current">Journal</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+
+<style>
+  .article-hero-img { width:100%; height:360px; background-size:cover; background-position:center; margin: 2rem 0; border-radius: var(--f-card-radius); box-shadow: var(--f-shadow); }
+  .article-body { max-width: 720px; }
+  .article-body p { font-size: 16px; line-height:1.75; color: var(--f-espresso); margin-bottom: 1.4rem; }
+  .article-body h3 { font-family: var(--f-font-display); font-size: 1.4rem; font-weight:600; margin: 2rem 0 0.8rem; color: var(--f-espresso); }
+  .article-body ul { padding-left: 1.3rem; margin-bottom: 1.4rem; }
+  .article-body li { margin-bottom: 0.5rem; font-size:16px; color: var(--f-espresso); }
+</style>
+<main id="main-content">
+  <div class="f-wrap" style="padding-top:48px; padding-bottom:80px;" id="article-container">
+    <p style="padding:3rem 0; color:var(--f-grey);">Loading…</p>
+  </div>
+</main>
+
+<footer class="f-footer">
+  <div class="f-wrap">
+    <div class="f-footer-grid">
+      <div>
+        <h5>Rukmani Exports</h5>
+        <p style="max-width:30ch; font-size:0.85rem; color:#a99a7f;">A third-generation Jaipur gemstone house, trading and crafting certified natural gemstones since 1971.</p>
+      </div>
+      <div><h5>Shop</h5><a href="catalog.html">Loose Gemstones</a></div>
+      <div><h5>The House</h5><a href="heritage.html">Our Heritage</a><a href="trade.html">Trade</a><a href="certification.html">Certification</a><a href="journal.html">Journal</a></div>
+      <div><h5>Connect</h5><a href="contact.html">Contact / Inquire</a></div>
+      <div><h5>Policies</h5><a href="returns.html">Returns &amp; Refunds</a><a href="shipping.html">Shipping &amp; Insurance</a><a href="privacy.html">Privacy Policy</a></div>
+    </div>
+    <div class="f-footer-bottom">
+      <span>© 2026 Rukmani Exports, Jaipur. GIA &amp; GRS Certified.</span>
+      <span>Member, Jaipur Jewellers Association</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="inventory.js"></script>
+<script src="journal.js"></script>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  if (id) {
+    loadArticle(id, '#article-container');
+  } else {
+    document.getElementById('article-container').innerHTML = '<p style="padding:3rem 0; color:var(--f-grey);">No story was specified. Please return to the <a href="journal.html">Journal</a>.</p>';
+  }
+</script>
+</body>
+</html>
