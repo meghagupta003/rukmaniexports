@@ -3,9 +3,9 @@
 // ============================================
 // Fill in these three values once you've created your Airtable base
 // (see the setup guide provided alongside this file).
-const AIRTABLE_BASE_ID   = 'app3xWJf4OEurwme5';       // e.g. 'appXXXXXXXXXXXXXX'
+const AIRTABLE_BASE_ID   = 'YOUR_BASE_ID_HERE';       // e.g. 'appXXXXXXXXXXXXXX'
 const AIRTABLE_TABLE     = 'Gemstones';
-const AIRTABLE_TOKEN     = 'patBonBRYBXmyLqok.69f4fba3df0f8433b5429d6d515b3a30f58d9a7f7d8cd95df62f0a887cb913a8'; // Personal Access Token — READ ONLY, scoped to this base only
+const AIRTABLE_TOKEN     = 'YOUR_READ_ONLY_TOKEN_HERE'; // Personal Access Token — READ ONLY, scoped to this base only
 
 const AIRTABLE_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE)}`;
 
@@ -48,6 +48,20 @@ function renderStoneCard(record) {
     </a>`;
 }
 
+// Homepage featured-products carousel. This intentionally uses the homepage's
+// compact card classes rather than the larger catalog grid card layout.
+function renderFeaturedStoneCard(record) {
+  const f = record.fields;
+  const media = f['Media'] || f['Image'] || [];
+  const firstImage = media.find(m => !isVideoFile(m));
+  const figure = firstImage
+    ? `<div class="f-product-figure" style="background-image:url('${firstImage.url}'); background-size:cover; background-position:center;"></div>`
+    : `<div class="f-product-figure" style="background:linear-gradient(160deg,#EFE6D3,#DCC9A6);">${gemFacetSVG('#8A1D28', '#C24550')}</div>`;
+  const price = f['Price'] ? `<p class="f-price">${formatPrice(f['Price'])}</p>` : `<p class="f-price">Inquire</p>`;
+
+  return `<a href="product.html?id=${record.id}" class="f-product-card" style="text-decoration:none;">${figure}<h4>${f['Name'] || 'Untitled Stone'}</h4>${price}</a>`;
+}
+
 // Fetches and renders all Active stones for a given category into a container element.
 // Homepage widget — shows a handful of Active stones across any category,
 // each card linking straight to its own product page.
@@ -72,7 +86,7 @@ async function loadFeatured(containerSelector, limit = 3) {
       container.innerHTML = `<p style="padding:2.5rem; color:var(--espresso-faint);">New stones are being added soon — <a href="catalog.html">browse our full specialization</a> in the meantime.</p>`;
       return;
     }
-    container.innerHTML = data.records.map(renderStoneCard).join('');
+    container.innerHTML = data.records.map(renderFeaturedStoneCard).join('');
   } catch (err) {
     console.error('Featured inventory load failed:', err);
     container.innerHTML = `<p style="padding:2.5rem; color:var(--espresso-faint);"><a href="catalog.html">Browse our gemstones →</a></p>`;
@@ -127,17 +141,17 @@ async function loadProduct(recordId, containerSelector) {
   }
 }
 
+function renderGalleryMainItem(item, i) {
+  const isVideo = isVideoFile(item);
+  return isVideo
+    ? `<video src="${item.url}" controls playsinline class="gallery-main-media" data-index="${i}"></video>`
+    : `<img src="${item.url}" alt="" class="gallery-main-media" data-index="${i}">`;
+}
+
 function renderMediaGallery(media) {
   if (!media || media.length === 0) {
     return `<div class="gallery-main-wrap" style="height:280px;">${gemFacetSVG('#8A1D28', '#C24550')}</div>`;
   }
-
-  const mainItemHTML = (item, i) => {
-    const isVideo = isVideoFile(item);
-    return isVideo
-      ? `<video src="${item.url}" controls playsinline id="mediaMain" data-index="${i}" style="width:100%; max-height:460px; background:#000;"></video>`
-      : `<img src="${item.url}" alt="" id="mediaMain" data-index="${i}" style="width:100%; max-height:460px; object-fit:contain;">`;
-  };
 
   const thumbsHTML = media.map((item, i) => {
     const isVideo = isVideoFile(item);
@@ -150,26 +164,35 @@ function renderMediaGallery(media) {
       </button>`;
   }).join('');
 
-  window.__galleryMedia = media; // stashed for switchGalleryMedia to read
+  window.__galleryMedia = media;
+  window.__galleryIndex = 0;
 
   return `
-    <div class="gallery-main-wrap">${mainItemHTML(media[0], 0)}</div>
+    <div class="gallery-main-wrap">
+      <div class="gallery-main-stage">${renderGalleryMainItem(media[0], 0)}</div>
+      ${media.length > 1 ? `<button type="button" class="gallery-control gallery-control-prev" onclick="stepGalleryMedia(-1)" aria-label="Previous media">←</button><button type="button" class="gallery-control gallery-control-next" onclick="stepGalleryMedia(1)" aria-label="Next media">→</button>` : ''}
+    </div>
     ${media.length > 1 ? `<div class="gallery-thumbs">${thumbsHTML}</div>` : ''}
   `;
 }
 
 function switchGalleryMedia(i) {
   const media = window.__galleryMedia || [];
-  const item = media[i];
-  if (!item) return;
-  const wrap = document.querySelector('.gallery-main-wrap');
-  const isVideo = isVideoFile(item);
-  wrap.innerHTML = isVideo
-    ? `<video src="${item.url}" controls playsinline autoplay style="width:100%; max-height:460px; background:#000;"></video>`
-    : `<img src="${item.url}" alt="" style="width:100%; max-height:460px; object-fit:contain;">`;
+  if (!media[i]) return;
+  window.__galleryIndex = i;
+  const stage = document.querySelector('.gallery-main-stage');
+  if (stage) stage.innerHTML = renderGalleryMainItem(media[i], i);
   document.querySelectorAll('.gallery-thumb').forEach((btn, idx) => {
     btn.classList.toggle('active', idx === i);
   });
+  document.querySelector(`.gallery-thumb[data-index="${i}"]`)?.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
+}
+
+function stepGalleryMedia(direction) {
+  const media = window.__galleryMedia || [];
+  if (media.length < 2) return;
+  const next = (window.__galleryIndex + direction + media.length) % media.length;
+  switchGalleryMedia(next);
 }
 
 function renderProductDetail(record, container) {

@@ -45,7 +45,7 @@ body{ font-family: var(--font-body); }
 .f-header-inner{ height:84px; display:flex; align-items:center; justify-content:space-between; }
 .f-logo{ text-decoration:none; }
 .f-logo img{ height:44px; width:auto; }
-.f-nav{ display:flex; gap:48px; }
+.f-nav{ display:flex; gap:40px; }
 .f-nav a{ font-size:16px; color:var(--f-espresso); position:relative; padding:8px 0; text-decoration:none; }
 .f-nav a::after{ content:''; position:absolute; left:0; right:100%; bottom:0; height:1px; background:var(--f-brass-deep); transition:right .25s ease; }
 .f-nav a:hover::after, .f-nav a.current::after{ right:0; }
@@ -280,14 +280,10 @@ body{ font-family: var(--font-body); }
     <div class="f-carousel-wrap">
       <button class="f-carousel-btn prev" onclick="document.getElementById('fCarousel').scrollBy({left:-330,behavior:'smooth'})" aria-label="Previous gemstones">←</button>
       <div class="f-carousel" id="fCarousel">
-        <div class="f-product-card"><div class="f-product-figure" style="background:linear-gradient(160deg,#EFE6D3,#DCC9A6);"><svg viewBox="0 0 200 200" width="140" height="140"><polygon points="100,10 175,55 175,145 100,190 25,145 25,55" fill="#8A1D28"/><polygon points="100,45 145,68 145,132 100,155 55,132 55,68" fill="#C24550"/></svg></div><h4>Burma Ruby | 6.42 Carats Rich Pinkish Red</h4><p class="f-price">$4000</p></div>
-        <div class="f-product-card"><div class="f-product-figure" style="background:linear-gradient(160deg,#EFE6D3,#DCC9A6);"><svg viewBox="0 0 200 200" width="140" height="140"><polygon points="100,10 175,55 175,145 100,190 25,145 25,55" fill="#5E1119"/><polygon points="100,45 145,68 145,132 100,155 55,132 55,68" fill="#8A1D28"/></svg></div><h4>Burma Ruby | 6.42 Carats Rich Pinkish Red</h4><p class="f-price">$4000</p></div>
-        <div class="f-product-card"><div class="f-product-figure" style="background:linear-gradient(160deg,#EFE6D3,#DCC9A6);"><svg viewBox="0 0 200 200" width="140" height="140"><polygon points="100,10 175,55 175,145 100,190 25,145 25,55" fill="#A02C37"/><polygon points="100,45 145,68 145,132 100,155 55,132 55,68" fill="#D9636D"/></svg></div><h4>Burma Ruby | 6.42 Carats Rich Pinkish Red</h4><p class="f-price">$4000</p></div>
-        <div class="f-product-card"><div class="f-product-figure" style="background:linear-gradient(160deg,#EFE6D3,#DCC9A6);"><svg viewBox="0 0 200 200" width="140" height="140"><polygon points="100,10 175,55 175,145 100,190 25,145 25,55" fill="#8A1D28"/><polygon points="100,45 145,68 145,132 100,155 55,132 55,68" fill="#C24550"/></svg></div><h4>Burma Ruby | 6.42 Carats Rich Pinkish Red</h4><p class="f-price">$4000</p></div>
+        <p style="padding:2.5rem; color:var(--f-grey);">Loading featured gemstones…</p>
       </div>
       <button class="f-carousel-btn next" onclick="document.getElementById('fCarousel').scrollBy({left:330,behavior:'smooth'})" aria-label="Next gemstones">→</button>
     </div>
-    <p style="text-align:center; font-size:0.8rem; color:var(--f-grey); margin-top:2rem;">Placeholder listings shown — connect live inventory per <code>AIRTABLE-SETUP-GUIDE.md</code> to replace with real stones.</p>
   </div>
 </section>
 
@@ -367,5 +363,7 @@ body{ font-family: var(--font-body); }
 </footer>
 
 <script src="script.js"></script>
+<script src="inventory.js"></script>
+<script>loadFeatured('#fCarousel', 8);</script>
 </body>
 </html>
