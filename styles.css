@@ -48,7 +48,7 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--ivory);
+  background: var(--white);
   color: var(--espresso-soft);
   font-family: var(--font-body);
   font-size: 1.05rem;
