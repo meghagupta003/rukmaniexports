@@ -53,7 +53,18 @@ async function initCatalog() {
     // Pick up an optional ?category= from the URL (e.g. linked from the homepage)
     const params = new URLSearchParams(window.location.search);
     const urlCategory = params.get('category');
-    if (urlCategory) CATALOG_STATE.category = urlCategory;
+    if (urlCategory) {
+      // Links use the customer-facing singular (for example, ?category=Ruby),
+      // while the inventory may store "Ruby" or "Rubies". Resolve it against
+      // the actual Airtable values before rendering the selected category.
+      const categories = [...new Set(records.map(r => r.fields['Category']).filter(Boolean))];
+      const normalized = urlCategory.trim().toLowerCase();
+      const singular = normalized.replace(/ies$/, 'y').replace(/s$/, '');
+      CATALOG_STATE.category = categories.find(category => {
+        const candidate = category.toLowerCase();
+        return candidate === normalized || candidate.replace(/ies$/, 'y').replace(/s$/, '') === singular;
+      }) || urlCategory;
+    }
 
     buildSidebar();
     buildFilterDrawerOptions();

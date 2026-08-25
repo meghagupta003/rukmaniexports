@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="icon" type="image/png" href="assets/re-favicon.png">
+<link rel="apple-touch-icon" href="assets/re-favicon.png">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@500;600&display=swap">
 <style>
@@ -32,8 +33,8 @@ a{ text-decoration:none; }
 .f-nav a:hover::after, .f-nav a.current::after{ right:0; }
 .f-nav-toggle{ display:none; background:none; border:none; }
 .f-nav-toggle span{ display:block; width:22px; height:1px; background:var(--f-espresso); margin:5px 0; }
-@media (max-width:900px){
-  .f-nav{ position:fixed; inset:84px 0 0 0; background:#FFFFFF; z-index:200; flex-direction:column; align-items:flex-start; padding:2rem 20px; gap:1.4rem; transform:translateX(100%); transition:transform .3s ease; }
+@media (max-width:1080px){
+  .f-nav{ position:fixed; inset:84px 0 0 0; background:#FFFFFF; z-index:200; flex-direction:column; align-items:flex-start; padding:2rem 20px; gap:1.4rem; transform:translateX(100%); transition:transform .3s ease; overflow-y:auto; }
   .f-nav.open{ transform:translateX(0); }
   .f-nav a{ font-size:1.1rem; }
   .f-nav-toggle{ display:block; }

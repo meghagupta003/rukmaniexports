@@ -20,6 +20,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@500;600&display=swap">
+<link rel="stylesheet" href="theme.css">
 <style>
   .bag-line { display:grid; grid-template-columns: 90px 1fr auto auto; gap:1.2rem; align-items:center; padding: 1.6rem 0; border-bottom:1px solid var(--taupe-line); }
   .bag-line:first-child { border-top: 1px solid var(--taupe-line); }
@@ -48,7 +50,7 @@
       <span></span><span></span><span></span>
     </button>
     <nav class="primary-nav">
-      <a href="loose-gemstones.html" class="emphasis">Loose Gemstones</a>
+      <a href="catalog.html" class="emphasis">Loose Gemstones</a>
       <a href="heritage.html">Our Heritage</a>
       <a href="trade.html">Trade</a>
       <a href="certification.html">Certification</a>
@@ -108,7 +110,7 @@
 
     if (cart.length === 0) {
       heading.textContent = 'Your Bag Is Empty';
-      container.innerHTML = `<p style="padding:1rem 0; color:var(--espresso-faint);">Nothing here yet. <a href="loose-gemstones.html" class="text-link">Browse gemstones →</a></p>`;
+      container.innerHTML = `<p style="padding:1rem 0; color:var(--espresso-faint);">Nothing here yet. <a href="catalog.html" class="text-link">Browse gemstones →</a></p>`;
       document.getElementById('summary-box').style.display = 'none';
       return;
     }
