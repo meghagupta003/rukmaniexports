@@ -141,6 +141,16 @@ nav.primary-nav a::after{ bottom:0; background:var(--f-brass-deep); }
 .gallery-thumb.active{ border-color:var(--f-brass-deep); }
 .thumb-play{ position:absolute; inset:0; display:grid; place-items:center; color:#fff; background:rgba(23,18,13,.35); font-size:16px; }
 
+/* ---------- product assurances ---------- */
+.product-assurances{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:clamp(48px,7vw,80px); padding:clamp(28px,4vw,44px); border-radius:var(--f-card-radius); background:#fff; box-shadow:var(--f-shadow); }
+.product-assurance{ display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 14px; color:var(--f-espresso); }
+.product-assurance + .product-assurance{ border-left:1px solid rgba(62,51,42,.12); }
+.product-assurance svg{ width:42px; height:42px; margin-bottom:14px; fill:none; stroke:var(--f-brass-deep); stroke-width:1.55; stroke-linecap:round; stroke-linejoin:round; }
+.product-assurance strong{ font-family:var(--f-font-display); font-size:19px; font-weight:600; margin-bottom:6px; }
+.product-assurance span{ max-width:22ch; font-size:12px; line-height:1.5; color:var(--f-grey); }
+@media (max-width:800px){ .product-assurances{ grid-template-columns:repeat(2,1fr); } .product-assurance:nth-child(3){ border-left:0; margin-top:24px; } .product-assurance:nth-child(3),.product-assurance:nth-child(4){ padding-top:24px; border-top:1px solid rgba(62,51,42,.12); } }
+@media (max-width:480px){ .product-assurances{ grid-template-columns:1fr; } .product-assurance + .product-assurance{ border-left:0; border-top:1px solid rgba(62,51,42,.12); margin-top:20px; padding-top:20px; } .product-assurance:nth-child(3){ margin-top:20px; } }
+
 /* ---------- spec table (product pages) ---------- */
 .f-spec-table{ width:100%; border-collapse:collapse; margin:20px 0 28px; }
 .f-spec-table tr{ border-bottom:1px solid rgba(62,51,42,0.1); }

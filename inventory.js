@@ -3,9 +3,9 @@
 // ============================================
 // Fill in these three values once you've created your Airtable base
 // (see the setup guide provided alongside this file).
-const AIRTABLE_BASE_ID   = 'app3xWJf4OEurwme5';       // e.g. 'appXXXXXXXXXXXXXX'
+const AIRTABLE_BASE_ID   = 'YOUR_BASE_ID_HERE';       // e.g. 'appXXXXXXXXXXXXXX'
 const AIRTABLE_TABLE     = 'Gemstones';
-const AIRTABLE_TOKEN     = 'patBonBRYBXmyLqok.69f4fba3df0f8433b5429d6d515b3a30f58d9a7f7d8cd95df62f0a887cb913a8'; // Personal Access Token — READ ONLY, scoped to this base only
+const AIRTABLE_TOKEN     = 'YOUR_READ_ONLY_TOKEN_HERE'; // Personal Access Token — READ ONLY, scoped to this base only
 
 const AIRTABLE_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE)}`;
 
@@ -205,6 +205,26 @@ function renderProductDetail(record, container) {
     <p style="font-size:0.9rem; color:var(--f-grey); max-width:44ch; margin-top:1rem;">We respond to every inquiry personally — usually within one business day.</p>
   `;
 
+  const assuranceHTML = `
+    <section class="product-assurances" aria-label="Rukmani Exports assurances">
+      <div class="product-assurance">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17"/><path d="M7 24h34M24 7c5 5 7 10 7 17s-2 12-7 17c-5-5-7-10-7-17s2-12 7-17Z"/></svg>
+        <strong>Worldwide</strong><span>Trusted by collectors across the globe.</span>
+      </div>
+      <div class="product-assurance">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M9 36h30M12 34V23h7v11M21 34V16h7v18M30 34V9h7v25"/><path d="m34 7 3 2-3 3"/></svg>
+        <strong>Since 1971</strong><span>Three generations of gemstone expertise.</span>
+      </div>
+      <div class="product-assurance">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M15 20c2-4 6-6 9-6s7 2 9 6l5 8-6 5-6-6-2 2-2-2-6 6-6-5 5-8Z"/><path d="m19 23 5 5m5-5-5 5"/></svg>
+        <strong>Personal Service</strong><span>Every inquiry is handled directly by our team.</span>
+      </div>
+      <div class="product-assurance">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 7 38 13v10c0 9-6 15-14 18-8-3-14-9-14-18V13l14-6Z"/><path d="m17 24 5 5 9-10"/></svg>
+        <strong>Certified Quality</strong><span>Documentation from recognized gem laboratories.</span>
+      </div>
+    </section>`;
+
   container.innerHTML = `
     <p class="f-breadcrumb"><a href="catalog.html">Loose Gemstones</a> / ${f['Category'] || ''} / ${f['Name'] || ''}</p>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:flex-start;" class="f-product-split">
@@ -217,6 +237,7 @@ function renderProductDetail(record, container) {
         <p style="font-size:0.86rem; color:var(--f-grey);">Backed by three generations of trading expertise, since 1971. Member, Jaipur Jewellers Association.</p>
       </div>
     </div>
+    ${assuranceHTML}
     <style>@media (max-width:760px){ .f-product-split{ grid-template-columns:1fr !important; } }</style>`;
 
   // Dynamic per-product SEO: real title/description instead of a generic one for every stone
