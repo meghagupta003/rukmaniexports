@@ -77,7 +77,7 @@ nav.primary-nav a::after{ bottom:0; background:var(--f-brass-deep); }
 .f-nav-toggle span{ display:block; width:22px; height:1px; background:var(--f-espresso); margin:5px 0; }
 @media (max-width:1080px){
   .f-nav{ position:fixed; inset:84px 0 0 0; background:#FFFFFF; z-index:200; flex-direction:column; align-items:flex-start; padding:2rem 20px; gap:1.4rem; transform:translateX(100%); transition:transform .3s ease; overflow-y:auto; height:fit-content; }
-  .f-nav.open{ transform:translateX(0); }
+  .f-nav.open{ transform:translateX(0); height:fit-content;}
   .f-nav a{ font-size:1.1rem; }
   .f-nav-toggle{ display:block; }
 }
