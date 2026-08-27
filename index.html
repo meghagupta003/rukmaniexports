@@ -77,7 +77,12 @@ body{ font-family: var(--font-body); }
 .f-trust-item{ font-size:14px; font-weight:400; letter-spacing:0.04em; color:var(--f-grey); text-align:center; }
 .f-trust-sep{ color:var(--f-gold); font-size:20px; font-family:var(--f-font-accent); padding:0 4px; }
 @media (max-width:760px){ 
-   .f-trust-sep {
+   .f-trust {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .f-trust-sep {
     display: none;
   }
 
@@ -85,23 +90,29 @@ body{ font-family: var(--font-body); }
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    align-items: center;
     gap: 40px;
+    width: max-content;
     white-space: nowrap;
-    overflow: hidden;
+
+    /* ONLY the whole row moves */
+    animation: trustMarquee 18s linear infinite;
   }
 
+  /* VERY IMPORTANT: children do not animate */
   .f-trust-inner > * {
     flex-shrink: 0;
-    animation: trustScroll 12s linear infinite;
+    animation: none !important;
+    transform: none !important;
   }
 
-  @keyframes trustScroll {
-    0% {
-      transform: translateX(100%);
+  @keyframes trustMarquee {
+    from {
+      transform: translateX(0);
     }
 
-    100% {
-      transform: translateX(-150%);
+    to {
+      transform: translateX(-50%);
     }
   }
  }
