@@ -76,7 +76,19 @@ body{ font-family: var(--font-body); }
 .f-trust-inner{ display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap; }
 .f-trust-item{ font-size:14px; font-weight:400; letter-spacing:0.04em; color:var(--f-grey); text-align:center; }
 .f-trust-sep{ color:var(--f-gold); font-size:20px; font-family:var(--f-font-accent); padding:0 4px; }
-@media (max-width:760px){ .f-trust-sep{ display:none; } .f-trust-inner{ flex-direction:column; gap:14px; } }
+@media (max-width:760px){ 
+   .f-trust-sep{ display:none; } 
+   .f-trust-inner{display:flex; flex-direction:row; gap:14px; overflow:hidden;} 
+   .f-trust-inner > *{flex-shrink:0; animation: trustRotate 8s linear infinite;}
+  @keyframes trustRotate{
+    from{
+      transform:translateX(100%);
+    }
+    to{
+      transform:translateX(-100%);
+    }
+  }
+ }
 
 /* ---------- section heads ---------- */
 .f-section{ padding: clamp(56px, 9vw, 96px) 0; }
