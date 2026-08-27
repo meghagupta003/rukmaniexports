@@ -209,6 +209,7 @@ nav.primary-nav a.current::after { right: 0; }
     gap: 1.4rem;
     transform: translateX(100%);
     transition: transform 0.3s ease;
+     height: fit-content;
   }
   nav.primary-nav.open { transform: translateX(0); }
   nav.primary-nav a { font-size: 1.1rem; }
