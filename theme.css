@@ -128,7 +128,7 @@ nav.primary-nav a::after{ bottom:0; background:var(--f-brass-deep); }
 .f-gem-card .f-tag{ font-size:11px; letter-spacing:0.08em; text-transform:uppercase; font-weight:600; padding:4px 10px; border-radius:99px; background:var(--f-ivory); color:var(--f-brass-deep); }
 
 /* ---------- product media carousel ---------- */
-.gallery-main-wrap{ position:relative; overflow:hidden; border-radius:14px; background:linear-gradient(135deg,#F3E4D0,#E6D2B4); }
+.gallery-main-wrap{ position:relative; overflow:hidden; border-radius:14px; background:#fff; }
 .gallery-main-stage{ width:100%; aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; }
 .gallery-main-media{ width:100%; height:100%; object-fit:contain; display:block; }
 .gallery-main-stage video.gallery-main-media{ background:#17120D; }
