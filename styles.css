@@ -216,6 +216,12 @@ nav.primary-nav a.current::after { right: 0; }
   .nav-toggle { display: block; }
 }
 
+@media (max-width: 1080px) {
+    .f-nav {
+height: fit-content;
+    }
+}
+
 /* ============ BUTTONS / CTA ============ */
 
 .btn {
