@@ -192,9 +192,10 @@ function renderProductDetail(record, container) {
     ['Origin', f['Origin']],
     ['Weight', f['Carat'] ? f['Carat'] + ' carats' : ''],
     ['Cut', f['Cut']],
+    ['Measurements', f['Measurements']],
+    ['Color', f['Color']],
     ['Treatment', f['Treatment']],
     ['Certification', [f['Certification Lab'], f['Certificate Number'] ? '— Certificate #' + f['Certificate Number'] : ''].filter(Boolean).join(' ')],
-    ['Color', f['Color']],
   ].filter(row => row[1]);
 
   const specHTML = specRows.map(([label, val]) => `<tr><td>${label}</td><td>${val}</td></tr>`).join('');
