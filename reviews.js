@@ -5,7 +5,7 @@
 // of inventory. See GOOGLE-SHEETS... no — see AIRTABLE-SETUP-GUIDE.md,
 // "Reviews Table" section, for exact column setup.
 const REVIEWS_TABLE = 'Reviews';
-const REVIEWS_URL = `https://api.airtable.com/v0/${app3xWJf4OEurwme5}/${encodeURIComponent(REVIEWS_TABLE)}`;
+const REVIEWS_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(REVIEWS_TABLE)}`;
 
 function starRow(rating) {
   const r = Math.max(0, Math.min(5, Number(rating) || 5));
