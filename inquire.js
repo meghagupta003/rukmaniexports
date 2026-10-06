@@ -6,7 +6,7 @@
 const SHEETS_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycby2NLig0cDlw5ETbczb_MwRRFhUm82uA7aiNZ6ErBeEYcYWPD8IHKroyWaSQ4wZRbjp/exec';
 
 // Your WhatsApp Business number, digits only, with country code, no + or spaces.
-const WHATSAPP_NUMBER = '918947846084';
+const WHATSAPP_NUMBER = '917297846084';
 
 function injectInquireModal() {
   if (document.getElementById('inquireModal')) return;
