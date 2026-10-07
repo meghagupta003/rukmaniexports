@@ -345,11 +345,11 @@ body{ font-family: var(--font-body); }
       <h2>What Collectors Say</h2>
     </div>
     <div class="f-reviews-grid" id="f-reviews-grid">
-      <div class="f-review-card"><div class="f-review-stars">★★★★★</div><p class="f-review-quote">"The certification and the story behind the stone made all the difference. Exactly as described, beautifully packaged."</p><p class="f-review-author">S. Whitfield · United Kingdom</p></div>
-      <div class="f-review-card"><div class="f-review-stars">★★★★★</div><p class="f-review-quote">"Three generations of trust, and you can feel it in how they communicate. My go-to source for natural sapphires."</p><p class="f-review-author">M. Tanaka · Japan</p></div>
-      <div class="f-review-card"><div class="f-review-stars">★★★★★</div><p class="f-review-quote">"A rare Basra Pearl I'd been searching years for. Transparent, honest, and genuinely knowledgeable."</p><p class="f-review-author">A. Al-Farsi · Dubai</p></div>
+      <p style="padding:2.5rem; color:var(--f-grey);">
+        Loading reviews…
+      </p>
     </div>
-    <p style="text-align:center; font-size:0.8rem; color:var(--f-grey); margin-top:2rem;">Placeholder reviews shown — connect your Reviews table per <code>AIRTABLE-SETUP-GUIDE.md</code> to replace with real ones.</p>
+    <!-- <p style="text-align:center; font-size:0.8rem; color:var(--f-grey); margin-top:2rem;">Placeholder reviews shown — connect your Reviews table per <code>AIRTABLE-SETUP-GUIDE.md</code> to replace with real ones.</p> -->
   </div>
 </section>
 
@@ -363,19 +363,10 @@ body{ font-family: var(--font-body); }
       </div>
       <a href="journal.html" class="f-line-link">Visit the Journal</a>
     </div>
-    <div class="f-journal-grid">
-      <a href="journal.html" class="f-journal-card">
-        <div class="f-journal-img" style="background:linear-gradient(135deg,#EFE6D3,#D9C6A0);"></div>
-        <div class="f-journal-body"><p class="f-eyebrow-f" style="margin-bottom:0;">Rarity</p><h4>Why the World's Rarest Pearls Are Almost Gone</h4><p style="font-size:0.9rem; color:var(--f-grey);">The story of natural Basra Pearls, and why so few remain.</p></div>
-      </a>
-      <a href="heritage.html" class="f-journal-card">
-        <div class="f-journal-img" style="background:linear-gradient(135deg,#EFE6D3,#D9C6A0);"></div>
-        <div class="f-journal-body"><p class="f-eyebrow-f" style="margin-bottom:0;">Heritage</p><h4>Three Generations, One Trust</h4><p style="font-size:0.9rem; color:var(--f-grey);">How a family's eye for gemstones became Rukmani Exports.</p></div>
-      </a>
-      <a href="certification.html" class="f-journal-card">
-        <div class="f-journal-img" style="background:linear-gradient(135deg,#EFE6D3,#D9C6A0);"></div>
-        <div class="f-journal-body"><p class="f-eyebrow-f" style="margin-bottom:0;">Trust</p><h4>Beyond the Certificate</h4><p style="font-size:0.9rem; color:var(--f-grey);">What GIA and GRS certification really tells you.</p></div>
-      </a>
+    <div class="f-journal-grid" id="f-journal-grid">
+      <p style="padding:2.5rem; color:var(--f-grey);">
+        Loading journal…
+      </p>
     </div>
   </div>
 </section>
@@ -404,6 +395,13 @@ body{ font-family: var(--font-body); }
 
 <script src="script.js"></script>
 <script src="inventory.js"></script>
-<script>loadFeatured('#fCarousel', 8);</script>
+<script src="reviews.js"></script>
+<script src="journal.js"></script>
+<script>
+   loadFeatured('#fCarousel', 8);
+   loadReviews('#f-reviews-grid', 3);
+   loadJournalList('#f-journal-grid', 3);
+</script>
+
 </body>
 </html>
