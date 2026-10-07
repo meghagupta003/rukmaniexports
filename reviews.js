@@ -16,11 +16,11 @@ function renderReviewCard(record) {
   const f = record.fields;
   const hasPhoto = f['Photo'] && f['Photo'].length > 0;
   return `
-    <div class="review-card">
-      ${hasPhoto ? `<div class="review-photo" style="background-image:url('${f['Photo'][0].url}')"></div>` : ''}
-      <div class="review-stars" aria-label="${f['Rating'] || 5} out of 5 stars">${starRow(f['Rating'])}</div>
-      <p class="review-quote">"${(f['Quote'] || '').trim()}"</p>
-      <p class="review-author">${f['Name'] || 'Verified Customer'}${f['Location'] ? ' · ' + f['Location'] : ''}</p>
+    <div class="f-review-card">
+      ${hasPhoto ? `<div class="f-review-photo" style="background-image:url('${f['Photo'][0].url}')"></div>` : ''}
+      <div class="f-review-stars" aria-label="${f['Rating'] || 5} out of 5 stars">${starRow(f['Rating'])}</div>
+      <p class="f-review-quote">"${(f['Quote'] || '').trim()}"</p>
+      <p class="f-review-author">${f['Name'] || 'Verified Customer'}${f['Location'] ? ' · ' + f['Location'] : ''}</p>
     </div>`;
 }
 
