@@ -25,6 +25,22 @@ function gemFallbackFigure() {
 }
 
 // ---------- Initial fetch ----------
+// Helper function to update the URL query parameter smoothly without page reload
+function updateCategoryUrl(categoryName) {
+  const url = new URL(window.location.href);
+  
+  if (categoryName && categoryName !== 'All') {
+    // Converts plural inventory categories back to singular (e.g., "Rubies" -> "Ruby")
+    const singularCategory = categoryName.replace(/ies$/, 'y').replace(/s$/, '');
+    url.searchParams.set('category', singularCategory);
+  } else {
+    // Clean up the URL by removing the parameter if "All" is active
+    url.searchParams.delete('category');
+  }
+  
+  window.history.pushState({}, '', url.toString());
+}
+
 async function initCatalog() {
   const grid = document.getElementById('cat-grid');
 
@@ -100,6 +116,18 @@ function buildSidebar() {
   document.querySelectorAll('#cat-sidebar-list .cat-sidebar-item, #cat-sidebar-list-mobile .cat-sidebar-item').forEach(btn => {
     btn.addEventListener('click', () => {
       CATALOG_STATE.category = btn.dataset.cat;
+       
+      // === ADD THESE LINES HERE ===
+      const url = new URL(window.location.href);
+      if (btn.dataset.cat && btn.dataset.cat !== 'All') {
+        const singularCategory = btn.dataset.cat.replace(/ies$/, 'y').replace(/s$/, '');
+        url.searchParams.set('category', singularCategory);
+      } else {
+        url.searchParams.delete('category');
+      }
+      window.history.pushState({}, '', url.toString());
+      // ============================
+      
       // Keep the active state in sync across both lists, not just the one clicked
       document.querySelectorAll('#cat-sidebar-list .cat-sidebar-item, #cat-sidebar-list-mobile .cat-sidebar-item').forEach(b => {
         b.classList.toggle('active', b.dataset.cat === btn.dataset.cat);
@@ -277,4 +305,35 @@ function renderNextPage() {
 document.addEventListener('DOMContentLoaded', () => {
   wireToolbar();
   initCatalog();
+});
+
+// Re-read URL settings if the user clicks back/forward in their browser history
+window.addEventListener('popstate', () => {
+  const params = new URLSearchParams(window.location.search);
+  const urlCategory = params.get('category');
+  
+  if (urlCategory && CATALOG_ALL.length) {
+    const categories = [...new Set(CATALOG_ALL.map(r => r.fields['Category']).filter(Boolean))];
+    const normalized = urlCategory.trim().toLowerCase();
+    const singular = normalized.replace(/ies$/, 'y').replace(/s$/, '');
+    
+    CATALOG_STATE.category = categories.find(category => {
+      const candidate = category.toLowerCase();
+      return candidate === normalized || candidate.replace(/ies$/, 'y').replace(/s$/, '') === singular;
+    }) || urlCategory;
+  } else {
+    CATALOG_STATE.category = 'All';
+  }
+
+  // Sync active visual tab highlights
+  document.querySelectorAll('#cat-sidebar-list .cat-sidebar-item, #cat-sidebar-list-mobile .cat-sidebar-item').forEach(b => {
+    b.classList.toggle('active', b.dataset.cat === CATALOG_STATE.category);
+  });
+  
+  const currentTitleEl = document.getElementById('cat-current-title');
+  if (currentTitleEl) {
+    currentTitleEl.textContent = CATALOG_STATE.category === 'All' ? 'All Gemstones' : CATALOG_STATE.category;
+  }
+  
+  applyCatalogState();
 });
