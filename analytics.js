@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  var GA_ID = 'G-XXXXXXXXXX';
+  var GA_ID = 'G-QRPTLTKVLD';
   var STORE_KEY = 'rukmani_consent_v1';
 
   // ---------- Consent Mode: everything denied until the visitor chooses ----------
