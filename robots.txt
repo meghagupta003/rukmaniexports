@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://meghagupta003.github.io/rukmaniexports/sitemap.xml
+Sitemap: https://www.rukmaniexport.com/sitemap.xml
