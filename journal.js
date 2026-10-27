@@ -30,6 +30,7 @@ function simpleMarkdown(text) {
   html = html
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>');
+    .replace(/&lt;u&gt;(.*?)&lt;\/u&gt;/gi, '<u>$1</u>')
 
   const blocks = html.split(/\n\s*\n/);
 
