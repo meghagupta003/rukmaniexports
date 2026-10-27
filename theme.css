@@ -188,7 +188,7 @@ nav.primary-nav a::after{ bottom:0; background:var(--f-brass-deep); }
 @media (max-width:600px){ .f-journal-grid{ grid-template-columns:1fr; } }
 .f-journal-card{ border-radius:var(--f-card-radius); overflow:hidden; box-shadow:var(--f-shadow); background:#fff; display:flex; flex-direction:column; transition: transform .3s ease, box-shadow .3s ease; }
 .f-journal-card:hover{ transform:translateY(-4px); box-shadow:var(--f-shadow-hover); }
-.f-journal-img{ height:170px; background-size:cover; background-position:center; background:linear-gradient(135deg,#EFE6D3,#D9C6A0); }
+.f-journal-img{ height:170px; background-size:cover; background-position:center;}
 .f-journal-body{ padding:22px; }
 .f-journal-body h4{ font-family:var(--f-font-display); font-size:19px; font-weight:600; color:var(--f-espresso); margin:8px 0 8px; }
 
