@@ -560,3 +560,15 @@ height: fit-content;
   font-family: var(--font-body); font-size:0.92rem; color:var(--espresso);
 }
 .inquire-box input:focus, .inquire-box select:focus, .inquire-box textarea:focus { outline:1px solid var(--brass); border-color:var(--brass); }
+
+
+@media (max-width: 900px) {
+  nav.primary-nav {
+    top: 84px;
+    bottom: auto;
+    height: auto;
+    max-height: calc(100vh - 84px);
+    max-height: calc(100dvh - 84px);
+    overflow-y: auto;
+  }
+}
