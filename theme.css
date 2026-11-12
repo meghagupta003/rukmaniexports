@@ -82,7 +82,65 @@ nav.primary-nav a::after{ bottom:0; background:var(--f-brass-deep); }
   .f-nav-toggle{ display:block; }
 }*/
 
+
+/* ---------- Responsive navigation ---------- */
+
 @media (max-width: 1080px) {
+
+  .f-header-inner {
+    position: relative;
+  }
+
+  .f-nav {
+    position: fixed;
+    top: 84px;
+    left: 0;
+    right: 0;
+    bottom: auto;
+
+    width: 100%;
+    height: auto;
+    max-height: calc(100vh - 84px);
+    max-height: calc(100dvh - 84px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.4rem;
+
+    padding: 2rem 20px;
+    background: #FFFFFF;
+    z-index: 200;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    transform: translateX(100%);
+    visibility: hidden;
+
+    transition:
+      transform 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  .f-nav.open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .f-nav a {
+    font-size: 1.1rem;
+  }
+
+  .f-nav-toggle {
+    display: block;
+    position: relative;
+    z-index: 201;
+  }
+}
+
+
+/*@media (max-width: 1080px) {
   .f-header-inner {
     position: relative;
   }
@@ -125,7 +183,7 @@ nav.primary-nav a::after{ bottom:0; background:var(--f-brass-deep); }
     position: relative;
     z-index: 201;
   }
-}
+} */
 
 
 /* ---------- generic page intro (title + eyebrow + lede) ---------- */
