@@ -240,7 +240,7 @@ function renderProductDetail(record, container) {
       </div>
     </div>
     ${assuranceHTML}
-    <style>@media (max-width:760px){ .f-product-split{ grid-template-columns:1fr !important; } }</style>`;
+    //<style>@media (max-width:760px){ .f-product-split{ grid-template-columns:1fr !important; } }</style>`;
 
   // Dynamic per-product SEO: real title/description instead of a generic one for every stone
   const pageTitle = `${f['Name'] || 'Gemstone'} | Rukmani Exports`;
