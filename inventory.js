@@ -238,7 +238,8 @@ function renderProductDetail(record, container) {
         <p style="font-size:0.86rem; color:var(--f-grey);">Backed by three generations of trading expertise, since 1971. Member, Jaipur Jewellers Association.</p>
       </div>
     </div>
-    ${assuranceHTML};
+    ${assuranceHTML}
+    `;
 
   // Dynamic per-product SEO: real title/description instead of a generic one for every stone
   const pageTitle = `${f['Name'] || 'Gemstone'} | Rukmani Exports`;
