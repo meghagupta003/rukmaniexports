@@ -229,7 +229,6 @@ function renderProductDetail(record, container) {
   container.innerHTML = `
     <p class="f-breadcrumb"><a href="catalog.html">Loose Gemstones</a> / ${f['Category'] || ''} / ${f['Name'] || ''}</p>
     <div class="f-product-split">
-    //<div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:flex-start;" class="f-product-split">
       <div class="f-card" style="display:flex; flex-direction:column; padding:1.5rem;">${galleryHTML}</div>
       <div>
         <h1 style="font-family:var(--f-font-display); font-weight:600; font-size:clamp(1.7rem,3vw,2.3rem); color:var(--f-espresso); margin-bottom:0.6rem;">${f['Name'] || ''}</h1>
@@ -240,7 +239,6 @@ function renderProductDetail(record, container) {
       </div>
     </div>
     ${assuranceHTML}
-    //<style>@media (max-width:760px){ .f-product-split{ grid-template-columns:1fr !important; } }</style>`;
 
   // Dynamic per-product SEO: real title/description instead of a generic one for every stone
   const pageTitle = `${f['Name'] || 'Gemstone'} | Rukmani Exports`;
