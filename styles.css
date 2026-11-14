@@ -572,3 +572,148 @@ height: fit-content;
     overflow-y: auto;
   }
 }
+
+
+/* ==========================================
+   JOURNAL ARTICLE CONTENT FORMATTING
+========================================== */
+
+.article-body {
+  width: 100%;
+  max-width: 100%;
+  color: var(--f-espresso);
+  font-size: 1rem;
+  line-height: 1.85;
+  overflow-wrap: break-word;
+}
+
+/* Paragraphs */
+.article-body p {
+  margin: 0 0 1.4rem;
+}
+
+/* Headings */
+.article-body h2 {
+  font-family: var(--f-font-display);
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  line-height: 1.3;
+  margin: 2.5rem 0 1rem;
+  color: var(--f-espresso);
+}
+
+.article-body h3 {
+  font-family: var(--f-font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+  line-height: 1.4;
+  margin: 2rem 0 0.8rem;
+  color: var(--f-espresso);
+}
+
+.article-body h4,
+.article-body h5 {
+  margin: 1.5rem 0 0.7rem;
+  color: var(--f-espresso);
+}
+
+/* Bold and italic */
+.article-body strong {
+  font-weight: 700;
+}
+
+.article-body em {
+  font-style: italic;
+}
+
+/* Bullet and numbered lists */
+.article-body ul,
+.article-body ol {
+  padding-left: 2rem;
+  margin: 0 0 1.5rem;
+}
+
+.article-body ul {
+  list-style-type: disc !important;
+}
+
+.article-body ol {
+  list-style-type: decimal !important;
+}
+
+.article-body li {
+  display: list-item !important;
+  padding-left: 0.35rem;
+  margin-bottom: 0.55rem;
+}
+
+.article-body li::marker {
+  color: #171717;
+}
+
+/* Links */
+.article-body a {
+  color: var(--f-gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Tables */
+.article-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 1.8rem 0 2rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.article-table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.article-table th,
+.article-table td {
+  padding: 0.85rem 1rem;
+  border: 1px solid #e5ded4;
+  vertical-align: top;
+}
+
+.article-table th {
+  background: #f3eee5;
+  font-weight: 700;
+  color: var(--f-espresso);
+}
+
+.article-table td {
+  background: #fff;
+}
+
+.article-body hr {
+  border: 0;
+  border-top: 1px solid #e5ded4;
+  margin: 2rem 0;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .article-body {
+    font-size: 0.95rem;
+  }
+
+  .article-body ul,
+  .article-body ol {
+    padding-left: 1.6rem;
+  }
+
+  .article-table {
+    font-size: 0.85rem;
+  }
+
+  .article-table th,
+  .article-table td {
+    padding: 0.65rem;
+  }
+}
+
