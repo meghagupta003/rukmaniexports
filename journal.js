@@ -10,7 +10,141 @@ const JOURNAL_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURI
 // Airtable's rich-text long-text field actually produces: **bold**, *italic*,
 // "- " bullet lists, and paragraphs separated by a blank line.
 
+
 function simpleMarkdown(text) {
+  if (!text) return '';
+
+  // Escape HTML to prevent unintended HTML injection
+  let html = String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+
+  // Inline Markdown formatting
+  function formatInline(value) {
+    return value
+      // Markdown links
+      .replace(
+        /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+        '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
+      )
+      // Inline code
+      .replace(/`([^`]+)`/g, '<code>$1</code>')
+      // Bold
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/__(.+?)__/g, '<strong>$1</strong>')
+      // Italic
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/_(.+?)_/g, '<em>$1</em>');
+  }
+
+  // Split content into blocks separated by blank lines
+  const blocks = html.trim().split(/\n\s*\n/);
+
+  return blocks.map(block => {
+    const lines = block.trim().split('\n')
+      .filter(line => line.trim() !== '');
+
+    if (!lines.length) return '';
+
+    // 1. Markdown headings: H1 to H6
+    if (lines.length === 1) {
+      const heading = lines[0].match(/^(#{1,6})\s+(.+)$/);
+
+      if (heading) {
+        const level = heading[1].length;
+        return `<h${level}>${formatInline(heading[2])}</h${level}>`;
+      }
+    }
+
+    // 2. Markdown tables
+    const isTable =
+      lines.length >= 2 &&
+      lines[0].includes('|') &&
+      /^\s*\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?\s*$/.test(lines[1]);
+
+    if (isTable) {
+      function getCells(line) {
+        return line.trim()
+          .replace(/^\|/, '')
+          .replace(/\|$/, '')
+          .split('|')
+          .map(cell => cell.trim());
+      }
+
+      const headers = getCells(lines[0]);
+      const rows = lines.slice(2);
+
+      const thead = `
+        <thead>
+          <tr>
+            ${headers.map(cell =>
+              `<th scope="col">${formatInline(cell)}</th>`
+            ).join('')}
+          </tr>
+        </thead>
+      `;
+
+      const tbody = `
+        <tbody>
+          ${rows.map(row => `
+            <tr>
+              ${getCells(row).map(cell =>
+                `<td>${formatInline(cell)}</td>`
+              ).join('')}
+            </tr>
+          `).join('')}
+        </tbody>
+      `;
+
+      return `
+        <div class="article-table-wrap">
+          <table class="article-content-table">
+            ${thead}
+            ${tbody}
+          </table>
+        </div>
+      `;
+    }
+
+    // 3. Bullet lists
+    const isBulletList = lines.every(line =>
+      /^\s*[-*•]\s+/.test(line)
+    );
+
+    if (isBulletList) {
+      return `
+        <ul>
+          ${lines.map(line =>
+            `<li>${formatInline(line.replace(/^\s*[-*•]\s+/, ''))}</li>`
+          ).join('')}
+        </ul>
+      `;
+    }
+
+    // 4. Numbered lists
+    const isNumberedList = lines.every(line =>
+      /^\s*\d+[.)]\s+/.test(line)
+    );
+
+    if (isNumberedList) {
+      return `
+        <ol>
+          ${lines.map(line =>
+            `<li>${formatInline(line.replace(/^\s*\d+[.)]\s+/, ''))}</li>`
+          ).join('')}
+        </ol>
+      `;
+    }
+
+    // 5. Normal paragraphs
+    return `<p>${lines.map(line => formatInline(line)).join('<br>')}</p>`;
+
+  }).filter(Boolean).join('\n');
+}
+
+
+/* function simpleMarkdown(text) {
   if (!text) return '';
 
   let html = text
@@ -62,7 +196,7 @@ function simpleMarkdown(text) {
 
     return `<p>${lines.join('<br>')}</p>`;
   }).join('\n');
-}
+} */
 
 //function simpleMarkdown(text) {
 //  if (!text) return '';
