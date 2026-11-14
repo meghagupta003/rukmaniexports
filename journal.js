@@ -143,61 +143,6 @@ function simpleMarkdown(text) {
   }).filter(Boolean).join('\n');
 }
 
-
-/* function simpleMarkdown(text) {
-  if (!text) return '';
-
-  let html = text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
-
-  // Convert Markdown links: [Title](https://example.com)
-  html = html.replace(
-    /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
-    (match, label, url) => {
-      return `<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`;
-    }
-  );
-
-  // Convert bold and italic
-  html = html
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    .replace(/&lt;u&gt;(.*?)&lt;\/u&gt;/gi, '<u>$1</u>');
-
-  const blocks = html.split(/\n\s*\n/);
-
-  return blocks.map(block => {
-    const lines = block.trim().split('\n');
-
-    // Numbered lists
-    if (lines.every(line => /^\s*\d+\.\s/.test(line))) {
-      return '<ol>' +
-        lines.map(line =>
-          `<li>${line.replace(/^\s*\d+\.\s*/, '')}</li>`
-        ).join('') +
-        '</ol>';
-    }
-
-    // Bullet lists
-    if (lines.every(line => line.trim().startsWith('- '))) {
-      return '<ul>' +
-        lines.map(line =>
-          `<li>${line.replace(/^\s*-\s*/, '')}</li>`
-        ).join('') +
-        '</ul>';
-    }
-
-    // Headings
-    if (block.trim().startsWith('## ')) {
-      return `<h3>${block.trim().replace(/^## /, '')}</h3>`;
-    }
-
-    return `<p>${lines.join('<br>')}</p>`;
-  }).join('\n');
-} */
-
 //function simpleMarkdown(text) {
 //  if (!text) return '';
 //  let html = text
